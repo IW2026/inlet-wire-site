@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const subjectParam = Astro.url.searchParams.get("subject") ?? "";
+const validSubjects = ["Artist", "Press", "Sponsorship", "Waves & Wire"];
+const initialSubject = validSubjects.includes(subjectParam) ? subjectParam : "General";
+---
+<BaseLayout title="Contact" path="/contact/" description="Get in touch with Inlet Wire. Press, sponsorship, artist submissions, field session tips, charity work — all welcome.">
+  <section class="hero">
+    <div class="container">
+      <h1>Get in touch</h1>
+      <p class="lede">Press, sponsorship, artist submissions, field session tips, charity work. All welcome.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <!--
+        Form action: the site uses Formspree as a free no-server form backend.
+        Sign up at formspree.io, create a form, paste the form ID below.
+        Submissions forward to contact@inletwire.com.
+      -->
+      <form
+        action="https://formspree.io/f/xkokpvdw"
+        method="POST"
+        class="stack"
+      >
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="General" selected={initialSubject === "General"}>General</option>
+            <option value="Artist" selected={initialSubject === "Artist"}>Artist submission</option>
+            <option value="Press" selected={initialSubject === "Press"}>Press</option>
+            <option value="Sponsorship" selected={initialSubject === "Sponsorship"}>Sponsorship or charity</option>
+            <option value="Waves & Wire" selected={initialSubject === "Waves & Wire"}>Waves & Wire</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New Inlet Wire contact form message" />
+        <button type="submit" class="btn">Send</button>
+      </form>
+
+      <p style="margin-top: 2.5rem;" class="text-muted">
+        Prefer email? <a class="link" href="mailto:contact@inletwire.com">contact@inletwire.com</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

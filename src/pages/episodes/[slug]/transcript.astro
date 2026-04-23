@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const transcripts = (await getCollection("transcripts", ({ data }) => !data.draft));
+  const episodes = await getCollection("episodes", ({ data }) => !data.draft);
+
+  return transcripts.map((t) => {
+    const ep = episodes.find((e) => e.slug === t.data.episode_slug);
+    return {
+      params: { slug: t.data.episode_slug },
+      props: { transcript: t, ep },
+    };
+  });
+}
+
+type Props = {
+  transcript: CollectionEntry<"transcripts">;
+  ep: CollectionEntry<"episodes"> | undefined;
+};
+const { transcript, ep } = Astro.props as Props;
+const { Content } = await transcript.render();
+
+const artist = transcript.data.artist;
+const episodeTitle = transcript.data.title ?? ep?.data.title ?? "";
+const speakers = transcript.data.speakers;
+const speakersLabel = speakers.join(" & ");
+
+const pageTitle = `${artist} — Transcript`;
+const pageDesc = ep
+  ? `Full transcript of the Inlet Wire conversation with ${artist}: ${ep.data.title}.`
+  : `Full transcript of the Inlet Wire conversation with ${artist}.`;
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  path={`/episodes/${transcript.data.episode_slug}/transcript/`}
+  ogType="article"
+>
+  <article class="transcript-page">
+
+    <section class="hero">
+      <div class="container prose">
+        <div class="meta-line">Transcript{ep ? ` · Ep. ${ep.data.episode_number}` : ""}</div>
+        <h1 style="margin-top: 0.5rem;">{artist}</h1>
+        {episodeTitle && <p class="lede">{episodeTitle}</p>}
+        <p class="transcript-speakers">Conversation between {speakersLabel}.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container prose transcript-body">
+        <Content />
+      </div>
+    </section>
+
+    <section>
+      <div class="container prose">
+        <p class="transcript-fine">
+          This transcript has been lightly edited for clarity and readability. Any transcription errors are ours.
+        </p>
+        <p style="margin-top: 2rem;">
+          <a class="link" href={`/episodes/${transcript.data.episode_slug}/`}>← Back to episode</a>
+        </p>
+      </div>
+    </section>
+
+  </article>
+</BaseLayout>

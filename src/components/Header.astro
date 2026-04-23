@@ -1,0 +1,21 @@
+---
+const nav = [
+  { href: "/episodes/", label: "Episodes" },
+  { href: "/playlists/", label: "Playlists" },
+  { href: "/waves-and-wire/", label: "Waves & Wire" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
+];
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="logo-link" aria-label="Inlet Wire home">
+      <img src="/logo-horizontal.png" alt="Inlet Wire" class="logo-img" width="1781" height="651" />
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      {nav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>

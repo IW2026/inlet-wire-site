@@ -1,0 +1,115 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div>
+        <a href="/" class="logo-link" aria-label="Inlet Wire home">
+          <img src="/logo-horizontal.png" alt="Inlet Wire" class="logo-img logo-img-sm" width="1781" height="651" />
+        </a>
+        <p style="margin-top: 0.75rem;">Your direct line to BC artists.</p>
+
+        <form
+          id="newsletter-form"
+          class="newsletter-form"
+          style="margin-top: 1rem; max-width: 380px;"
+          data-endpoint="https://script.google.com/macros/s/AKfycbw68p65bWFxFYZ5Y-vyErqeQI5acqXvqzm8VYeZ-HWQ8Icnp9EEnm53ZzFEmSCtdeLy/exec"
+          aria-label="Subscribe to the Inlet Wire newsletter"
+          novalidate
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            aria-label="Email address"
+            autocomplete="email"
+          />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p id="newsletter-msg" class="newsletter-fine" style="margin-top: 0.5rem;" aria-live="polite">One email per new episode. Nothing else.</p>
+      </div>
+      <div>
+        <p><a class="link" href="mailto:contact@inletwire.com">contact@inletwire.com</a></p>
+        <p style="margin-top: 0.5rem;"><a href="/media-kit/">Media Kit</a></p>
+        <div class="footer-socials" aria-label="Social accounts">
+          <a href="https://open.spotify.com/show/2BTlbhjjXBsV6MECUSUWwY" target="_blank" rel="noopener" aria-label="Spotify">
+            <img src="https://cdn.simpleicons.org/spotify/5A5A5A" alt="" aria-hidden="true" width="18" height="18" />
+          </a>
+          <a href="https://podcasts.apple.com/podcast/id1876137985" target="_blank" rel="noopener" aria-label="Apple Podcasts">
+            <img src="https://cdn.simpleicons.org/applepodcasts/5A5A5A" alt="" aria-hidden="true" width="18" height="18" />
+          </a>
+          <a href="https://www.youtube.com/inletwire" target="_blank" rel="noopener" aria-label="YouTube">
+            <img src="https://cdn.simpleicons.org/youtube/5A5A5A" alt="" aria-hidden="true" width="18" height="18" />
+          </a>
+          <a href="https://www.instagram.com/inletwire" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="https://cdn.simpleicons.org/instagram/5A5A5A" alt="" aria-hidden="true" width="18" height="18" />
+          </a>
+          <a href="https://www.facebook.com/inletwire" target="_blank" rel="noopener" aria-label="Facebook">
+            <img src="https://cdn.simpleicons.org/facebook/5A5A5A" alt="" aria-hidden="true" width="18" height="18" />
+          </a>
+          <a href="https://www.tiktok.com/@inletwire" target="_blank" rel="noopener" aria-label="TikTok">
+            <img src="https://cdn.simpleicons.org/tiktok/5A5A5A" alt="" aria-hidden="true" width="18" height="18" />
+          </a>
+          <a href="https://anchor.fm/s/10edfd0cc/podcast/rss" target="_blank" rel="noopener" aria-label="RSS feed">
+            <img src="https://cdn.simpleicons.org/rss/5A5A5A" alt="" aria-hidden="true" width="18" height="18" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="fine">Transcripts are available on all episode pages for accessibility. <a href="/episodes/" class="fine-link">Browse episodes →</a></p>
+    <p class="fine">© {year} Inlet Wire. Recorded on the unceded territories of the Coast Salish peoples.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const form = document.getElementById("newsletter-form");
+  if (!form) return;
+
+  const msg   = document.getElementById("newsletter-msg");
+  const btn   = form.querySelector("button[type=submit]");
+  const input = form.querySelector("input[type=email]");
+  const endpoint = form.dataset.endpoint;
+
+  // Don't wire up if the URL hasn't been set yet
+  if (!endpoint || endpoint === "PASTE_APPS_SCRIPT_URL_HERE") {
+    console.warn("Newsletter: Apps Script URL not set in Footer.astro data-endpoint.");
+    return;
+  }
+
+  function setMsg(text, isError) {
+    if (!msg) return;
+    msg.textContent = text;
+    msg.style.color = isError ? "#c00" : "inherit";
+  }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const email = (input?.value || "").trim();
+    if (!email) return;
+
+    btn.disabled  = true;
+    btn.textContent = "Sending…";
+
+    try {
+      // no-cors: we can't read the response but the Apps Script still saves the data
+      await fetch(endpoint, {
+        method:   "POST",
+        mode:     "no-cors",
+        headers:  { "Content-Type": "application/x-www-form-urlencoded" },
+        body:     new URLSearchParams({ email, source: "footer" }),
+      });
+      setMsg("You're in. See you next episode.", false);
+      input.value   = "";
+    } catch (_) {
+      setMsg("Something went wrong — try again.", true);
+    } finally {
+      btn.disabled    = false;
+      btn.textContent = "Subscribe";
+    }
+  });
+})();
+</script>

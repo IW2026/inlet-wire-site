@@ -1,0 +1,406 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const published = (await getCollection("episodes", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.episode_number - a.data.episode_number);
+
+const latest = published[0];
+const recent = published.slice(0, 6);
+
+// "Feeling lucky?" random-episode pick. We exclude the latest episode
+// so it doesn't double up with the hero above. Initial pick is random
+// at build time (rotates on each redeploy); the full episode payload is
+// embedded as JSON so the client-side shuffle button can re-roll
+// instantly without a page reload. Auto-includes new episodes as they
+// publish.
+const shufflePool = published.filter((ep) => ep.slug !== latest?.slug);
+const initialPick =
+  shufflePool.length > 0
+    ? shufflePool[Math.floor(Math.random() * shufflePool.length)]
+    : null;
+
+const shufflePayload = shufflePool.map((ep) => {
+  const epNum = String(ep.data.episode_number).padStart(2, "0");
+  return {
+    slug: ep.slug,
+    artist: ep.data.artist,
+    title: ep.data.title,
+    episode: ep.data.episode_number,
+    date: ep.data.publish_date.toLocaleDateString("en-CA", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }),
+    description: ep.data.description,
+    cover: `/images/episodes/ep-${epNum}-cover.jpg`,
+  };
+});
+
+// Hero cover stack — every published episode's cover, stacked absolutely
+// and crossfaded by client-side JS. The wrapping <a>'s href updates to
+// match whichever cover is currently visible, so clicking takes the
+// listener to that specific episode. Auto-updates: new episodes join
+// the stack on next build.
+const heroCovers = published.map((ep) => {
+  const epNum = String(ep.data.episode_number).padStart(2, "0");
+  return {
+    slug: ep.slug,
+    src: `/images/episodes/ep-${epNum}-cover.jpg`,
+    label: `${ep.data.artist} — Inlet Wire episode ${ep.data.episode_number}`,
+  };
+});
+
+// PodcastSeries JSON-LD for the homepage
+const podcastJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  name: "Inlet Wire",
+  description:
+    "Your direct line to BC artists. A weekly podcast hosted by Eric Chan featuring conversations with the artists shaping the sound of British Columbia.",
+  url: "https://inletwire.com/",
+  image: "https://inletwire.com/og-default.png",
+  inLanguage: "en-CA",
+  webFeed: "https://anchor.fm/s/10edfd0cc/podcast/rss",
+  author: { "@type": "Person", name: "Eric Chan" },
+  sameAs: [
+    "https://open.spotify.com/show/2BTlbhjjXBsV6MECUSUWwY",
+    "https://podcasts.apple.com/podcast/id1876137985",
+    "https://www.instagram.com/inletwire",
+  ],
+};
+---
+<BaseLayout
+  title="Inlet Wire"
+  path="/"
+  jsonLd={podcastJsonLd}
+>
+  <section class="hero">
+    <div class="container">
+      {latest ? (
+        <div class="hero-split">
+          <div>
+            <h1>Your direct line to BC artists.</h1>
+            <p class="lede">Each week, host Eric Chan sits down with artists helping shape the sound of British Columbia. Listen in, and be part of how the next wave of BC music gets heard.</p>
+            <p style="margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.6rem;">
+              <a class="btn" href={`/episodes/${latest.slug}/`}>Latest episode →</a>
+              <a class="btn ghost" href="/playlists/">Open the playlist</a>
+            </p>
+          </div>
+          <a
+            class="hero-cover-stack"
+            data-hero-stack
+            href={`/episodes/${latest.slug}/`}
+            aria-label={`Open ${latest.data.artist} — Inlet Wire episode`}
+          >
+            {heroCovers.map((c, i) => (
+              <img
+                class={`hero-cover-img${i === 0 ? " is-active" : ""}`}
+                src={c.src}
+                alt=""
+                width="600"
+                height="600"
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                data-slug={c.slug}
+                data-label={c.label}
+                onerror="this.classList.add('is-broken')"
+              />
+            ))}
+          </a>
+        </div>
+      ) : (
+        <div>
+          <h1>Your direct line to BC artists.</h1>
+          <p class="lede">Each week, host Eric Chan sits down with artists helping shape the sound of British Columbia. Listen in, and be part of how the next wave of BC music gets heard.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {latest && (
+    <section>
+      <div class="container">
+        <h2>Latest episode</h2>
+        <p class="meta-line">Ep. {latest.data.episode_number} · {latest.data.artist}</p>
+        <div style="margin-top: 1rem;">
+          {latest.data.spotify_episode_id ? (
+            <iframe
+              class="spotify-embed"
+              src={`https://open.spotify.com/embed/episode/${latest.data.spotify_episode_id}?utm_source=generator`}
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          ) : latest.data.anchor_audio_url ? (
+            <audio controls preload="none" style="width: 100%;">
+              <source src={latest.data.anchor_audio_url} type="audio/mp4" />
+            </audio>
+          ) : null}
+        </div>
+        <p style="margin-top: 1.25rem;">
+          <a class="btn ghost" href={`/episodes/${latest.slug}/`}>Read the article</a>
+        </p>
+      </div>
+    </section>
+  )}
+
+  {initialPick && (
+    <section class="cream">
+      <div class="container">
+        <div class="pick-kicker">Feeling lucky?</div>
+        <h2 style="margin-top: 0.25rem;">Drop in on a random episode.</h2>
+        <p class="prose text-muted" style="margin-top: 0.5rem;">A random pick from the Inlet Wire archive. Hit shuffle to try another.</p>
+
+        <article class="random-ep" data-random-ep data-shuffle-pool={JSON.stringify(shufflePayload)}>
+          <a class="random-ep-card" data-random-ep-link href={`/episodes/${initialPick.slug}/`}>
+            <div class="random-ep-thumb-wrap">
+              <img
+                class="random-ep-thumb"
+                data-random-ep-thumb
+                src={`/images/episodes/ep-${String(initialPick.data.episode_number).padStart(2, "0")}-cover.jpg`}
+                alt={`${initialPick.data.artist} — Inlet Wire episode cover`}
+                width="600"
+                height="600"
+                loading="lazy"
+                onerror="this.closest('.random-ep-thumb-wrap').classList.add('random-ep-thumb-missing')"
+              />
+            </div>
+            <div class="random-ep-body">
+              <div class="random-ep-meta" data-random-ep-meta>Ep. {initialPick.data.episode_number} · {initialPick.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>
+              <h3 class="random-ep-artist" data-random-ep-artist>{initialPick.data.artist}</h3>
+              <p class="random-ep-title" data-random-ep-title>{initialPick.data.title}</p>
+              <p class="random-ep-desc" data-random-ep-desc>{initialPick.data.description}</p>
+              <span class="random-ep-cta">Listen →</span>
+            </div>
+          </a>
+          <button class="random-ep-shuffle" data-random-ep-shuffle type="button" aria-label="Shuffle for another episode">
+            <svg class="random-ep-shuffle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="16 3 21 3 21 8" />
+              <line x1="4" y1="20" x2="21" y2="3" />
+              <polyline points="21 16 21 21 16 21" />
+              <line x1="15" y1="15" x2="21" y2="21" />
+              <line x1="4" y1="4" x2="9" y2="9" />
+            </svg>
+            <span>Shuffle</span>
+          </button>
+        </article>
+      </div>
+    </section>
+  )}
+
+  <section>
+    <div class="container">
+      <h2>Recent episodes</h2>
+      <div class="episode-grid">
+        {recent.map((ep) => {
+          const epNum = String(ep.data.episode_number).padStart(2, "0");
+          return (
+            <a class="episode-card" href={`/episodes/${ep.slug}/`}>
+              <div class="episode-card-thumb-wrap">
+                <img
+                  class="episode-card-thumb"
+                  src={`/images/episodes/ep-${epNum}-cover.jpg`}
+                  alt={`${ep.data.artist} episode cover`}
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
+                />
+              </div>
+              <div class="episode-card-body">
+                <div class="meta">Ep. {ep.data.episode_number} · {ep.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>
+                <h3>{ep.data.artist}</h3>
+                <p>{ep.data.description}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      <p style="margin-top: 2rem;">
+        <a class="link" href="/episodes/">See all episodes →</a>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <div class="newsletter">
+        <div class="newsletter-kicker">Newsletter</div>
+        <h3>Get new episodes in your inbox.</h3>
+        <p>One short email when a new Inlet Wire episode lands. No spam, no promos, just a direct line when there's something new to hear.</p>
+        <form
+          class="newsletter-form"
+          action="https://formspree.io/f/xkokpvdw"
+          method="POST"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            aria-label="Email address"
+          />
+          <input type="hidden" name="_subject" value="Inlet Wire newsletter signup" />
+          <input type="hidden" name="signup_source" value="homepage" />
+          <input type="hidden" name="form_type" value="newsletter" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-fine">Unsubscribe anytime. Your email stays with contact@inletwire.com only.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="ig-header">
+        <div>
+          <div class="playlist-label">Instagram</div>
+          <h2 style="margin-top: 0.4rem;">@inletwire</h2>
+          <p class="text-muted" style="margin-top: 0.5rem; font-size: 0.95rem;">Catch the latest from Inlet Wire and follow along between episodes.</p>
+        </div>
+        <a class="follow-btn" href="https://www.instagram.com/inletwire" target="_blank" rel="noopener" style="align-self: flex-start;">
+          <img class="follow-btn-icon" src="https://cdn.simpleicons.org/instagram/0A0A0A" alt="" aria-hidden="true" />
+          Follow
+        </a>
+      </div>
+      <div class="ig-feed-wrap">
+        <behold-widget feed-id="F0h8EdK6O1IvKh3HuX0n"></behold-widget>
+        <script is:inline>
+          (() => {
+            const d=document,s=d.createElement("script");s.type="module";
+            s.src="https://w.behold.so/widget.js";d.head.append(s);
+          })();
+        </script>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+// Hero cover stack — auto-crossfade through every episode cover, and
+// keep the wrapping link pointing at whichever cover is currently visible
+// so a click opens that specific episode.
+const stack = document.querySelector<HTMLAnchorElement>("[data-hero-stack]");
+if (stack) {
+  const imgs = Array.from(stack.querySelectorAll<HTMLImageElement>(".hero-cover-img"));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const syncLink = () => {
+    const active = stack.querySelector<HTMLImageElement>(".hero-cover-img.is-active");
+    if (!active) return;
+    const slug  = active.dataset.slug;
+    const label = active.dataset.label ?? "Inlet Wire episode";
+    if (slug) stack.href = `/episodes/${slug}/`;
+    stack.setAttribute("aria-label", `Open ${label}`);
+  };
+  syncLink();
+
+  if (!reduceMotion && imgs.length > 1) {
+    // Build a shuffled play order; keep the currently-active cover as step 0.
+    const initialActive = Math.max(0, imgs.findIndex((img) => img.classList.contains("is-active")));
+    const order = imgs.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    const firstIdx = order.indexOf(initialActive);
+    if (firstIdx > 0) {
+      order.splice(firstIdx, 1);
+      order.unshift(initialActive);
+    }
+
+    let pos = 0;
+    const step = () => {
+      // Advance past broken images so we don't land on an empty slot.
+      let tries = 0;
+      let nextImg: HTMLImageElement;
+      do {
+        pos = (pos + 1) % order.length;
+        nextImg = imgs[order[pos]];
+        tries++;
+      } while (nextImg.classList.contains("is-broken") && tries < imgs.length);
+
+      if (nextImg.classList.contains("is-broken")) return;
+      imgs.forEach((img) => img.classList.remove("is-active"));
+      nextImg.classList.add("is-active");
+      syncLink();
+    };
+
+    let timer: number | null = null;
+    const start = () => { if (timer == null) timer = window.setInterval(step, 4500); };
+    const stop  = () => { if (timer != null) { clearInterval(timer); timer = null; } };
+
+    start();
+    stack.addEventListener("mouseenter", stop);
+    stack.addEventListener("mouseleave", start);
+    // Also pause while focused via keyboard.
+    stack.addEventListener("focus", stop);
+    stack.addEventListener("blur",  start);
+    document.addEventListener("visibilitychange", () => { document.hidden ? stop() : start(); });
+  }
+}
+
+// "Feeling lucky?" — client-side episode shuffle.
+// Reads the pool from the data attribute, picks a random episode that
+// isn't currently shown, and swaps the card content with a soft fade.
+type Pick = {
+  slug: string;
+  artist: string;
+  title: string;
+  episode: number;
+  date: string;
+  description: string;
+  cover: string;
+};
+
+document.querySelectorAll<HTMLElement>("[data-random-ep]").forEach((root) => {
+  let pool: Pick[] = [];
+  try { pool = JSON.parse(root.dataset.shufflePool ?? "[]"); } catch { return; }
+  if (pool.length === 0) return;
+
+  const link    = root.querySelector<HTMLAnchorElement>("[data-random-ep-link]");
+  const thumb   = root.querySelector<HTMLImageElement>("[data-random-ep-thumb]");
+  const meta    = root.querySelector<HTMLElement>("[data-random-ep-meta]");
+  const artist  = root.querySelector<HTMLElement>("[data-random-ep-artist]");
+  const title   = root.querySelector<HTMLElement>("[data-random-ep-title]");
+  const desc    = root.querySelector<HTMLElement>("[data-random-ep-desc]");
+  const shuffle = root.querySelector<HTMLButtonElement>("[data-random-ep-shuffle]");
+  if (!link || !thumb || !meta || !artist || !title || !desc || !shuffle) return;
+
+  const currentSlug = () => {
+    const href = link.getAttribute("href") ?? "";
+    return href.replace(/\/$/, "").split("/").pop() ?? "";
+  };
+
+  const render = (p: Pick) => {
+    link.href           = `/episodes/${p.slug}/`;
+    thumb.src           = p.cover;
+    thumb.alt           = `${p.artist} — Inlet Wire episode cover`;
+    meta.textContent    = `Ep. ${p.episode} · ${p.date}`;
+    artist.textContent  = p.artist;
+    title.textContent   = p.title;
+    desc.textContent    = p.description;
+    root.querySelector(".random-ep-thumb-wrap")?.classList.remove("random-ep-thumb-missing");
+  };
+
+  const pickRandom = () => {
+    if (pool.length < 2) return pool[0];
+    let p = pool[Math.floor(Math.random() * pool.length)];
+    let guard = 0;
+    while (p.slug === currentSlug() && guard++ < 8) {
+      p = pool[Math.floor(Math.random() * pool.length)];
+    }
+    return p;
+  };
+
+  shuffle.addEventListener("click", () => {
+    const next = pickRandom();
+    if (!next) return;
+    root.classList.add("is-shuffling");
+    window.setTimeout(() => {
+      render(next);
+      root.classList.remove("is-shuffling");
+    }, 160);
+  });
+});
+</script>

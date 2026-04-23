@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Environment and local config
+.env
+.env.local
+.env.production
+../sync.env
+../subscribers.xlsx
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/

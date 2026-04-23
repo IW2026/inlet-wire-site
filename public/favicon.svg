@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" fill="#0A0A0A"/>
+  <polyline points="4,20 10,10 14,16 20,8 28,20" fill="none" stroke="#FFFFFF" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="16" y="28" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="6" fill="#FFFFFF" letter-spacing="1">IW</text>
+</svg>

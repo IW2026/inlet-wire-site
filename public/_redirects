@@ -1,0 +1,3 @@
+# Short RSS aliases — forward to the live Anchor feed
+/rss.xml   https://anchor.fm/s/10edfd0cc/podcast/rss  301
+/rss       https://anchor.fm/s/10edfd0cc/podcast/rss  301

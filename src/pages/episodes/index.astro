@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.episode_number - a.data.episode_number);
+
+// Build the sorted, unique list of tags across all episodes
+const allTags = Array.from(
+  new Set(episodes.flatMap((ep) => ep.data.tags ?? []))
+).sort();
+---
+<BaseLayout title="Episodes" path="/episodes/" description="Every Inlet Wire conversation, from the latest back to the first.">
+  <section class="hero">
+    <div class="container">
+      <h1>Episodes</h1>
+      <p class="lede">Every conversation, from the latest back to the first.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      {allTags.length > 0 && (
+        <div class="tag-filter" role="group" aria-label="Filter episodes by tag">
+          <button class="tag-filter-btn active" data-filter="__all">All</button>
+          {allTags.map((tag) => (
+            <button class="tag-filter-btn" data-filter={tag}>{tag}</button>
+          ))}
+        </div>
+      )}
+
+      <div class="episode-grid" id="episodeGrid">
+        {episodes.map((ep) => {
+          const epNum = String(ep.data.episode_number).padStart(2, "0");
+          const tagAttr = (ep.data.tags ?? []).join(",");
+          return (
+            <a
+              class="episode-card"
+              href={`/episodes/${ep.slug}/`}
+              data-tags={tagAttr}
+            >
+              <div class="episode-card-thumb-wrap">
+                <img
+                  class="episode-card-thumb"
+                  src={`/images/episodes/ep-${epNum}-cover.jpg`}
+                  alt={`${ep.data.artist} episode cover`}
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
+                />
+              </div>
+              <div class="episode-card-body">
+                <div class="meta">Ep. {ep.data.episode_number} · {ep.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>
+                <h3>{ep.data.artist}</h3>
+                <p>{ep.data.description}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+// Client-side tag filter for the episode grid
+const buttons = document.querySelectorAll<HTMLButtonElement>(".tag-filter-btn");
+const cards   = document.querySelectorAll<HTMLElement>("#episodeGrid .episode-card");
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const filter = btn.getAttribute("data-filter");
+    buttons.forEach((b) => b.classList.toggle("active", b === btn));
+
+    cards.forEach((card) => {
+      if (filter === "__all") {
+        card.style.display = "";
+        return;
+      }
+      const tags = (card.getAttribute("data-tags") ?? "").split(",");
+      card.style.display = tags.includes(filter ?? "") ? "" : "none";
+    });
+  });
+});
+</script>

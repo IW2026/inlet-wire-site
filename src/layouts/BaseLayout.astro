@@ -1,0 +1,89 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+  ogImage?: string;
+  ogType?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
+}
+
+const {
+  title,
+  description = "Your direct line to BC artists. A weekly podcast hosted by Eric Chan.",
+  path = "/",
+  ogImage = "/og-default.png",
+  ogType = "website",
+  jsonLd,
+} = Astro.props;
+
+const siteTitle = "Inlet Wire";
+const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
+const canonical = Astro.site ? new URL(path, Astro.site).toString() : path;
+const absoluteOg = Astro.site ? new URL(ogImage, Astro.site).toString() : ogImage;
+
+const jsonLdArray = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : [];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Podcast RSS auto-discovery (live Anchor feed) -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Inlet Wire Podcast"
+      href="https://anchor.fm/s/10edfd0cc/podcast/rss"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Inlet Wire" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:image" content={absoluteOg} />
+    <meta property="og:image:alt" content="Inlet Wire" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOg} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@900&display=swap"
+      rel="stylesheet"
+    />
+
+    {jsonLdArray.map((data) => (
+      <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))}
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

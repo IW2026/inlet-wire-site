@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const episodes = (await getCollection("episodes", ({ data }) => !data.draft && !!data.featured_playlist_id))
+  .sort((a, b) => b.data.publish_date.valueOf() - a.data.publish_date.valueOf());
+
+const featuredPlaylistId  = "3o9Iy26RGOBBHNUxe8MXrO";
+const allEpisodesPlaylistId = "1De8QSqbYa15p5gXO78PDl";
+---
+<BaseLayout title="Playlists — Inlet Wire" path="/playlists/" description="The Inlet Wire playlist and every featured artist selection from the show.">
+
+  <section class="hero">
+    <div class="container prose">
+      <h1>Playlists</h1>
+      <p class="lede">Two ways into Inlet Wire — one through the music, one through the full conversations.</p>
+    </div>
+  </section>
+
+  <!-- Featured playlist -->
+  <section>
+    <div class="container prose">
+      <div class="playlist-label">Featured</div>
+      <h2 style="margin-top: 0.5rem; border-top: none; padding-top: 0;">Inlet Wire · The Sound of BC</h2>
+      <div class="playlist-article">
+        <p>Music from every artist who's come through the show, plus more songs I dig to help listeners explore more of the BC scene.</p>
+        <p>The playlist is built around Inlet Wire featured artists, along with other BC artists I keep coming back to. Some have been on the podcast. Some are just artists I think more people should be hearing. The goal is pretty simple: keep one playlist that helps people stay connected to what's happening here.</p>
+        <p>Not every artist shows up in the same way. Some come through an interview, some through a recommendation, and some just because I heard a track at the right time and wanted to keep it in rotation. This playlist gives all of that a place to live.</p>
+        <p>Submissions welcome: <a href="mailto:submissions@inletwire.com">submissions@inletwire.com</a></p>
+      </div>
+      <iframe
+        class="spotify-embed playlist-large"
+        src={`https://open.spotify.com/embed/playlist/${featuredPlaylistId}?utm_source=generator`}
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- All episodes playlist -->
+  <section>
+    <div class="container prose">
+      <div class="playlist-label">Archive</div>
+      <h2 style="margin-top: 0.5rem; border-top: none; padding-top: 0;">Inlet Wire · Full Episodes</h2>
+      <div class="playlist-article">
+        <p>A full playlist of Inlet Wire episodes in one place.</p>
+        <p>If you want to listen through the conversations, this is the easiest way in. Every episode stands on its own, so you can jump in anywhere and follow the artists, stories, and sounds that connect across the show.</p>
+      </div>
+      <iframe
+        class="spotify-embed playlist-large"
+        src={`https://open.spotify.com/embed/playlist/${allEpisodesPlaylistId}?utm_source=generator`}
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+    </div>
+  </section>
+
+  {episodes.length > 0 && (
+    <section>
+      <div class="container">
+        <h2 class="prose">Featured by episode</h2>
+        <div class="episode-grid" style="margin-top: 1.5rem;">
+          {episodes.map((ep) => (
+            <div class="episode-card">
+              <div class="meta">Ep. {ep.data.episode_number} · <a class="link" href={`/episodes/${ep.slug}/`}>{ep.data.artist}</a></div>
+              <iframe
+                class="spotify-embed compact"
+                style="margin-top: 1rem;"
+                src={`https://open.spotify.com/embed/playlist/${ep.data.featured_playlist_id}?utm_source=generator`}
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              ></iframe>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</BaseLayout>

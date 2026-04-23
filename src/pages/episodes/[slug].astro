@@ -1,0 +1,384 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import FollowCTA from "../../components/FollowCTA.astro";
+
+export async function getStaticPaths() {
+  const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
+    .sort((a, b) => a.data.episode_number - b.data.episode_number);
+
+  const transcripts = await getCollection("transcripts", ({ data }) => !data.draft);
+  const transcriptSlugs = new Set(transcripts.map((t) => t.data.episode_slug));
+
+  return episodes.map((ep, i) => ({
+    params: { slug: ep.slug },
+    props: {
+      ep,
+      prev: episodes[i - 1] ?? null,
+      next: episodes[i + 1] ?? null,
+      hasTranscript: transcriptSlugs.has(ep.slug),
+    },
+  }));
+}
+
+type Props = {
+  ep: CollectionEntry<"episodes">;
+  prev: CollectionEntry<"episodes"> | null;
+  next: CollectionEntry<"episodes"> | null;
+  hasTranscript: boolean;
+};
+const { ep, prev, next, hasTranscript } = Astro.props as Props;
+const { Content } = await ep.render();
+
+const dateLabel = ep.data.publish_date.toLocaleDateString("en-CA", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const epNum = String(ep.data.episode_number).padStart(2, "0");
+const coverImage = `/images/episodes/ep-${epNum}-cover.jpg`;
+const photoLetters = ["a", "b", "c", "d", "e"];
+const artistPhotos = photoLetters.map((l) => `/images/episodes/ep-${epNum}-${l}.jpg`);
+
+// Structured data for Google / Apple / Spotify indexing
+const episodeJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  name: `${ep.data.artist} — ${ep.data.title}`,
+  description: ep.data.description,
+  datePublished: ep.data.publish_date.toISOString(),
+  url: `https://inletwire.com/episodes/${ep.slug}/`,
+  image: `https://inletwire.com${coverImage}`,
+  episodeNumber: ep.data.episode_number,
+  partOfSeries: {
+    "@type": "PodcastSeries",
+    name: "Inlet Wire",
+    url: "https://inletwire.com/",
+    webFeed: "https://anchor.fm/s/10edfd0cc/podcast/rss",
+  },
+  ...(ep.data.spotify_episode_id
+    ? {
+        associatedMedia: {
+          "@type": "MediaObject",
+          contentUrl: `https://open.spotify.com/episode/${ep.data.spotify_episode_id}`,
+        },
+      }
+    : {}),
+};
+---
+<BaseLayout
+  title={`${ep.data.artist} — ${ep.data.title}`}
+  description={ep.data.description}
+  path={`/episodes/${ep.slug}/`}
+  ogImage={coverImage}
+  ogType="article"
+  jsonLd={episodeJsonLd}
+>
+  <article>
+
+    <section class="hero">
+      <div class="container prose">
+        <div class="meta-line">Ep. {ep.data.episode_number} · {dateLabel}</div>
+        <h1 style="margin-top: 0.5rem;">{ep.data.artist}</h1>
+        <p class="lede">{ep.data.title}</p>
+        {ep.data.tags && ep.data.tags.length > 0 && (
+          <ul class="tag-list" aria-label="Episode tags">
+            {ep.data.tags.map((t) => (
+              <li class="tag-pill">{t}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </section>
+
+    <!-- Episode cover -->
+    <section class="episode-hero-img-section">
+      <div class="container">
+        <img
+          src={coverImage}
+          alt={`${ep.data.artist} — episode cover`}
+          class="episode-cover-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+    </section>
+
+    <!-- Audio player -->
+    <section>
+      <div class="container prose">
+        {ep.data.spotify_episode_id ? (
+          <div class="player-wrap">
+            <iframe
+              class="spotify-embed compact"
+              src={`https://open.spotify.com/embed/episode/${ep.data.spotify_episode_id}?utm_source=generator&theme=0`}
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+            <div class="listen-on">
+              <span class="listen-on-label">Listen on</span>
+              <a class="listen-on-btn" href={`https://open.spotify.com/episode/${ep.data.spotify_episode_id}`} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/spotify/0A0A0A" alt="" aria-hidden="true" />
+                Spotify
+              </a>
+              {ep.data.apple_podcast_url && (
+                <a class="listen-on-btn" href={ep.data.apple_podcast_url} target="_blank" rel="noopener">
+                  <img class="listen-on-icon" src="https://cdn.simpleicons.org/applepodcasts/0A0A0A" alt="" aria-hidden="true" />
+                  Apple Podcasts
+                </a>
+              )}
+              <a class="listen-on-btn" href="https://pca.st/itunes/1876137985" target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/pocketcasts/0A0A0A" alt="" aria-hidden="true" />
+                Pocket Casts
+              </a>
+              <a class="listen-on-btn" href="https://overcast.fm/itunes1876137985" target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/overcast/0A0A0A" alt="" aria-hidden="true" />
+                Overcast
+              </a>
+              <a class="listen-on-btn" href="https://anchor.fm/s/10edfd0cc/podcast/rss" target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/rss/0A0A0A" alt="" aria-hidden="true" />
+                RSS
+              </a>
+              <button class="listen-on-btn share-btn" data-share-btn data-share-url={`https://inletwire.com/episodes/${ep.slug}/`} data-share-title={`${ep.data.artist} — ${ep.data.title}`} type="button" aria-label="Share this episode">
+                <svg class="listen-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span data-share-label>Share</span>
+              </button>
+            </div>
+            {ep.data.anchor_audio_url && (
+              <p class="player-direct"><a href={ep.data.anchor_audio_url} target="_blank" rel="noopener">Just want to press play? Listen here →</a></p>
+            )}
+            {ep.data.has_transcript && (
+              <p class="transcript-jump"><a href="#transcript">Transcript available ↓</a></p>
+            )}
+          </div>
+        ) : ep.data.anchor_audio_url ? (
+          <div class="player-wrap">
+            <audio controls preload="none" style="width:100%;">
+              <source src={ep.data.anchor_audio_url} type="audio/mp4" />
+            </audio>
+            {ep.data.apple_podcast_url && (
+              <div class="listen-on">
+                <span class="listen-on-label">Listen on</span>
+                {ep.data.apple_podcast_url && (
+                  <a class="listen-on-btn" href={ep.data.apple_podcast_url} target="_blank" rel="noopener">
+                    <img class="listen-on-icon" src="https://cdn.simpleicons.org/applepodcasts/0A0A0A" alt="" aria-hidden="true" />
+                    Apple Podcasts
+                  </a>
+                )}
+                <a class="listen-on-btn" href="https://anchor.fm/s/10edfd0cc/podcast/rss" target="_blank" rel="noopener">
+                  <img class="listen-on-icon" src="https://cdn.simpleicons.org/rss/0A0A0A" alt="" aria-hidden="true" />
+                  RSS
+                </a>
+              </div>
+            )}
+          </div>
+        ) : null}
+      </div>
+    </section>
+
+    <!-- Article body -->
+    <section>
+      <div class="container prose">
+        <Content />
+        {hasTranscript && (
+          <p class="transcript-link-wrap">
+            <a class="transcript-link" href={`/episodes/${ep.slug}/transcript/`}>
+              Read the full transcript →
+            </a>
+          </p>
+        )}
+      </div>
+    </section>
+
+    <!-- Photo carousel -->
+    <section class="episode-photos-section" id="photoSection">
+      <div class="container prose">
+        <!-- Hidden preloaders to detect which photos exist -->
+        <div id="photoPreloads" style="display:none" aria-hidden="true">
+          {artistPhotos.map((src, i) => (
+            <img src={src} data-idx={String(i)} class="photo-preload" alt="" />
+          ))}
+        </div>
+        <div class="carousel" id="photoCarousel" style="display:none">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack"></div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="carouselPrev" aria-label="Previous photo">&#8592;</button>
+            <div class="carousel-dots" id="carouselDots"></div>
+            <button class="carousel-btn" id="carouselNext" aria-label="Next photo">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {ep.data.featured_playlist_id && (
+      <section>
+        <div class="container prose">
+          <h2>Featured playlist</h2>
+          <iframe
+            class="spotify-embed playlist"
+            src={`https://open.spotify.com/embed/playlist/${ep.data.featured_playlist_id}?utm_source=generator`}
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
+    )}
+
+    <section>
+      <div class="container prose">
+        <FollowCTA />
+      </div>
+    </section>
+
+    {(prev || next) && (
+      <section>
+        <div class="container prose">
+          <nav class="ep-pager" aria-label="Episode navigation">
+            {prev ? (
+              <a class="ep-pager-link" href={`/episodes/${prev.slug}/`}>
+                <span class="ep-pager-label">← Previous</span>
+                <span class="ep-pager-title">Ep. {prev.data.episode_number} · {prev.data.artist}</span>
+              </a>
+            ) : <span />}
+            {next ? (
+              <a class="ep-pager-link ep-pager-right" href={`/episodes/${next.slug}/`}>
+                <span class="ep-pager-label">Next →</span>
+                <span class="ep-pager-title">Ep. {next.data.episode_number} · {next.data.artist}</span>
+              </a>
+            ) : <span />}
+          </nav>
+        </div>
+      </section>
+    )}
+
+    <section>
+      <div class="container prose">
+        <p><a class="link" href="/episodes/">← All episodes</a></p>
+      </div>
+    </section>
+
+  </article>
+</BaseLayout>
+
+<script>
+// ── Share button ─────────────────────────────────────────────────
+document.querySelectorAll<HTMLButtonElement>("[data-share-btn]").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const url   = btn.getAttribute("data-share-url") ?? location.href;
+    const title = btn.getAttribute("data-share-title") ?? document.title;
+    const label = btn.querySelector<HTMLElement>("[data-share-label]");
+
+    // Native share on mobile; clipboard fallback everywhere else
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+        return;
+      } catch { /* user cancelled */ }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      if (label) {
+        const original = label.textContent;
+        label.textContent = "Copied";
+        setTimeout(() => { if (label) label.textContent = original; }, 1800);
+      }
+    } catch { /* ignored */ }
+  });
+});
+
+// ── Photo carousel ───────────────────────────────────────────────
+const preloads = Array.from(document.querySelectorAll<HTMLImageElement>(".photo-preload"));
+const valid: string[] = [];
+let settled = 0;
+
+function buildCarousel() {
+  const carousel = document.getElementById("photoCarousel")!;
+  const track    = document.getElementById("carouselTrack")!;
+  const dots     = document.getElementById("carouselDots")!;
+  const prevBtn  = document.getElementById("carouselPrev")!;
+  const nextBtn  = document.getElementById("carouselNext")!;
+
+  if (valid.length === 0) {
+    document.getElementById("photoSection")!.style.display = "none";
+    return;
+  }
+
+  carousel.style.display = "";
+
+  // Build slides
+  valid.forEach((src, i) => {
+    const slide = document.createElement("div");
+    slide.className = "carousel-slide";
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = `Artist photo ${i + 1}`;
+    img.className = "carousel-img";
+    slide.appendChild(img);
+    track.appendChild(slide);
+  });
+
+  // Build dots
+  valid.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", `Photo ${i + 1}`);
+    dot.addEventListener("click", () => goTo(i));
+    dots.appendChild(dot);
+  });
+
+  // Hide controls if only one photo
+  if (valid.length <= 1) {
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    dots.style.display    = "none";
+  }
+
+  let current = 0;
+
+  function goTo(idx: number) {
+    current = (idx + valid.length) % valid.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.querySelectorAll(".carousel-dot").forEach((d, i) => {
+      d.classList.toggle("active", i === current);
+    });
+  }
+
+  // Expose goTo for dot click closures
+  (window as any)._carouselGoTo = goTo;
+
+  // Re-bind dots with live goTo
+  dots.querySelectorAll(".carousel-dot").forEach((d, i) => {
+    (d as HTMLElement).onclick = () => goTo(i);
+  });
+
+  prevBtn.addEventListener("click", () => goTo(current - 1));
+  nextBtn.addEventListener("click", () => goTo(current + 1));
+
+  // Swipe support
+  let touchX = 0;
+  track.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener("touchend",   (e) => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  });
+}
+
+function trySettle() {
+  settled++;
+  if (settled >= preloads.length) buildCarousel();
+}
+
+if (preloads.length === 0) {
+  document.getElementById("photoSection")!.style.display = "none";
+} else {
+  preloads.forEach((img) => {
+    if (img.complete) {
+      if (img.naturalWidth > 0) valid.push(img.src);
+      trySettle();
+    } else {
+      img.addEventListener("load",  () => { valid.push(img.src); trySettle(); });
+      img.addEventListener("error", () => trySettle());
+    }
+  });
+}
+</script>

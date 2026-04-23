@@ -12,6 +12,9 @@ dist/
 ../sync.env
 ../subscribers.xlsx
 
+# Stray nested repo — must never be committed
+inlet/
+
 # macOS
 .DS_Store
 

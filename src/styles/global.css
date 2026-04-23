@@ -596,13 +596,13 @@ section h2 { margin-bottom: 1.5rem; }
   padding: 0;
 }
 .tag-pill {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--muted);
   border: 1px solid var(--rule);
-  padding: 0.2rem 0.6rem;
+  padding: 0.15rem 0.45rem;
 }
 
 /* ---------- Instagram feed ---------- */

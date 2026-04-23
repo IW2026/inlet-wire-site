@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const year = new Date().getFullYear();
+---
+<BaseLayout
+  title="Disclaimer"
+  description="Legal disclaimer for Inlet Wire, a BC music podcast."
+  path="/disclaimer/"
+>
+  <section class="hero">
+    <div class="container prose">
+      <h1>Disclaimer</h1>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+
+      <h2>Opinions and views</h2>
+      <p>The views, opinions, and statements expressed by guests on Inlet Wire are their own and do not necessarily reflect the views of Inlet Wire or its host. Conversations are presented for informational and entertainment purposes only.</p>
+
+      <h2>Not professional advice</h2>
+      <p>Nothing on this site or in any Inlet Wire episode should be taken as legal, financial, medical, or any other form of professional advice. Always consult a qualified professional for matters specific to your situation.</p>
+
+      <h2>Sponsorship and advertising</h2>
+      <p>Inlet Wire may from time to time feature sponsored content, paid partnerships, or advertising from third parties. Any such arrangements will be disclosed where required. Sponsored content does not influence the editorial direction of the show.</p>
+
+      <h2>External links</h2>
+      <p>This site contains links to third-party platforms including Spotify, Apple Podcasts, YouTube, and others. These links are provided for convenience. Inlet Wire has no control over the content of those platforms and accepts no responsibility for them.</p>
+
+      <h2>Newsletter</h2>
+      <p>By subscribing to the Inlet Wire newsletter, you agree to receive occasional emails about new episodes. Your email address is collected solely for this purpose and will not be sold or shared with third parties. You can unsubscribe at any time by contacting <a class="link" href="mailto:contact@inletwire.com">contact@inletwire.com</a>.</p>
+
+      <h2>Copyright</h2>
+      <p>All original content on this site — including episode audio, articles, photographs, and design — is © {year} Inlet Wire unless otherwise stated. Guest music remains the property of the respective artists. Do not reproduce or redistribute content without written permission.</p>
+
+      <h2>Changes to this disclaimer</h2>
+      <p>This disclaimer may be updated from time to time. Continued use of the site constitutes acceptance of any changes.</p>
+
+      <p style="margin-top: 2rem;"><a class="link" href="/">← Back to Inlet Wire</a></p>
+
+    </div>
+  </section>
+</BaseLayout>

@@ -227,11 +227,12 @@ const podcastJsonLd = {
       <div class="newsletter">
         <div class="newsletter-kicker">Newsletter</div>
         <h3>Get new episodes in your inbox.</h3>
-        <p>One short email when a new Inlet Wire episode lands. No spam, no promos, just a direct line when there's something new to hear.</p>
+        <p>One short email when a new Inlet Wire episode lands. A direct line when there's something new to hear.</p>
         <form
+          id="newsletter-form-home"
           class="newsletter-form"
-          action="https://formspree.io/f/xkokpvdw"
-          method="POST"
+          data-endpoint="https://script.google.com/macros/s/AKfycbw68p65bWFxFYZ5Y-vyErqeQI5acqXvqzm8VYeZ-HWQ8Icnp9EEnm53ZzFEmSCtdeLy/exec"
+          novalidate
         >
           <input
             type="email"
@@ -239,13 +240,11 @@ const podcastJsonLd = {
             placeholder="you@example.com"
             required
             aria-label="Email address"
+            autocomplete="email"
           />
-          <input type="hidden" name="_subject" value="Inlet Wire newsletter signup" />
-          <input type="hidden" name="signup_source" value="homepage" />
-          <input type="hidden" name="form_type" value="newsletter" />
           <button type="submit">Subscribe</button>
         </form>
-        <p class="newsletter-fine">Unsubscribe anytime. Your email stays with contact@inletwire.com only.</p>
+        <p id="newsletter-msg-home" class="newsletter-fine" aria-live="polite">Unsubscribe anytime.</p>
       </div>
     </div>
   </section>
@@ -403,4 +402,37 @@ document.querySelectorAll<HTMLElement>("[data-random-ep]").forEach((root) => {
     }, 160);
   });
 });
+
+// ── Homepage newsletter form ──────────────────────────────────────────────────
+(function () {
+  const form = document.getElementById("newsletter-form-home");
+  if (!form) return;
+  const msg   = document.getElementById("newsletter-msg-home");
+  const btn   = form.querySelector("button[type=submit]");
+  const input = form.querySelector("input[type=email]");
+  const endpoint = form.dataset.endpoint;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const email = (input?.value || "").trim();
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    try {
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ email, source: "homepage" }),
+      });
+      if (msg) msg.textContent = "You're in. See you next episode.";
+      input.value = "";
+    } catch (_) {
+      if (msg) { msg.textContent = "Something went wrong — try again."; msg.style.color = "#c00"; }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Subscribe";
+    }
+  });
+})();
 </script>

@@ -1,7 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="About" path="/about/">
+<BaseLayout
+  title="About — BC Artist Interviews by Eric Chan"
+  path="/about/"
+  description="Inlet Wire is an independent podcast hosted by Eric Chan. Weekly conversations with the artists shaping the sound of British Columbia, from Vancouver bands to touring songwriters to producers moving the scene forward."
+>
   <section class="hero">
     <div class="container" style="text-align: center;">
       <h1>About Inlet Wire</h1>
@@ -12,7 +16,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section>
     <div class="container prose stack">
       <p>Inlet Wire is your direct line to BC artists. Each week, host Eric Chan sits down with an artist shaping the new sound of British Columbia. Listen in, and you are part of how the next wave of BC music gets heard.</p>
-      <p>The show is built on conversations that go past the press release. Who these artists are, how they got here, what they are making, and why it matters in the place they are making it.</p>
+      <p><a class="link" href="/episodes/">The show</a> is built on conversations that go past the press release. Who these artists are, how they got here, what they are making, and why it matters in the place they are making it.</p>
 
       <h2>Editorial stance</h2>
       <p>BC has its own sound, its own rooms, and its own way of paying for a record. Inlet Wire is a time capsule of that scene as it is actually happening. No rankings, no hype cycles, no tastemaker energy. Just artists talking about their work with someone who cares about getting it right.</p>
@@ -21,7 +25,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p>Eric Chan is based in Metro Vancouver and has spent a long time on the audio side of music. Inlet Wire is where his ear and his questions meet the artists who keep the scene moving.</p>
 
       <h2>Get in touch</h2>
-      <p>Artist submissions, press, sponsorship and charity inquiries, field session tips — <a class="link" href="/contact/">start here</a>.</p>
+      <p>Artist submissions, press, sponsorship and charity inquiries, Waves & Wire tips: <a class="link" href="/contact/">start here</a>.</p>
     </div>
   </section>
 </BaseLayout>

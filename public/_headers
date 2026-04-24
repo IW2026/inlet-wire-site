@@ -1,0 +1,46 @@
+# Long-lived cache for static media assets.
+# These files are versioned by filename (ep-02-cover.jpg, logo.svg, etc.);
+# whenever we change the artwork we rename/bust the path so 1-year immutable
+# caching is safe.
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts (if we ever self-host)
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# RSS / sitemap — served fresh-ish but allow CDN to hold briefly
+/feed.xml
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/sitemap-index.xml
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/sitemap-*.xml
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+# HTML pages: short browser cache, longer CDN cache, revalidate on deploy
+/*
+  Cache-Control: public, max-age=0, s-maxage=600, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN

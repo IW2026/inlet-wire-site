@@ -19,6 +19,6 @@ The episode also gets into his path into production, and the way that role start
 
 And when he talks about producing, what comes through is how much it depends on listening. Listening to the song, to the artist, and to what the track seems to need next. There are a few moments in this episode where he describes sessions that really clicked, and those stories say a lot about why this kind of work matters.
 
-So if you want a look at music-making from the studio side — not just the gear or the credits, but the people, decisions, and structure holding it all together — this episode gives you that.
+So if you want a look at music-making from the studio side, not just the gear or the credits, but the people, decisions, and structure holding it all together, this episode gives you that.
 
 It is a good one to hear in full.

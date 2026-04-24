@@ -5,11 +5,11 @@ const subjectParam = Astro.url.searchParams.get("subject") ?? "";
 const validSubjects = ["Artist", "Press", "Sponsorship", "Waves & Wire"];
 const initialSubject = validSubjects.includes(subjectParam) ? subjectParam : "General";
 ---
-<BaseLayout title="Contact" path="/contact/" description="Get in touch with Inlet Wire. Press, sponsorship, artist submissions, field session tips, charity work — all welcome.">
+<BaseLayout title="Contact — Press, Sponsorship & Artist Submissions" path="/contact/" description="Get in touch with Inlet Wire. Press, sponsorship, artist submissions, Waves & Wire tips, charity work. All welcome.">
   <section class="hero">
     <div class="container" style="text-align: center;">
       <h1>Get in touch</h1>
-      <p class="lede" style="margin-inline: auto;">Press, sponsorship, artist submissions, field session tips, charity work. All welcome.</p>
+      <p class="lede" style="margin-inline: auto;">Press, sponsorship, artist submissions, Waves & Wire tips, charity work. All welcome.</p>
     </div>
   </section>
 

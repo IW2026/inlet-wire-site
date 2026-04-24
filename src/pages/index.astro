@@ -51,10 +51,44 @@ const heroCovers = published.map((ep) => {
   };
 });
 
-// PodcastSeries JSON-LD for the homepage
+// Three keyed schema entities stitched into one brand graph via @id
+// cross-references. Lets Google/Bing/ChatGPT resolve every mention of
+// "Inlet Wire" to a single identity, unlocks the WebSite sitelinks
+// search box, and scopes the podcast under its producing organization.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://inletwire.com/#organization",
+  name: "Inlet Wire",
+  url: "https://inletwire.com/",
+  logo: "https://inletwire.com/logo.png",
+  description:
+    "Independent podcast and media brand covering artists in British Columbia. Hosted by Eric Chan.",
+  founder: { "@type": "Person", name: "Eric Chan" },
+  sameAs: [
+    "https://open.spotify.com/show/2BTlbhjjXBsV6MECUSUWwY",
+    "https://podcasts.apple.com/podcast/id1876137985",
+    "https://www.instagram.com/inletwire",
+    "https://www.youtube.com/@inletwire",
+    "https://www.tiktok.com/@inletwire",
+    "https://www.facebook.com/inletwire",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://inletwire.com/#website",
+  name: "Inlet Wire",
+  url: "https://inletwire.com/",
+  inLanguage: "en-CA",
+  publisher: { "@id": "https://inletwire.com/#organization" },
+};
+
 const podcastJsonLd = {
   "@context": "https://schema.org",
   "@type": "PodcastSeries",
+  "@id": "https://inletwire.com/#podcast",
   name: "Inlet Wire",
   description:
     "Your direct line to BC artists. A weekly podcast hosted by Eric Chan featuring conversations with the artists shaping the sound of British Columbia.",
@@ -63,17 +97,19 @@ const podcastJsonLd = {
   inLanguage: "en-CA",
   webFeed: "https://anchor.fm/s/10edfd0cc/podcast/rss",
   author: { "@type": "Person", name: "Eric Chan" },
+  publisher: { "@id": "https://inletwire.com/#organization" },
   sameAs: [
     "https://open.spotify.com/show/2BTlbhjjXBsV6MECUSUWwY",
     "https://podcasts.apple.com/podcast/id1876137985",
-    "https://www.instagram.com/inletwire",
   ],
 };
 ---
 <BaseLayout
   title="Inlet Wire"
   path="/"
-  jsonLd={podcastJsonLd}
+  jsonLd={[organizationJsonLd, websiteJsonLd, podcastJsonLd]}
+  preloadImage={latest ? `/images/episodes/ep-${String(latest.data.episode_number).padStart(2, "0")}-cover.jpg` : undefined}
+  preloadImageWebp={latest ? `/images/episodes/ep-${String(latest.data.episode_number).padStart(2, "0")}-cover.webp` : undefined}
 >
   <section class="hero">
     <div class="container">
@@ -93,20 +129,40 @@ const podcastJsonLd = {
             href={`/episodes/${latest.slug}/`}
             aria-label={`Open ${latest.data.artist} — Inlet Wire episode`}
           >
-            {heroCovers.map((c, i) => (
-              <img
-                class={`hero-cover-img${i === 0 ? " is-active" : ""}`}
-                src={c.src}
-                alt=""
-                width="600"
-                height="600"
-                loading={i === 0 ? "eager" : "lazy"}
-                decoding="async"
-                data-slug={c.slug}
-                data-label={c.label}
-                onerror="this.classList.add('is-broken')"
-              />
-            ))}
+            {heroCovers.map((c, i) => {
+              const jpg = c.src;
+              const webp = jpg.replace(/\.jpg$/, ".webp");
+              const isFirst = i === 0;
+              // Only the first image is hydrated at render time. Others start
+              // with an inline SVG placeholder and get promoted to real src +
+              // source-srcset by JS right before their turn to display. Keeps
+              // the homepage initial payload small even with 12+ covers.
+              // 1x1 transparent GIF — universally decodable placeholder.
+              const placeholder = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=";
+              return (
+                <picture
+                  class={`hero-cover-img${isFirst ? " is-active" : ""}`}
+                  data-slug={c.slug}
+                  data-label={c.label}
+                >
+                  <source
+                    type="image/webp"
+                    srcset={isFirst ? webp : undefined}
+                    data-real={webp}
+                  />
+                  <img
+                    src={isFirst ? jpg : placeholder}
+                    data-real={jpg}
+                    alt=""
+                    width="600"
+                    height="600"
+                    loading={isFirst ? "eager" : "lazy"}
+                    decoding="async"
+                    onerror="this.closest('picture').classList.add('is-broken')"
+                  />
+                </picture>
+              );
+            })}
           </a>
         </div>
       ) : (
@@ -154,16 +210,23 @@ const podcastJsonLd = {
         <article class="random-ep" data-random-ep data-shuffle-pool={JSON.stringify(shufflePayload)}>
           <a class="random-ep-card" data-random-ep-link href={`/episodes/${initialPick.slug}/`}>
             <div class="random-ep-thumb-wrap">
-              <img
-                class="random-ep-thumb"
-                data-random-ep-thumb
-                src={`/images/episodes/ep-${String(initialPick.data.episode_number).padStart(2, "0")}-cover.jpg`}
-                alt={`${initialPick.data.artist} — Inlet Wire episode cover`}
-                width="600"
-                height="600"
-                loading="lazy"
-                onerror="this.closest('.random-ep-thumb-wrap').classList.add('random-ep-thumb-missing')"
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  data-random-ep-thumb-source
+                  srcset={`/images/episodes/ep-${String(initialPick.data.episode_number).padStart(2, "0")}-cover.webp`}
+                />
+                <img
+                  class="random-ep-thumb"
+                  data-random-ep-thumb
+                  src={`/images/episodes/ep-${String(initialPick.data.episode_number).padStart(2, "0")}-cover.jpg`}
+                  alt={`${initialPick.data.artist} — Inlet Wire episode cover`}
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                  onerror="this.closest('.random-ep-thumb-wrap').classList.add('random-ep-thumb-missing')"
+                />
+              </picture>
             </div>
             <div class="random-ep-body">
               <div class="random-ep-meta" data-random-ep-meta>Ep. {initialPick.data.episode_number} · {initialPick.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>
@@ -197,15 +260,21 @@ const podcastJsonLd = {
           return (
             <a class="episode-card" href={`/episodes/${ep.slug}/`}>
               <div class="episode-card-thumb-wrap">
-                <img
-                  class="episode-card-thumb"
-                  src={`/images/episodes/ep-${epNum}-cover.jpg`}
-                  alt={`${ep.data.artist} episode cover`}
-                  width="400"
-                  height="400"
-                  loading="lazy"
-                  onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset={`/images/episodes/ep-${epNum}-cover.webp`}
+                  />
+                  <img
+                    class="episode-card-thumb"
+                    src={`/images/episodes/ep-${epNum}-cover.jpg`}
+                    alt={`${ep.data.artist} episode cover`}
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
+                  />
+                </picture>
               </div>
               <div class="episode-card-body">
                 <div class="meta">Ep. {ep.data.episode_number} · {ep.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>
@@ -279,13 +348,29 @@ const podcastJsonLd = {
 // Hero cover stack — auto-crossfade through every episode cover, and
 // keep the wrapping link pointing at whichever cover is currently visible
 // so a click opens that specific episode.
+//
+// Loading strategy: each <picture> ships with only a placeholder src for
+// the <img> and an empty srcset on the <source>. Real URLs live in
+// data-real attributes. hydrate() promotes them when the image is about
+// to be shown. Keeps the homepage payload small even with a dozen covers.
 const stack = document.querySelector<HTMLAnchorElement>("[data-hero-stack]");
 if (stack) {
-  const imgs = Array.from(stack.querySelectorAll<HTMLImageElement>(".hero-cover-img"));
+  const pics = Array.from(stack.querySelectorAll<HTMLPictureElement>(".hero-cover-img"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const hydrate = (pic: HTMLPictureElement) => {
+    const source = pic.querySelector<HTMLSourceElement>("source");
+    const img    = pic.querySelector<HTMLImageElement>("img");
+    if (source && source.dataset.real && !source.getAttribute("srcset")) {
+      source.setAttribute("srcset", source.dataset.real);
+    }
+    if (img && img.dataset.real && img.src.startsWith("data:")) {
+      img.src = img.dataset.real;
+    }
+  };
+
   const syncLink = () => {
-    const active = stack.querySelector<HTMLImageElement>(".hero-cover-img.is-active");
+    const active = stack.querySelector<HTMLElement>(".hero-cover-img.is-active");
     if (!active) return;
     const slug  = active.dataset.slug;
     const label = active.dataset.label ?? "Inlet Wire episode";
@@ -294,10 +379,10 @@ if (stack) {
   };
   syncLink();
 
-  if (!reduceMotion && imgs.length > 1) {
+  if (!reduceMotion && pics.length > 1) {
     // Build a shuffled play order; keep the currently-active cover as step 0.
-    const initialActive = Math.max(0, imgs.findIndex((img) => img.classList.contains("is-active")));
-    const order = imgs.map((_, i) => i);
+    const initialActive = Math.max(0, pics.findIndex((p) => p.classList.contains("is-active")));
+    const order = pics.map((_, i) => i);
     for (let i = order.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [order[i], order[j]] = [order[j], order[i]];
@@ -308,21 +393,28 @@ if (stack) {
       order.unshift(initialActive);
     }
 
+    // Pre-hydrate the next cover so it has time to load before its turn.
+    if (order.length > 1) hydrate(pics[order[1]]);
+
     let pos = 0;
     const step = () => {
       // Advance past broken images so we don't land on an empty slot.
       let tries = 0;
-      let nextImg: HTMLImageElement;
+      let nextPic: HTMLPictureElement;
       do {
         pos = (pos + 1) % order.length;
-        nextImg = imgs[order[pos]];
+        nextPic = pics[order[pos]];
         tries++;
-      } while (nextImg.classList.contains("is-broken") && tries < imgs.length);
+      } while (nextPic.classList.contains("is-broken") && tries < pics.length);
 
-      if (nextImg.classList.contains("is-broken")) return;
-      imgs.forEach((img) => img.classList.remove("is-active"));
-      nextImg.classList.add("is-active");
+      if (nextPic.classList.contains("is-broken")) return;
+      hydrate(nextPic);
+      pics.forEach((p) => p.classList.remove("is-active"));
+      nextPic.classList.add("is-active");
       syncLink();
+      // Look-ahead: start loading the one after next so it's ready.
+      const lookahead = pics[order[(pos + 1) % order.length]];
+      if (lookahead) hydrate(lookahead);
     };
 
     let timer: number | null = null;
@@ -359,6 +451,7 @@ document.querySelectorAll<HTMLElement>("[data-random-ep]").forEach((root) => {
 
   const link    = root.querySelector<HTMLAnchorElement>("[data-random-ep-link]");
   const thumb   = root.querySelector<HTMLImageElement>("[data-random-ep-thumb]");
+  const thumbWebp = root.querySelector<HTMLSourceElement>("[data-random-ep-thumb-source]");
   const meta    = root.querySelector<HTMLElement>("[data-random-ep-meta]");
   const artist  = root.querySelector<HTMLElement>("[data-random-ep-artist]");
   const title   = root.querySelector<HTMLElement>("[data-random-ep-title]");
@@ -375,6 +468,7 @@ document.querySelectorAll<HTMLElement>("[data-random-ep]").forEach((root) => {
     link.href           = `/episodes/${p.slug}/`;
     thumb.src           = p.cover;
     thumb.alt           = `${p.artist} — Inlet Wire episode cover`;
+    if (thumbWebp) thumbWebp.srcset = p.cover.replace(/\.jpg$/, ".webp");
     meta.textContent    = `Ep. ${p.episode} · ${p.date}`;
     artist.textContent  = p.artist;
     title.textContent   = p.title;
@@ -428,7 +522,7 @@ document.querySelectorAll<HTMLElement>("[data-random-ep]").forEach((root) => {
       if (msg) msg.textContent = "You're in. See you next episode.";
       input.value = "";
     } catch (_) {
-      if (msg) { msg.textContent = "Something went wrong — try again."; msg.style.color = "#c00"; }
+      if (msg) { msg.textContent = "Something went wrong. Try again."; msg.style.color = "#c00"; }
     } finally {
       btn.disabled = false;
       btn.textContent = "Subscribe";

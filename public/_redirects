@@ -1,3 +1,7 @@
+# Canonical host — strip www so every URL resolves under the apex domain.
+# 301! forces the redirect even when a local file would match.
+https://www.inletwire.com/*  https://inletwire.com/:splat  301!
+
 # Short RSS aliases — forward to the live Anchor feed
 /rss.xml   https://anchor.fm/s/10edfd0cc/podcast/rss  301
 /rss       https://anchor.fm/s/10edfd0cc/podcast/rss  301

@@ -10,7 +10,11 @@ const allTags = Array.from(
   new Set(episodes.flatMap((ep) => ep.data.tags ?? []))
 ).sort();
 ---
-<BaseLayout title="Episodes" path="/episodes/" description="Every Inlet Wire episode — BC artists in conversation with Eric Chan.">
+<BaseLayout
+  title="All Episodes — BC Artists in Conversation"
+  path="/episodes/"
+  description="Browse every Inlet Wire episode. Weekly conversations with BC artists, from Vancouver bands to touring songwriters to producers shaping the scene."
+>
   <section class="hero">
     <div class="container">
       <h1>Episodes</h1>
@@ -40,15 +44,21 @@ const allTags = Array.from(
               data-tags={tagAttr}
             >
               <div class="episode-card-thumb-wrap">
-                <img
-                  class="episode-card-thumb"
-                  src={`/images/episodes/ep-${epNum}-cover.jpg`}
-                  alt={`${ep.data.artist} episode cover`}
-                  width="400"
-                  height="400"
-                  loading="lazy"
-                  onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset={`/images/episodes/ep-${epNum}-cover.webp`}
+                  />
+                  <img
+                    class="episode-card-thumb"
+                    src={`/images/episodes/ep-${epNum}-cover.jpg`}
+                    alt={`${ep.data.artist} episode cover`}
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
+                  />
+                </picture>
               </div>
               <div class="episode-card-body">
                 <div class="meta">Ep. {ep.data.episode_number} · {ep.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>

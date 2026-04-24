@@ -37,42 +37,76 @@ const dateLabel = ep.data.publish_date.toLocaleDateString("en-CA", {
 });
 const epNum = String(ep.data.episode_number).padStart(2, "0");
 const coverImage = `/images/episodes/ep-${epNum}-cover.jpg`;
+// Per-episode OG card (1200x630, branded). Falls back to cover if card is missing.
+const ogCard = `/images/og/ep-${epNum}.jpg`;
 const photoLetters = ["a", "b", "c", "d", "e"];
 const artistPhotos = photoLetters.map((l) => `/images/episodes/ep-${epNum}-${l}.jpg`);
 
-// Structured data for Google / Apple / Spotify indexing
+// Structured data for Google / Apple / Spotify / AI indexing.
+// AudioObject is attached whenever we have either a direct audio URL
+// (preferred, gives crawlers the actual file) or a Spotify embed URL.
+const audioObject =
+  ep.data.anchor_audio_url || ep.data.spotify_episode_id
+    ? {
+        "@type": "AudioObject",
+        ...(ep.data.anchor_audio_url
+          ? { contentUrl: ep.data.anchor_audio_url, encodingFormat: "audio/mpeg" }
+          : {}),
+        ...(ep.data.spotify_episode_id
+          ? { embedUrl: `https://open.spotify.com/episode/${ep.data.spotify_episode_id}` }
+          : {}),
+      }
+    : undefined;
+
 const episodeJsonLd = {
   "@context": "https://schema.org",
   "@type": "PodcastEpisode",
+  "@id": `https://inletwire.com/episodes/${ep.slug}/#episode`,
   name: `${ep.data.artist} — ${ep.data.title}`,
+  headline: ep.data.title,
   description: ep.data.description,
   datePublished: ep.data.publish_date.toISOString(),
   url: `https://inletwire.com/episodes/${ep.slug}/`,
   image: `https://inletwire.com${coverImage}`,
   episodeNumber: ep.data.episode_number,
+  inLanguage: "en-CA",
+  ...(ep.data.tags && ep.data.tags.length > 0
+    ? { keywords: ep.data.tags.join(", ") }
+    : {}),
   partOfSeries: {
     "@type": "PodcastSeries",
+    "@id": "https://inletwire.com/#podcast",
     name: "Inlet Wire",
     url: "https://inletwire.com/",
     webFeed: "https://anchor.fm/s/10edfd0cc/podcast/rss",
   },
-  ...(ep.data.spotify_episode_id
-    ? {
-        associatedMedia: {
-          "@type": "MediaObject",
-          contentUrl: `https://open.spotify.com/episode/${ep.data.spotify_episode_id}`,
-        },
-      }
-    : {}),
+  ...(audioObject ? { associatedMedia: audioObject } : {}),
+  creator: { "@type": "Person", name: "Eric Chan" },
+  producer: {
+    "@type": "Organization",
+    "@id": "https://inletwire.com/#organization",
+    name: "Inlet Wire",
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",     item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "Episodes", item: "https://inletwire.com/episodes/" },
+    { "@type": "ListItem", position: 3, name: ep.data.artist,
+      item: `https://inletwire.com/episodes/${ep.slug}/` },
+  ],
 };
 ---
 <BaseLayout
   title={`${ep.data.artist} — ${ep.data.title}`}
   description={ep.data.description}
   path={`/episodes/${ep.slug}/`}
-  ogImage={coverImage}
+  ogImage={ogCard}
   ogType="article"
-  jsonLd={episodeJsonLd}
+  jsonLd={[episodeJsonLd, breadcrumbJsonLd]}
 >
   <article>
 
@@ -94,12 +128,20 @@ const episodeJsonLd = {
     <!-- Episode cover -->
     <section class="episode-hero-img-section">
       <div class="container">
-        <img
-          src={coverImage}
-          alt={`${ep.data.artist} — episode cover`}
-          class="episode-cover-img"
-          onerror="this.style.display='none'"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcset={coverImage.replace(/\.jpg$/, ".webp")}
+          />
+          <img
+            src={coverImage}
+            alt={`${ep.data.artist} — episode cover`}
+            class="episode-cover-img"
+            width="600"
+            height="600"
+            onerror="this.closest('picture').style.display='none'"
+          />
+        </picture>
       </div>
     </section>
 
@@ -305,15 +347,25 @@ function buildCarousel() {
 
   carousel.style.display = "";
 
-  // Build slides
+  // Build slides — prefer WebP for each photo, fall back to JPEG via <picture>.
   valid.forEach((src, i) => {
     const slide = document.createElement("div");
     slide.className = "carousel-slide";
+
+    const pic = document.createElement("picture");
+    const source = document.createElement("source");
+    source.type = "image/webp";
+    source.srcset = src.replace(/\.jpg$/, ".webp");
+    pic.appendChild(source);
+
     const img = document.createElement("img");
     img.src = src;
     img.alt = `Artist photo ${i + 1}`;
     img.className = "carousel-img";
-    slide.appendChild(img);
+    img.loading = "lazy";
+    pic.appendChild(img);
+
+    slide.appendChild(pic);
     track.appendChild(slide);
   });
 

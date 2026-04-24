@@ -10,6 +10,17 @@ export interface Props {
   ogImage?: string;
   ogType?: string;
   jsonLd?: Record<string, any> | Record<string, any>[];
+  /**
+   * Absolute or root-relative URL of the page's LCP image. When set,
+   * emits <link rel="preload" as="image" fetchpriority="high"> so the
+   * browser starts fetching before layout begins.
+   */
+  preloadImage?: string;
+  /**
+   * Optional WebP variant of the preload image. WebP-capable browsers
+   * will preload this via imagesrcset instead of the JPEG fallback.
+   */
+  preloadImageWebp?: string;
 }
 
 const {
@@ -19,6 +30,8 @@ const {
   ogImage = "/og-default.png",
   ogType = "website",
   jsonLd,
+  preloadImage,
+  preloadImageWebp,
 } = Astro.props;
 
 const siteTitle = "Inlet Wire";
@@ -40,9 +53,29 @@ const jsonLdArray = jsonLd
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en-CA" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/logo.png" sizes="any" />
     <meta name="generator" content={Astro.generator} />
+
+    {preloadImage && preloadImageWebp && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadImageWebp}
+        type="image/webp"
+        fetchpriority="high"
+      />
+    )}
+    {preloadImage && !preloadImageWebp && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadImage}
+        fetchpriority="high"
+      />
+    )}
 
     <!-- Podcast RSS auto-discovery (live Anchor feed) -->
     <link

@@ -8,12 +8,16 @@ const episodes = (await getCollection("episodes", ({ data }) => !data.draft && !
 const featuredPlaylistId  = "3o9Iy26RGOBBHNUxe8MXrO";
 const allEpisodesPlaylistId = "1De8QSqbYa15p5gXO78PDl";
 ---
-<BaseLayout title="Playlists — Inlet Wire" path="/playlists/" description="The Inlet Wire playlist and every featured artist selection from the show.">
+<BaseLayout
+  title="Playlists — Every BC Artist & Episode"
+  path="/playlists/"
+  description="Two Spotify playlists from Inlet Wire. The Sound of BC gathers featured artists and the BC scene picks Eric keeps coming back to; Full Episodes archives every conversation."
+>
 
   <section class="hero">
     <div class="container prose">
       <h1>Playlists</h1>
-      <p class="lede">Two ways into Inlet Wire — one through the music, one through the full conversations.</p>
+      <p class="lede">Two ways into Inlet Wire. One through the music, one through the full conversations.</p>
     </div>
   </section>
 

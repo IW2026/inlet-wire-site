@@ -207,8 +207,8 @@ section h2 { margin-bottom: 1.5rem; }
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
   transition: transform 400ms ease;
 }
 .episode-card:hover .episode-card-thumb {
@@ -288,7 +288,7 @@ section h2 { margin-bottom: 1.5rem; }
   width: 100%;
   max-width: 420px;
   aspect-ratio: 1 / 1;
-  object-fit: cover;
+  object-fit: contain;
   margin-inline: auto;
 }
 
@@ -733,7 +733,7 @@ section h2 { margin-bottom: 1.5rem; }
 .random-ep-thumb {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 .random-ep-thumb-missing { background: var(--cream); }

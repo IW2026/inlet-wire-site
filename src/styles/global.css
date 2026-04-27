@@ -279,8 +279,8 @@ section h2 { margin-bottom: 1.5rem; }
 /* ---------- Episode cover ---------- */
 .episode-hero-img-section {
   padding: 0;
-  margin-top: -1.5rem;   /* close the gap left by .hero's bottom padding */
-  margin-bottom: -1rem;  /* close the gap before the audio player section */
+  margin-top: -2.5rem;   /* pull up tight under .hero (which has 3rem bottom padding) */
+  margin-bottom: -2rem;  /* pull audio player up close below */
 }
 .episode-hero-img-section picture {
   display: block;

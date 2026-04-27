@@ -28,8 +28,8 @@ url_for() {
     08) echo "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/45345163/45345163-1774256655383-65d1617e6e0be.jpg" ;;
     09) echo "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/45345163/45345163-1774863036347-af7781bf9e418.jpg" ;;
     10) echo "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/45345163/45345163-1775208421395-1f7223dc28833.jpg" ;;
-    11) echo "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/45345163/45345163-1776726756457-0e083b91e2e63.jpg" ;;
-    12) echo "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/45345163/45345163-1776072742365-0dedb70bd3e43.jpg" ;;
+    11) echo "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/45345163/45345163-1776072742365-0dedb70bd3e43.jpg" ;;  # Tobacco Brown
+    12) echo "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/45345163/45345163-1776726756457-0e083b91e2e63.jpg" ;;
   esac
 }
 

@@ -231,6 +231,47 @@ const breadcrumbJsonLd = {
       </div>
     </section>
 
+    <!-- Artist social / web links -->
+    {(ep.data.artist_website || ep.data.artist_instagram || ep.data.artist_youtube || ep.data.artist_facebook || ep.data.artist_bandcamp) && (
+      <section class="artist-links-section">
+        <div class="container prose">
+          <div class="listen-on">
+            <span class="listen-on-label">Find {ep.data.artist} on</span>
+            {ep.data.artist_website && (
+              <a class="listen-on-btn" href={ep.data.artist_website} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/googlechrome/0A0A0A" alt="" aria-hidden="true" />
+                Website
+              </a>
+            )}
+            {ep.data.artist_instagram && (
+              <a class="listen-on-btn" href={ep.data.artist_instagram} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/instagram/0A0A0A" alt="" aria-hidden="true" />
+                Instagram
+              </a>
+            )}
+            {ep.data.artist_youtube && (
+              <a class="listen-on-btn" href={ep.data.artist_youtube} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/youtube/0A0A0A" alt="" aria-hidden="true" />
+                YouTube
+              </a>
+            )}
+            {ep.data.artist_facebook && (
+              <a class="listen-on-btn" href={ep.data.artist_facebook} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/facebook/0A0A0A" alt="" aria-hidden="true" />
+                Facebook
+              </a>
+            )}
+            {ep.data.artist_bandcamp && (
+              <a class="listen-on-btn" href={ep.data.artist_bandcamp} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/bandcamp/0A0A0A" alt="" aria-hidden="true" />
+                Bandcamp
+              </a>
+            )}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- Photo carousel -->
     {!ep.data.hide_photos && <section class="episode-photos-section" id="photoSection">
       <div class="container prose">

@@ -14,6 +14,8 @@ tags:
   - indie-rock
 draft: false
 has_transcript: true
+artist_instagram: "https://www.instagram.com/hillsboroinc/"
+artist_bandcamp: "https://hillsboro.bandcamp.com/"
 ---
 
 This Inlet Wire episode with Nima from Hillsboro gets into a band that seems to be seeing itself more clearly.

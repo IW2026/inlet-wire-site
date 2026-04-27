@@ -13,6 +13,9 @@ tags:
   - indie-rock
 draft: false
 has_transcript: true
+artist_website: "https://www.whereisblush.com/"
+artist_instagram: "https://www.instagram.com/whereisblush/"
+artist_bandcamp: "https://whereisblush.bandcamp.com/"
 ---
 
 Some bands begin with a plan. This one didn't.

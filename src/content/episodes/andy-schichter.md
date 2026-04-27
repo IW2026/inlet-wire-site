@@ -12,6 +12,8 @@ tags:
   - studio
   - north-vancouver
 hide_photos: true
+artist_website: "https://parksoundstudio.com/"
+artist_instagram: "https://www.instagram.com/andyshick/"
 ---
 
 This Inlet Wire episode with Andy Schichter opens up a side of music-making that usually stays in the background.

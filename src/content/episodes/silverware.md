@@ -12,6 +12,9 @@ tags:
   - victoria
   - indie-rock
 draft: false
+artist_website: "https://silverwareband.com/"
+artist_instagram: "https://www.instagram.com/silverware_band/"
+artist_bandcamp: "https://silverware-band.bandcamp.com/"
 ---
 
 <!--

@@ -12,6 +12,11 @@ tags:
   - indie-folk
 has_transcript: true
 draft: false
+artist_website: "https://thezummers.com/"
+artist_instagram: "https://www.instagram.com/the.zummers/"
+artist_bandcamp: "https://thezummers.bandcamp.com/"
+artist_facebook: "https://www.facebook.com/zummers/"
+artist_youtube: "https://www.youtube.com/@TheZummers"
 ---
 
 The Zummers are a four-piece out of Pemberton, B.C., and this episode ended up being less about "the new album" in the usual sense, and more about the chapter of the band that the album ended up holding onto.

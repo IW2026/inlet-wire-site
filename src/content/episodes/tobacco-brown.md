@@ -15,6 +15,8 @@ tags:
 
 draft: false
 has_transcript: true
+artist_instagram: "https://www.instagram.com/tobaccobrown/"
+artist_bandcamp: "https://tobaccobrown.bandcamp.com/"
 ---
 
 <!--

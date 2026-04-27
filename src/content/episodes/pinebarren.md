@@ -13,6 +13,11 @@ tags:
   - indie-rock
 
 draft: false
+artist_website: "https://pinebarren.com/"
+artist_instagram: "https://www.instagram.com/pinebarren.music/"
+artist_bandcamp: "https://pinebarren.bandcamp.com/"
+artist_facebook: "https://www.facebook.com/pinebarren.music"
+artist_youtube: "https://www.youtube.com/@pinebarren3968"
 ---
 
 <!--

@@ -13,6 +13,11 @@ tags:
   - singer-songwriter
   - self-produced
 draft: false
+artist_website: "https://www.jodyglenham.com/"
+artist_instagram: "https://www.instagram.com/summerwitch/"
+artist_bandcamp: "https://jodyglenham.bandcamp.com/"
+artist_facebook: "https://www.facebook.com/jodyglenham/"
+artist_youtube: "https://www.youtube.com/@JodyGlenham"
 ---
 
 Some records do not need to shout to say something big. That is what came through in this Inlet Wire conversation around *Still Here*.

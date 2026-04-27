@@ -13,6 +13,9 @@ tags:
   - singer-songwriter
 draft: false
 has_transcript: true
+artist_website: "https://www.kaybrette.com/"
+artist_instagram: "https://www.instagram.com/kbrette/"
+artist_bandcamp: "https://kaybrette.bandcamp.com/"
 ---
 
 <!--

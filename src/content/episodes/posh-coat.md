@@ -13,6 +13,9 @@ tags:
   - indie-rock
 draft: false
 has_transcript: true
+artist_website: "https://poshcoat.com/"
+artist_instagram: "https://www.instagram.com/posh_coat/"
+artist_facebook: "https://www.facebook.com/poshcoatmusic/"
 ---
 
 <!--

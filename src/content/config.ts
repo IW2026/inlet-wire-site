@@ -16,6 +16,12 @@ const episodes = defineCollection({
     has_transcript: z.boolean().default(false),
     hide_photos: z.boolean().default(false),
     draft: z.boolean().default(false),
+    // Artist social / web links — all optional
+    artist_website: z.string().url().optional(),
+    artist_instagram: z.string().url().optional(),
+    artist_youtube: z.string().url().optional(),
+    artist_facebook: z.string().url().optional(),
+    artist_bandcamp: z.string().url().optional(),
   }),
 });
 

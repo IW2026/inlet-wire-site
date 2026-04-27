@@ -13,6 +13,11 @@ tags:
   - pop-punk
 
 draft: false
+artist_website: "https://www.chiefstate.com/"
+artist_instagram: "https://www.instagram.com/chiefstate/"
+artist_facebook: "https://www.facebook.com/chiefstate/"
+artist_bandcamp: "https://chiefstate.bandcamp.com/"
+artist_youtube: "https://www.youtube.com/@ChiefState"
 ---
 
 <!--

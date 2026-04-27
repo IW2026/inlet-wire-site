@@ -12,6 +12,10 @@ tags:
   - vancouver
   - classic-rock
 draft: false
+artist_website: "https://www.spendomusic.com/"
+artist_instagram: "https://www.instagram.com/spendo_music/"
+artist_facebook: "https://www.facebook.com/spendomusic/"
+artist_youtube: "https://www.youtube.com/@spendomusic"
 ---
 
 <!--

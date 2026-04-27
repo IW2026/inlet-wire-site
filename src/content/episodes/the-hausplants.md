@@ -13,6 +13,10 @@ tags:
   - post-punk
 
 draft: false
+artist_website: "https://thehausplants.com/"
+artist_instagram: "https://www.instagram.com/thehausplants/"
+artist_bandcamp: "https://thehausplants.bandcamp.com/"
+artist_facebook: "https://www.facebook.com/thehausplants"
 ---
 
 <!--

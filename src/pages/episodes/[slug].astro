@@ -232,7 +232,7 @@ const breadcrumbJsonLd = {
     </section>
 
     <!-- Photo carousel -->
-    <section class="episode-photos-section" id="photoSection">
+    {!ep.data.hide_photos && <section class="episode-photos-section" id="photoSection">
       <div class="container prose">
         <!-- Hidden preloaders to detect which photos exist -->
         <div id="photoPreloads" style="display:none" aria-hidden="true">
@@ -251,7 +251,7 @@ const breadcrumbJsonLd = {
           </div>
         </div>
       </div>
-    </section>
+    </section>}
 
     {ep.data.featured_playlist_id && (
       <section>

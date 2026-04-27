@@ -14,6 +14,7 @@ const episodes = defineCollection({
     tags: z.array(z.string()).default([]),
     apple_podcast_url: z.string().optional(),
     has_transcript: z.boolean().default(false),
+    hide_photos: z.boolean().default(false),
     draft: z.boolean().default(false),
   }),
 });

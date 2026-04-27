@@ -11,6 +11,7 @@ tags:
   - producer
   - studio
   - north-vancouver
+hide_photos: true
 ---
 
 This Inlet Wire episode with Andy Schichter opens up a side of music-making that usually stays in the background.

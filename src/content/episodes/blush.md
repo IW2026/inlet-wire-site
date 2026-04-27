@@ -15,16 +15,27 @@ draft: false
 has_transcript: true
 ---
 
-<!--
-Article body pending. Use the Article Writer Pack to draft from the SRT:
-  ~/Inlet Wire/Article Writer — Standalone Prompt Pack.md
+Some bands begin with a plan. This one didn't.
 
-Once a Spotify episode URL is available, add this line to the frontmatter above:
-  spotify_episode_id: "THE_22_CHAR_ID_FROM_THE_SPOTIFY_URL"
-and the Anchor audio player will automatically switch to the Spotify embed.
--->
+On this episode of *Inlet Wire*, Blush talk about how the band slowly took shape through friendship, shared shifts, and casual jams that turned into something more. It started without much agenda. Just people spending time together, making noise, and seeing what happened.
 
-_Article coming soon. In the meantime, press play above to listen._
+That part comes through clearly in the conversation. Even now, after recording and releasing music, Blush still talk about the band like something that grew naturally rather than something forced into place.
+
+They trace it back to those early connections between band members, and the way one jam led to another. What began in a loose acoustic setting eventually became a four-piece rock band from Victoria, but the feeling underneath it still sounds the same. A group of friends making music because it felt good to do it.
+
+That shared history also says a lot about the band's sound. When Rosie talks about what ties Blush together, she doesn't land on one fixed style. She talks about texture. The synth parts, the strange sounds, the guitar pedals, the details that keep revealing themselves when you sit with the songs a little longer. It is a good way to describe a band like this. Their music does not feel pinned down to one lane, but it does feel connected.
+
+One of the nicest parts of the episode is hearing how early the band started committing things to tape. Before they had even played their first show together, they had already recorded their first EP. That is not how a lot of bands do it, but it fits the Blush story. The project did not seem to grow out of live momentum first. It grew out of time spent together, figuring things out, and following where the music was already going.
+
+That early recording experience at Barnhouse Sound ended up shaping more than just the first EP. Drummer Eric talks about how it changed the way the band thought about production. Not just getting a performance down, but hearing how a song can evolve through tone, texture, mic choices, and experimentation. Later on, that carried into the newer recording process too.
+
+There is also a nice full-circle feeling when they talk about the single "Seasons." It was the first Blush song I heard, and in the episode the band describe it as a song that connects back to their roots. It carries that laid-back, acoustic, unhurried feeling from the early days, before there were bigger plans, deadlines, or the usual pressure that can start creeping in around a band. In that sense, it sounds like a memory as much as a single.
+
+The newer material seems to stretch things a bit further. They talk about coming out of sessions at The Hive Studio with Colin Stewart, and it sounds like the next EP gave them room to focus in a deeper way. More time, more intention, and a stronger sense of what they wanted to capture. When Renata talks about "Wrong Answers Only," she describes it as something that feels more dancey than people might expect from Blush. That shift feels small on paper, but in context it says a lot. The band is still recognizably themselves, but still moving.
+
+Maybe the most telling line in the whole episode is when they describe the new project as a time capsule of Blush in that moment. That feels right. Not in a grand way, just in an honest one.
+
+This episode gets into where the band began, how the songs have taken shape, and what still holds the whole thing together. If you have been curious about Blush, or if you only know a song or two, this one gives a clear sense of who they are and how they got here.
 
 <details id="transcript" class="transcript-block">
 <summary>Transcript</summary>

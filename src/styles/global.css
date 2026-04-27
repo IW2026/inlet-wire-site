@@ -290,7 +290,7 @@ section h2 { margin-bottom: 1.5rem; }
   display: block;
   width: 100%;
   max-width: 600px;
-  aspect-ratio: 1 / 1;
+  height: auto;          /* override HTML height attribute — let image scale correctly */
   object-fit: contain;
   margin-inline: auto;
 }

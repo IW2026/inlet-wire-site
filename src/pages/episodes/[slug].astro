@@ -110,7 +110,7 @@ const breadcrumbJsonLd = {
 >
   <article>
 
-    <section class="hero">
+    <section class="hero episode-hero">
       <div class="container prose">
         <div class="meta-line">Ep. {ep.data.episode_number} · {dateLabel}</div>
         <h1 style="margin-top: 0.5rem;">{ep.data.artist}</h1>
@@ -146,7 +146,7 @@ const breadcrumbJsonLd = {
     </section>
 
     <!-- Audio player -->
-    <section>
+    <section class="episode-player">
       <div class="container prose">
         {ep.data.spotify_episode_id ? (
           <div class="player-wrap">

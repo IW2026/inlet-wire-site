@@ -277,11 +277,10 @@ section h2 { margin-bottom: 1.5rem; }
 .form-field :focus { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* ---------- Episode cover ---------- */
-.episode-hero-img-section {
-  padding: 0;
-  margin-top: -2.5rem;   /* pull up tight under .hero (which has 3rem bottom padding) */
-  margin-bottom: -2rem;  /* pull audio player up close below */
-}
+.episode-hero   { padding-bottom: 1rem; }   /* reduce gap below title */
+.episode-hero-img-section { padding: 0; }   /* no extra space around the image */
+.episode-player { padding-top: 1.5rem; }    /* tight gap between image and player */
+
 .episode-hero-img-section picture {
   display: block;
   max-width: 600px;

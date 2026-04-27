@@ -191,9 +191,17 @@ section h2 { margin-bottom: 1.5rem; }
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 .episode-card-thumb-wrap {
+  position: relative;
   overflow: hidden;
   aspect-ratio: 1 / 1;
   background: var(--cream);
+}
+.episode-card-thumb-wrap picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .episode-card-thumb {
   display: block;
@@ -270,6 +278,11 @@ section h2 { margin-bottom: 1.5rem; }
 
 /* ---------- Episode cover ---------- */
 .episode-hero-img-section { padding: 0; }
+.episode-hero-img-section picture {
+  display: block;
+  max-width: 420px;
+  margin-inline: auto;
+}
 .episode-cover-img {
   display: block;
   width: 100%;

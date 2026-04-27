@@ -221,21 +221,8 @@ const breadcrumbJsonLd = {
     <section>
       <div class="container prose">
         <Content />
-        {hasTranscript && (
-          <p class="transcript-link-wrap">
-            <a class="transcript-link" href={`/episodes/${ep.slug}/transcript/`}>
-              Read the full transcript →
-            </a>
-          </p>
-        )}
-      </div>
-    </section>
-
-    <!-- Artist social / web links -->
-    {(ep.data.artist_website || ep.data.artist_instagram || ep.data.artist_youtube || ep.data.artist_facebook || ep.data.artist_bandcamp) && (
-      <section class="artist-links-section">
-        <div class="container prose">
-          <div class="listen-on">
+        {(ep.data.artist_website || ep.data.artist_instagram || ep.data.artist_youtube || ep.data.artist_facebook || ep.data.artist_bandcamp) && (
+          <div class="listen-on artist-links">
             <span class="listen-on-label">Find {ep.data.artist} on</span>
             {ep.data.artist_website && (
               <a class="listen-on-btn" href={ep.data.artist_website} target="_blank" rel="noopener">
@@ -268,9 +255,16 @@ const breadcrumbJsonLd = {
               </a>
             )}
           </div>
-        </div>
-      </section>
-    )}
+        )}
+        {hasTranscript && (
+          <p class="transcript-link-wrap">
+            <a class="transcript-link" href={`/episodes/${ep.slug}/transcript/`}>
+              Read the full transcript →
+            </a>
+          </p>
+        )}
+      </div>
+    </section>
 
     <!-- Photo carousel -->
     {!ep.data.hide_photos && <section class="episode-photos-section" id="photoSection">

@@ -309,6 +309,9 @@ section h2 { margin-bottom: 1.5rem; }
   gap: 0.5rem;
   margin-top: 0;
 }
+.artist-links {
+  margin-top: 2.5rem;
+}
 .listen-on-label {
   font-size: 0.78rem;
   text-transform: uppercase;

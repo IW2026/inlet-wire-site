@@ -6,7 +6,7 @@ spotify_episode_id: "5skMH9XHkKR1fHF6xAqDFJ"
 publish_date: 2026-04-13
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/118365270/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-13%2F421948920-44100-2-b3f06053e165f.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/tobacco-brown-from-acting-school-to-songwriting/id1876137985?i=1000761073195&uo=4"
-description: "In this episode, Inlet Wire is joined by Kevan from Tobacco Brown. We talk about his early connection to music, how songwriting came through storytelling, and how acting school helped him realize musi…"
+description: "In this episode, Inlet Wire is joined by Kevan from Tobacco Brown. We talk about his early connection to music, how songwriting came through storytelling, and how acting school helped him realize music was really the thing."
 tags:
   - band
   - vancouver
@@ -19,16 +19,19 @@ artist_instagram: "https://www.instagram.com/tobaccobrown/"
 artist_bandcamp: "https://tobaccobrown.bandcamp.com/"
 ---
 
-<!--
-Article body pending. Use the Article Writer Pack to draft from the SRT:
-  ~/Inlet Wire/Article Writer — Standalone Prompt Pack.md
+A lot of this conversation with Kevan from Tobacco Brown feels like it comes down to slowly figuring out what was always there.
 
-Once a Spotify episode URL is available, add this line to the frontmatter above:
-  spotify_episode_id: "5skMH9XHkKR1fHF6xAqDFJ"
-and the Anchor audio player will automatically switch to the Spotify embed.
--->
+He talks about hearing a few notes on a little Casio keyboard as a kid and feeling pulled in right away, but the more interesting part is how songwriting came through storytelling first. Comics, drawing, writing, screenplays. That side of him was already in place before songs really started to take shape. Once guitar came into it, the two things met.
 
-_Article coming soon. In the meantime, press play above to listen._
+There is a good honesty in the way he talks about that too. He says he was never that good at learning other people's songs, so it became easier to write his own. It says a lot about how Tobacco Brown seems to work. It does not come from trying to fit into somebody else's shape. It comes from following what felt natural.
+
+The acting school part was something that I didn't expect at the interview. Kevan does not frame it like some dramatic turning point. It is more like music kept pulling harder. Theatre helped him realize what he actually cared about most, and that choice still feels present in the way he talks about songwriting now.
+
+There are nice details throughout the episode that make the whole thing feel grounded. He still writes things down by hand. He uses the Notes app to catch ideas before they disappear. He talks about "Pretty Blues" with real pride, but when it comes to the song that means the most, he goes back to "Ice Cream Sundae" because it was the first one that made him feel like he was really doing his own thing.
+
+What stayed with me most, though, is how he talks about Tobacco Brown at the end. Not just as a band name, but as an open-door idea. Something bigger than one fixed lineup. Something that lets people come in and be part of it. That says a lot about where he is now.
+
+If you want to hear an artist talk about how music first clicked, how the path took a few turns, and what the project means at this point, this is the episode for you.
 
 <details id="transcript" class="transcript-block">
 <summary>Transcript</summary>

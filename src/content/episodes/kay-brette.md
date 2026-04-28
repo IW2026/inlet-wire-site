@@ -18,16 +18,19 @@ artist_instagram: "https://www.instagram.com/kbrette/"
 artist_bandcamp: "https://kaybrette.bandcamp.com/"
 ---
 
-<!--
-Article body pending. Use the Article Writer Pack to draft from the SRT:
-  ~/Inlet Wire/Article Writer — Standalone Prompt Pack.md
+Some episodes are really about a release. This one feels more like a return.
 
-Once a Spotify episode URL is available, add this line to the frontmatter above:
-  spotify_episode_id: "0J0lJwj4M3PLyDK58AMvZY"
-and the Anchor audio player will automatically switch to the Spotify embed.
--->
+In this conversation, Kay Brette talks about anxiety, stepping away from music, and what it took to find her way back. What stands out is how unforced that return sounds. It did not happen all at once, and it did not come from one big turning point. It came through writing, a few right people, a few right spaces, and slowly building enough trust in herself to step back into it.
 
-_Article coming soon. In the meantime, press play above to listen._
+She talks about music always being there, even in the years when performing did not feel easy. Writing stayed with her. So did the pull toward music. But after music school, that connection got tangled up with comparison and performance anxiety, and for a while she moved in a different direction. Hearing her describe that part feels especially honest because she is not trying to tidy it up into a simple success story.
+
+What makes the episode land is the way the next chapter takes shape. Working with Andy Schichter at Park Sound gave the songs a path forward. Playing at a yoga studio helped performing start to feel natural again. Those details matter because they show how people come back to music in real life. Sometimes it is not one huge leap. Sometimes it is finding a setting that feels safe enough to begin again.
+
+There is also a nice moment in the episode where she realizes, almost in real time, that her newer songs are not coming from the same place as before. They are still personal, still vulnerable, but they are not as sad. It is a small moment, but it says a lot. You can hear someone noticing their own growth while they are still in the middle of it.
+
+That is a big part of what makes this episode worth hearing. It is not framed like a comeback speech or a neat before-and-after story. It is more grounded than that. It is about how confidence can return in pieces, and how the songs can start reflecting that before you even fully realize it yourself.
+
+You can listen to the full episode with Kay Brette on Inlet Wire.
 
 <details id="transcript" class="transcript-block">
 <summary>Transcript</summary>

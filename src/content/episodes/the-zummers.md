@@ -5,6 +5,8 @@ episode_number: 13
 publish_date: 2026-04-28
 spotify_episode_id: "4JuiqFtpSCnGugRZnZUR3b"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/the-zummers-first-chapter-behind-distracted/id1876137985?i=1000763773166"
+youtube_episode_url: "https://www.youtube.com/watch?v=FjoUz_ixInU"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/the-zummers-first-chapter-behind-331688061/"
 description: "The Zummers are a four-piece out of Pemberton, B.C. In this episode, they look back on the early momentum that turned into their debut album, Distracted — the songs, the road, and what it sounds like when a band finds its shape fast."
 tags:
   - pemberton

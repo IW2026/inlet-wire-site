@@ -6,6 +6,8 @@ spotify_episode_id: "5DU8aCYvuR4haXOvNU0ztP"
 publish_date: 2026-04-06
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/117894148/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-3%2F421327409-44100-2-1a1895ad6498e.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/posh-coat-songs-live-energy-and-what-comes-next/id1876137985?i=1000759495851&uo=4"
+youtube_episode_url: "https://www.youtube.com/watch?v=Kltt6vobHCw"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/posh-coat-songs-live-energy-329182222/"
 description: "Andrew Whitney from Posh Coat joins Inlet Wire to talk about how the band came together, writing songs for the stage, and why feeling always comes first in their recordings."
 tags:
   - band

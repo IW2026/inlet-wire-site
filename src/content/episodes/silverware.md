@@ -6,6 +6,8 @@ spotify_episode_id: "5OYtG4eOY617XnrnWk1ZSe"
 publish_date: 2026-02-16
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/115559824/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-1-16%2F418175455-44100-2-10e5f0e439921.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/silverware-down-for-the-long-haul/id1876137985?i=1000749967760&uo=4"
+youtube_episode_url: "https://www.youtube.com/watch?v=tSoXkATC0M0"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/silverware-down-for-the-long-323098716/"
 description: "In this episode of Inlet Wire, Eric Chan talks with Huckleberry from SILVERWARE (Victoria, BC). They get into the early moment that pushed the band forward, how their songs take shape from rough ideas…"
 tags:
   - band

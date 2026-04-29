@@ -6,6 +6,8 @@ spotify_episode_id: "0J0lJwj4M3PLyDK58AMvZY"
 publish_date: 2026-03-23
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/117338967/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-2-23%2F420579621-44100-2-fd3cbc87b2bd.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/kay-brette-the-songs-arent-sad-anymore/id1876137985?i=1000756727580&uo=4"
+youtube_episode_url: "https://www.youtube.com/watch?v=j2OzwV1G30w"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/kay-brette-the-songs-arent-327761894/"
 description: "In this episode of Inlet Wire, Eric Chan sits down with Vancouver artist Kay Brette. She talks about performance anxiety, stepping away from music and the slow path back."
 tags:
   - solo-artist

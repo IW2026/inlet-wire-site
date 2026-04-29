@@ -6,6 +6,8 @@ spotify_episode_id: "5JVlVK7spvxwEaXRYfUXIA"
 publish_date: 2026-04-20
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/118765586/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-20%2F422480888-44100-2-dc47fed848c22.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/hillsboro-a-party-in-your-name-and-how-it-got-written-on-stage/id1876137985?i=1000762483594&uo=4"
+youtube_episode_url: "https://www.youtube.com/watch?v=kBi2A5IL1dQ"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/hillsboro-inside-a-party-in-330978638/"
 description: "Nima from Hillsboro joins Eric Chan on Inlet Wire to talk about how the band has changed in six years — from finishing every song on a single laptop to writing a record live on stage."
 tags:
   - band

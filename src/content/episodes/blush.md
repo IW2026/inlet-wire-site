@@ -6,6 +6,8 @@ publish_date: 2026-03-16
 spotify_episode_id: "7wnNIp0aZj48Fa9qtuUQD8"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/116943371/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-2-15%2F420043077-44100-2-2b589cda8bba4.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/blush-friendship-growth-and-the-new-ep/id1876137985?i=1000755586022&uo=4"
+youtube_episode_url: "https://www.youtube.com/watch?v=pK2u_DYrvPU"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/blush-friendship-growth-and-the-327024500/"
 description: "Blush started as four friends making music together in Victoria, BC, and over time that natural beginning grew into a band with its own shape and sound."
 tags:
   - band

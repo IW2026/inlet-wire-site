@@ -16,6 +16,9 @@ const episodes = defineCollection({
     has_transcript: z.boolean().default(false),
     hide_photos: z.boolean().default(false),
     draft: z.boolean().default(false),
+    // Per-episode platform links — all optional; fall back to show-level URLs if omitted
+    youtube_episode_url: z.string().url().optional(),
+    iheart_episode_url: z.string().url().optional(),
     // Artist social / web links — all optional
     artist_website: z.string().url().optional(),
     artist_instagram: z.string().url().optional(),

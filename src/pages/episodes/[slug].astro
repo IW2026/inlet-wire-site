@@ -168,6 +168,14 @@ const breadcrumbJsonLd = {
                   Apple Podcasts
                 </a>
               )}
+              <a class="listen-on-btn" href={ep.data.youtube_episode_url ?? "https://www.youtube.com/@InletWire"} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/youtube/0A0A0A" alt="" aria-hidden="true" />
+                YouTube
+              </a>
+              <a class="listen-on-btn" href={ep.data.iheart_episode_url ?? "https://www.iheart.com/podcast/1333-inlet-wire-322764626/"} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/iheartradio/0A0A0A" alt="" aria-hidden="true" />
+                iHeart
+              </a>
               <a class="listen-on-btn" href="https://pca.st/itunes/1876137985" target="_blank" rel="noopener">
                 <img class="listen-on-icon" src="https://cdn.simpleicons.org/pocketcasts/0A0A0A" alt="" aria-hidden="true" />
                 Pocket Casts
@@ -197,21 +205,27 @@ const breadcrumbJsonLd = {
             <audio controls preload="none" style="width:100%;">
               <source src={ep.data.anchor_audio_url} type="audio/mp4" />
             </audio>
-            {ep.data.apple_podcast_url && (
-              <div class="listen-on">
-                <span class="listen-on-label">Listen on</span>
-                {ep.data.apple_podcast_url && (
-                  <a class="listen-on-btn" href={ep.data.apple_podcast_url} target="_blank" rel="noopener">
-                    <img class="listen-on-icon" src="https://cdn.simpleicons.org/applepodcasts/0A0A0A" alt="" aria-hidden="true" />
-                    Apple Podcasts
-                  </a>
-                )}
-                <a class="listen-on-btn" href="https://anchor.fm/s/10edfd0cc/podcast/rss" target="_blank" rel="noopener">
-                  <img class="listen-on-icon" src="https://cdn.simpleicons.org/rss/0A0A0A" alt="" aria-hidden="true" />
-                  RSS
+            <div class="listen-on">
+              <span class="listen-on-label">Listen on</span>
+              {ep.data.apple_podcast_url && (
+                <a class="listen-on-btn" href={ep.data.apple_podcast_url} target="_blank" rel="noopener">
+                  <img class="listen-on-icon" src="https://cdn.simpleicons.org/applepodcasts/0A0A0A" alt="" aria-hidden="true" />
+                  Apple Podcasts
                 </a>
-              </div>
-            )}
+              )}
+              <a class="listen-on-btn" href={ep.data.youtube_episode_url ?? "https://www.youtube.com/@InletWire"} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/youtube/0A0A0A" alt="" aria-hidden="true" />
+                YouTube
+              </a>
+              <a class="listen-on-btn" href={ep.data.iheart_episode_url ?? "https://www.iheart.com/podcast/1333-inlet-wire-322764626/"} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/iheartradio/0A0A0A" alt="" aria-hidden="true" />
+                iHeart
+              </a>
+              <a class="listen-on-btn" href="https://anchor.fm/s/10edfd0cc/podcast/rss" target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/rss/0A0A0A" alt="" aria-hidden="true" />
+                RSS
+              </a>
+            </div>
           </div>
         ) : null}
       </div>

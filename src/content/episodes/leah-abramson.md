@@ -4,6 +4,9 @@ artist: "Leah Abramson"
 episode_number: 14
 publish_date: 2026-05-04
 spotify_episode_id: "6SxQYIB4nxWkqrMp6Rbzj7"
+anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/119442132/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-4-4%2F423410528-44100-2-9a04ab3834a0b.m4a"
+apple_podcast_url: "https://podcasts.apple.com/us/podcast/leah-abramson-on-the-abramson-singers-return/id1876137985?i=1000765997530&uo=4"
+youtube_episode_url: "https://www.youtube.com/watch?v=m0QHcm_Gm8w"
 description: "Leah Abramson returns with new music under The Abramson Singers name. In this conversation, she talks about what changed in the years between releases, how these songs slowly came together, and why songwriting still matters to her now. We get into life between records, writing on piano instead of guitar, the a cappella thread that still runs through the project, and the meaning behind “Can You See It Now” from the new EP Anything You Could’ve Been."
 tags:
   - vancouver

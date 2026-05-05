@@ -13,6 +13,8 @@ tags:
   - band
   - victoria
   - indie-rock
+  - indie-pop
+  - alternative
 draft: false
 has_transcript: true
 artist_website: "https://www.whereisblush.com/"

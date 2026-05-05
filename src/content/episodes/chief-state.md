@@ -13,6 +13,8 @@ tags:
   - band
   - vancouver
   - pop-punk
+  - alternative
+  - rain-drenched
 
 draft: false
 artist_website: "https://www.chiefstate.com/"

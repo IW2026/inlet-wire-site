@@ -14,6 +14,7 @@ tags:
   - victoria
   - shoegaze
   - indie-rock
+  - alternative
 draft: false
 has_transcript: true
 artist_instagram: "https://www.instagram.com/hillsboroinc/"

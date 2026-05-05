@@ -9,9 +9,11 @@ youtube_episode_url: "https://www.youtube.com/watch?v=FjoUz_ixInU"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/the-zummers-first-chapter-behind-331688061/"
 description: "The Zummers are a four-piece out of Pemberton, B.C. In this episode, they look back on the early momentum that turned into their debut album, Distracted — the songs, the road, and what it sounds like when a band finds its shape fast."
 tags:
+  - band
   - pemberton
   - indie-rock
   - indie-folk
+  - alternative
 has_transcript: true
 draft: false
 artist_website: "https://thezummers.com/"

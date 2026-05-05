@@ -14,6 +14,8 @@ tags:
   - vancouver
   - singer-songwriter
   - self-produced
+  - indie-pop
+  - pop
 draft: false
 artist_website: "https://www.jodyglenham.com/"
 artist_instagram: "https://www.instagram.com/summerwitch/"

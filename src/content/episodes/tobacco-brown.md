@@ -13,7 +13,7 @@ tags:
   - band
   - vancouver
   - singer-songwriter
-  - indie
+  - indie-folk
 
 draft: false
 has_transcript: true

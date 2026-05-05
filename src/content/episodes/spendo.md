@@ -13,6 +13,8 @@ tags:
   - band
   - vancouver
   - classic-rock
+  - indie-rock
+  - alternative
 draft: false
 artist_website: "https://www.spendomusic.com/"
 artist_instagram: "https://www.instagram.com/spendo_music/"

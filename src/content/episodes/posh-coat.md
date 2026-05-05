@@ -13,6 +13,8 @@ tags:
   - band
   - victoria
   - indie-rock
+  - alternative
+  - garage-rock
 draft: false
 has_transcript: true
 artist_website: "https://poshcoat.com/"

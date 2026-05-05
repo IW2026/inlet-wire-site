@@ -13,6 +13,7 @@ tags:
   - band
   - victoria
   - indie-rock
+  - alternative
 draft: false
 artist_website: "https://silverwareband.com/"
 artist_instagram: "https://www.instagram.com/silverware_band/"

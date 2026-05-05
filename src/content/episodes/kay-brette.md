@@ -13,6 +13,8 @@ tags:
   - solo-artist
   - vancouver
   - singer-songwriter
+  - indie-pop
+  - pop
 draft: false
 has_transcript: true
 artist_website: "https://www.kaybrette.com/"

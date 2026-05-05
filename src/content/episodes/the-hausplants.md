@@ -13,6 +13,8 @@ tags:
   - band
   - vancouver
   - post-punk
+  - indie-rock
+  - alternative
 
 draft: false
 artist_website: "https://thehausplants.com/"

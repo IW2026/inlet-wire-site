@@ -11,6 +11,11 @@ iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/ep
 description: "How Andy Schichter and Dan Ponich turned a Craigslist industrial space into one of North Vancouver's most distinctive studios, and why the API 1608 is the room's centre of gravity."
 tags:
   - producer
+  - audio-engineer
+  - north-vancouver
+  - studio
+  - recording
+  - producer
   - studio
   - north-vancouver
 hide_photos: true

@@ -13,6 +13,8 @@ tags:
   - band
   - vancouver
   - indie-rock
+  - folk-rock
+  - alternative
 
 draft: false
 artist_website: "https://pinebarren.com/"

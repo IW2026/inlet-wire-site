@@ -1,10 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",      item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "Media Kit", item: "https://inletwire.com/media-kit/" },
+  ],
+};
 ---
 <BaseLayout
   title="Media Kit — Brand Assets & Sponsorship"
   path="/media-kit/"
   description="Inlet Wire media kit. Brand statement, audience snapshot, logo pack, and sponsorship contact for BC-music-adjacent partners."
+  jsonLd={[breadcrumbJsonLd]}
 >
   <section class="hero">
     <div class="container" style="text-align: center;">

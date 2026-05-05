@@ -1,0 +1,43 @@
+{
+  "name": "Inlet Wire",
+  "short_name": "Inlet Wire",
+  "description": "Your direct line to BC artists. A weekly podcast hosted by Eric Chan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "lang": "en-CA",
+  "categories": ["music", "entertainment", "news"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://inletwire.com/manifest.webmanifest"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Latest Episode",
+      "url": "/episodes/",
+      "description": "Browse all Inlet Wire episodes"
+    },
+    {
+      "name": "Playlists",
+      "url": "/playlists/",
+      "description": "BC artist playlists curated by Inlet Wire"
+    }
+  ]
+}

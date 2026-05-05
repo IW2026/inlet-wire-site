@@ -4,8 +4,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const subjectParam = Astro.url.searchParams.get("subject") ?? "";
 const validSubjects = ["Artist", "Press", "Sponsorship", "Waves & Wire"];
 const initialSubject = validSubjects.includes(subjectParam) ? subjectParam : "General";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",    item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://inletwire.com/contact/" },
+  ],
+};
 ---
-<BaseLayout title="Contact — Press, Sponsorship & Artist Submissions" path="/contact/" description="Get in touch with Inlet Wire. Press, sponsorship, artist submissions, Waves & Wire tips, charity work. All welcome.">
+<BaseLayout title="Contact — Press, Sponsorship & Artist Submissions" path="/contact/" description="Get in touch with Inlet Wire. Press, sponsorship, artist submissions, Waves & Wire tips, charity work. All welcome." jsonLd={[breadcrumbJsonLd]}>
   <section class="hero">
     <div class="container" style="text-align: center;">
       <h1>Get in touch</h1>

@@ -1,10 +1,43 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://inletwire.com/#eric-chan",
+  name: "Eric Chan",
+  url: "https://inletwire.com/about/",
+  jobTitle: "Podcast Host",
+  description: "Host of Inlet Wire. Producer, audio engineer, and music curator based in Metro Vancouver, BC.",
+  worksFor: {
+    "@type": "Organization",
+    "@id": "https://inletwire.com/#organization",
+    name: "Inlet Wire",
+  },
+  sameAs: [
+    "https://www.instagram.com/inletwire",
+  ],
+  knowsAbout: ["Podcasting", "Music Production", "Audio Engineering", "British Columbia Music", "Independent Music"],
+  alumniOf: [
+    { "@type": "EducationalOrganization", name: "BCIT", description: "Radio Arts & Entertainment" },
+    { "@type": "EducationalOrganization", name: "SAE Institute", description: "Recording Arts" },
+  ],
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",  item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "About", item: "https://inletwire.com/about/" },
+  ],
+};
 ---
 <BaseLayout
   title="About — BC Artist Interviews by Eric Chan"
   path="/about/"
   description="Inlet Wire is an independent podcast hosted by Eric Chan. Weekly conversations with the artists shaping the sound of British Columbia, from Vancouver bands to touring songwriters to producers moving the scene forward."
+  jsonLd={[personJsonLd, breadcrumbJsonLd]}
 >
   <section class="hero">
     <div class="container" style="text-align: center;">

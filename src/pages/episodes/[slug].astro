@@ -66,6 +66,7 @@ const episodeJsonLd = {
   headline: ep.data.title,
   description: ep.data.description,
   datePublished: ep.data.publish_date.toISOString(),
+  dateModified: ep.data.publish_date.toISOString(),
   url: `https://inletwire.com/episodes/${ep.slug}/`,
   image: `https://inletwire.com${coverImage}`,
   episodeNumber: ep.data.episode_number,
@@ -87,6 +88,12 @@ const episodeJsonLd = {
     "@id": "https://inletwire.com/#organization",
     name: "Inlet Wire",
   },
+  // speakableSpecification tells Google/voice assistants which content to read aloud.
+  // Targets the episode title (h1), lede paragraph, and article body paragraphs.
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", ".lede", ".prose p"],
+  },
 };
 
 const breadcrumbJsonLd = {
@@ -105,8 +112,13 @@ const breadcrumbJsonLd = {
   description={ep.data.description}
   path={`/episodes/${ep.slug}/`}
   ogImage={ogCard}
+  ogImageAlt={`${ep.data.artist} — ${ep.data.title} | Inlet Wire`}
   ogType="article"
   jsonLd={[episodeJsonLd, breadcrumbJsonLd]}
+  articlePublishedTime={ep.data.publish_date.toISOString()}
+  articleModifiedTime={ep.data.publish_date.toISOString()}
+  articleSection="Music"
+  articleTags={ep.data.tags && ep.data.tags.length > 0 ? ep.data.tags : ["BC Music", "Podcast", ep.data.artist]}
 >
   <article>
 

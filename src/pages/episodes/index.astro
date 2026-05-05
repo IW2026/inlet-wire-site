@@ -9,11 +9,39 @@ const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
 const allTags = Array.from(
   new Set(episodes.flatMap((ep) => ep.data.tags ?? []))
 ).sort();
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://inletwire.com/episodes/#collection",
+  name: "Inlet Wire Episodes",
+  description: "Browse every Inlet Wire episode. Weekly conversations with BC artists, from Vancouver bands to touring songwriters to producers shaping the scene.",
+  url: "https://inletwire.com/episodes/",
+  isPartOf: { "@id": "https://inletwire.com/#website" },
+  hasPart: episodes.map((ep) => ({
+    "@type": "PodcastEpisode",
+    "@id": `https://inletwire.com/episodes/${ep.slug}/#episode`,
+    name: `${ep.data.artist} — ${ep.data.title}`,
+    url: `https://inletwire.com/episodes/${ep.slug}/`,
+    episodeNumber: ep.data.episode_number,
+    datePublished: ep.data.publish_date.toISOString(),
+  })),
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",     item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "Episodes", item: "https://inletwire.com/episodes/" },
+  ],
+};
 ---
 <BaseLayout
   title="All Episodes — BC Artists in Conversation"
   path="/episodes/"
   description="Browse every Inlet Wire episode. Weekly conversations with BC artists, from Vancouver bands to touring songwriters to producers shaping the scene."
+  jsonLd={[collectionJsonLd, breadcrumbJsonLd]}
 >
   <section class="hero">
     <div class="container">

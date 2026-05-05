@@ -31,12 +31,31 @@ const pageTitle = `${artist} — Transcript`;
 const pageDesc = ep
   ? `Full transcript of the Inlet Wire conversation with ${artist}: ${ep.data.title}.`
   : `Full transcript of the Inlet Wire conversation with ${artist}.`;
+
+// Reuse the episode's OG card so sharing a transcript link shows the episode art
+const epNum = ep ? String(ep.data.episode_number).padStart(2, "0") : null;
+const ogCard = epNum ? `/images/og/ep-${epNum}.jpg` : undefined;
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",     item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "Episodes", item: "https://inletwire.com/episodes/" },
+    { "@type": "ListItem", position: 3, name: artist,
+      item: `https://inletwire.com/episodes/${transcript.data.episode_slug}/` },
+    { "@type": "ListItem", position: 4, name: "Transcript",
+      item: `https://inletwire.com/episodes/${transcript.data.episode_slug}/transcript/` },
+  ],
+};
 ---
 <BaseLayout
   title={pageTitle}
   description={pageDesc}
   path={`/episodes/${transcript.data.episode_slug}/transcript/`}
   ogType="article"
+  ogImage={ogCard}
+  jsonLd={[breadcrumbJsonLd]}
 >
   <article class="transcript-page">
 

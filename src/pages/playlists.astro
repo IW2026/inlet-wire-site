@@ -7,11 +7,21 @@ const episodes = (await getCollection("episodes", ({ data }) => !data.draft && !
 
 const featuredPlaylistId  = "3o9Iy26RGOBBHNUxe8MXrO";
 const allEpisodesPlaylistId = "1De8QSqbYa15p5gXO78PDl";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",      item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "Playlists", item: "https://inletwire.com/playlists/" },
+  ],
+};
 ---
 <BaseLayout
   title="Playlists — Every BC Artist & Episode"
   path="/playlists/"
   description="Two Spotify playlists from Inlet Wire. The Sound of BC gathers featured artists and the BC scene picks Eric keeps coming back to; Full Episodes archives every conversation."
+  jsonLd={[breadcrumbJsonLd]}
 >
 
   <section class="hero">

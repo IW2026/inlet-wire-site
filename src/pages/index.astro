@@ -51,6 +51,13 @@ const heroCovers = published.map((ep) => {
   };
 });
 
+// Aggregate all unique genre/topic tags across every published episode.
+// This auto-updates at build time — adding tags to a new episode
+// frontmatter is all you need to expand the sitewide keyword footprint.
+const allEpisodeTags = Array.from(
+  new Set(published.flatMap((ep) => ep.data.tags ?? []))
+).sort();
+
 // Three keyed schema entities stitched into one brand graph via @id
 // cross-references. Lets Google/Bing/ChatGPT resolve every mention of
 // "Inlet Wire" to a single identity, unlocks the WebSite sitelinks
@@ -64,6 +71,19 @@ const organizationJsonLd = {
   logo: "https://inletwire.com/logo.png",
   description:
     "Independent podcast and media brand covering artists in British Columbia. Hosted by Eric Chan.",
+  keywords: [
+    "Canadian music podcast",
+    "BC music podcast",
+    "British Columbia music podcast",
+    "Vancouver music podcast",
+    "BC artist interviews",
+    "Canadian indie music podcast",
+    "independent music podcast Canada",
+    "BC indie music",
+    "Inlet Wire",
+    "Eric Chan podcast",
+    ...allEpisodeTags,
+  ],
   founder: { "@type": "Person", name: "Eric Chan" },
   sameAs: [
     "https://open.spotify.com/show/2BTlbhjjXBsV6MECUSUWwY",
@@ -83,6 +103,15 @@ const websiteJsonLd = {
   url: "https://inletwire.com/",
   inLanguage: "en-CA",
   publisher: { "@id": "https://inletwire.com/#organization" },
+  // SearchAction enables the Google Sitelinks Searchbox for "Inlet Wire" branded queries.
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://inletwire.com/episodes/?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const podcastJsonLd = {
@@ -92,6 +121,18 @@ const podcastJsonLd = {
   name: "Inlet Wire",
   description:
     "Inlet Wire is a Canadian music podcast hosted by Eric Chan — weekly short-form interviews with independent artists from British Columbia. Your direct line to the artists shaping the sound of Canadian music.",
+  keywords: [
+    "Canadian music podcast",
+    "BC music podcast",
+    "British Columbia music podcast",
+    "Vancouver music podcast",
+    "BC artist interviews",
+    "Canadian indie music podcast",
+    "independent music podcast Canada",
+    "music interview podcast Vancouver",
+    "BC indie music podcast",
+    ...allEpisodeTags,
+  ],
   url: "https://inletwire.com/",
   image: "https://inletwire.com/og-default.png",
   inLanguage: "en-CA",
@@ -101,6 +142,42 @@ const podcastJsonLd = {
   sameAs: [
     "https://open.spotify.com/show/2BTlbhjjXBsV6MECUSUWwY",
     "https://podcasts.apple.com/podcast/id1876137985",
+  ],
+  // ListenAction tells Google/AI/voice assistants how to play the show —
+  // enables "play Inlet Wire" in search results and smart speakers.
+  potentialAction: [
+    {
+      "@type": "ListenAction",
+      target: [
+        {
+          "@type": "EntryPoint",
+          urlTemplate: "https://open.spotify.com/show/2BTlbhjjXBsV6MECUSUWwY",
+          actionPlatform: [
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform",
+          ],
+        },
+        {
+          "@type": "EntryPoint",
+          urlTemplate: "https://podcasts.apple.com/podcast/id1876137985",
+          actionPlatform: [
+            "https://schema.org/IOSPlatform",
+            "https://schema.org/DesktopWebPlatform",
+          ],
+        },
+        {
+          "@type": "EntryPoint",
+          urlTemplate: "https://anchor.fm/s/10edfd0cc/podcast/rss",
+          actionPlatform: "https://schema.org/DesktopWebPlatform",
+        },
+      ],
+      expectsAcceptanceOf: {
+        "@type": "Offer",
+        eligibleRegion: { "@type": "Country", name: "CA" },
+        price: "0",
+        priceCurrency: "CAD",
+      },
+    },
   ],
 };
 ---

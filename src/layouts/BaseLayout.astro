@@ -31,6 +31,8 @@ export interface Props {
   articleAuthor?: string;         // URL
   articleSection?: string;
   articleTags?: string[];
+  /** Direct audio URL for podcast episode pages — emits og:audio for social players. */
+  ogAudio?: string;
 }
 
 const {
@@ -48,6 +50,7 @@ const {
   articleModifiedTime,
   articleSection,
   articleTags,
+  ogAudio,
 } = Astro.props;
 
 const siteTitle = "Inlet Wire";
@@ -71,7 +74,7 @@ const jsonLdArray = jsonLd
     <meta name="description" content={description} />
     <meta name="author" content="Eric Chan" />
     <meta name="theme-color" content="#000000" />
-    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="en-CA" href={canonical} />
     <link rel="alternate" hreflang="x-default" href={canonical} />
@@ -150,6 +153,10 @@ const jsonLdArray = jsonLd
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteOg} />
     <meta name="twitter:image:alt" content={resolvedOgAlt} />
+
+    <!-- og:audio — podcast episode pages only -->
+    {ogAudio && <meta property="og:audio" content={ogAudio} />}
+    {ogAudio && <meta property="og:audio:type" content="audio/mpeg" />}
 
     <!-- Fonts & icon CDN preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

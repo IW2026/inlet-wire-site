@@ -71,9 +71,22 @@ const episodeJsonLd = {
   image: `https://inletwire.com${coverImage}`,
   episodeNumber: ep.data.episode_number,
   inLanguage: "en-CA",
-  ...(ep.data.tags && ep.data.tags.length > 0
-    ? { keywords: ep.data.tags.join(", ") }
-    : {}),
+  // Auto-derived keywords: episode tags + artist-specific + brand search terms.
+  // This block runs at build time — adding tags to the episode frontmatter
+  // is all that's needed to update SEO metadata for that episode.
+  keywords: [
+    ...( ep.data.tags ?? []),
+    `${ep.data.artist}`,
+    `${ep.data.artist} BC`,
+    `${ep.data.artist} music`,
+    `${ep.data.artist} podcast`,
+    "Canadian music podcast",
+    "BC music podcast",
+    "British Columbia music podcast",
+    "Vancouver music podcast",
+    "BC artist interview",
+    "Inlet Wire",
+  ].join(", "),
   partOfSeries: {
     "@type": "PodcastSeries",
     "@id": "https://inletwire.com/#podcast",
@@ -115,6 +128,7 @@ const breadcrumbJsonLd = {
   ogImageAlt={`${ep.data.artist} — ${ep.data.title} | Inlet Wire`}
   ogType="article"
   jsonLd={[episodeJsonLd, breadcrumbJsonLd]}
+  ogAudio={ep.data.anchor_audio_url}
   articlePublishedTime={ep.data.publish_date.toISOString()}
   articleModifiedTime={ep.data.publish_date.toISOString()}
   articleSection="Music"

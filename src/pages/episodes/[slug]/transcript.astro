@@ -29,8 +29,8 @@ const speakersLabel = speakers.join(" & ");
 
 const pageTitle = `${artist} — Transcript`;
 const pageDesc = ep
-  ? `Full transcript of the Inlet Wire conversation with ${artist}: ${ep.data.title}.`
-  : `Full transcript of the Inlet Wire conversation with ${artist}.`;
+  ? `Read the full transcript of Inlet Wire Ep. ${ep.data.episode_number} — ${artist}: "${ep.data.title}." ${ep.data.description}`
+  : `Read the full transcript of the Inlet Wire conversation with ${artist} — a Canadian music podcast featuring BC artists.`;
 
 // Reuse the episode's OG card so sharing a transcript link shows the episode art
 const epNum = ep ? String(ep.data.episode_number).padStart(2, "0") : null;

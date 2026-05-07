@@ -224,20 +224,34 @@
       height: 152px;
     }
 
-    /* ── Brand group labels (Music Scoring) ──────────────────────────────── */
+    /* ── Brand group labels (Advertising Scoring and Production) ────────── */
+    .embed-brand-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .embed-brand-row:first-child {
+      margin-top: 0;
+    }
     .embed-brand {
       font-family: var(--font-display);
       font-weight: 900;
       font-size: clamp(1.4rem, 3vw, 2rem);
       letter-spacing: -0.01em;
       color: var(--ink);
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--rule);
+      line-height: 1;
     }
-    .embed-brand:first-child {
-      margin-top: 0;
+    .embed-brand-detail {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
     }
 
     /* ── YouTube embeds (responsive 16:9) ───────────────────────────────── */
@@ -266,7 +280,7 @@
     <div class="container">
       <h1 class="page-name">Eric Chan</h1>
       <p class="page-title">Selected Work</p>
-      <p class="page-subtitle">Websites &nbsp;·&nbsp; Audio Engineering &nbsp;·&nbsp; Podcast &nbsp;·&nbsp; Music Scoring &nbsp;·&nbsp; Forget the G</p>
+      <p class="page-subtitle">Websites &nbsp;·&nbsp; Audio Engineering &nbsp;·&nbsp; Podcast &nbsp;·&nbsp; Advertising Scoring &amp; Production &nbsp;·&nbsp; Forget the G</p>
     </div>
   </div>
 
@@ -417,7 +431,7 @@
   <section class="portfolio-section">
     <div class="container">
       <p class="section-label">04</p>
-      <h2 class="section-heading">Music Scoring</h2>
+      <h2 class="section-heading">Advertising Scoring and Production</h2>
       <hr class="section-rule" />
       <p class="section-intro">
         I've composed and produced music for advertising and video work across Taiwan and Hong
@@ -431,36 +445,45 @@
 
       <div class="embed-stack">
 
-        <p class="embed-brand">HSBC</p>
+        <div class="embed-brand-row">
+          <span class="embed-brand">HSBC</span>
+          <span class="embed-brand-detail">Music mixing &nbsp;·&nbsp; Audio post production</span>
+        </div>
 
         <div class="video-wrap">
           <iframe
             src="https://www.youtube.com/embed/T6EjqGS73WU"
-            title="HSBC — music production"
+            title="HSBC — music mixing, audio post production"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
             loading="lazy"
           ></iframe>
         </div>
 
-        <p class="embed-brand">KFC</p>
+        <div class="embed-brand-row">
+          <span class="embed-brand">KFC</span>
+          <span class="embed-brand-detail">Vocal performance &nbsp;·&nbsp; Music mixing</span>
+        </div>
 
         <div class="video-wrap">
           <iframe
             src="https://www.youtube.com/embed/eXJEDN5Jwww"
-            title="KFC — vocals, mixing, audio post-production"
+            title="KFC — vocal performance, music mixing"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
             loading="lazy"
           ></iframe>
         </div>
 
-        <p class="embed-brand">ViewSonic</p>
+        <div class="embed-brand-row">
+          <span class="embed-brand">ViewSonic</span>
+          <span class="embed-brand-detail">Composing &nbsp;·&nbsp; Music mixing &nbsp;·&nbsp; Audio post production</span>
+        </div>
 
         <div class="video-wrap">
           <iframe
             src="https://www.youtube.com/embed/6Pw3BbOBhrM"
-            title="ViewSonic — composition, mixing, audio production"
+            title="ViewSonic — composing, music mixing, audio post production"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
             loading="lazy"

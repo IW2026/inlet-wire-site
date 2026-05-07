@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /portfolio
 
-# Major search + AI crawlers — explicit allow
+# Major search + AI crawlers — explicit allow, portfolio blocked
 User-agent: Googlebot
 Allow: /
 
@@ -16,6 +17,7 @@ Allow: /
 
 User-agent: GPTBot
 Allow: /
+Disallow: /portfolio
 
 User-agent: OAI-SearchBot
 Allow: /
@@ -25,6 +27,7 @@ Allow: /
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /portfolio
 
 User-agent: Claude-Web
 Allow: /
@@ -34,5 +37,15 @@ Allow: /
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /portfolio
+
+User-agent: CCBot
+Disallow: /portfolio
+
+User-agent: Bytespider
+Disallow: /portfolio
+
+User-agent: anthropic-ai
+Disallow: /portfolio
 
 Sitemap: https://inletwire.com/sitemap-index.xml

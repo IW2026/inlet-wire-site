@@ -1,0 +1,531 @@
+---
+// portfolio.astro — hidden, no layout, noindex everywhere
+// Do NOT link to this page from any nav, footer, or other page.
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eric Chan — Selected Work</title>
+
+  <!-- ─── Bot & crawler protection ─────────────────────────────────────── -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="bingbot" content="noindex, nofollow" />
+
+  <!-- ─── Fonts (matching Inlet Wire) ──────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ── Design tokens — exact Inlet Wire palette ───────────────────────── */
+    :root {
+      --ink:          #0A0A0A;
+      --paper:        #FFFFFF;
+      --cream:        #F5F1EC;
+      --muted:        #5A5A5A;
+      --rule:         #E8E8E8;
+      --font-display: "Montserrat", system-ui, -apple-system, sans-serif;
+      --font-body:    "Inter", system-ui, -apple-system, sans-serif;
+      --maxw:         1120px;
+    }
+
+    /* ── Reset ───────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body, h1, h2, h3, h4, p, ul, ol, li, figure, blockquote {
+      margin: 0; padding: 0;
+    }
+    ul, ol { list-style: none; }
+    img, svg, video, iframe { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    /* ── Base ────────────────────────────────────────────────────────────── */
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
+    h3 { font-size: 1.25rem; }
+
+    p + p { margin-top: 1rem; }
+
+    /* ── Layout ──────────────────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────── */
+    .page-header {
+      padding: 4rem 0 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: var(--ink);
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+    .page-subtitle {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Sections ────────────────────────────────────────────────────────── */
+    .portfolio-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .portfolio-section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 6rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0 0 1.75rem;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink);
+      max-width: 72ch;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Screenshot cards ────────────────────────────────────────────────── */
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .screenshot-grid { grid-template-columns: 1fr; }
+    }
+
+    .screenshot-card {
+      display: block;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      background: var(--cream);
+    }
+    .screenshot-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .screenshot-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.4s ease;
+    }
+    .screenshot-card:hover .screenshot-img {
+      transform: scale(1.02);
+    }
+    .screenshot-caption {
+      padding: 0.85rem 1.1rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .screenshot-caption-arrow {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+      transition: transform 0.15s ease;
+    }
+    .screenshot-card:hover .screenshot-caption-arrow {
+      transform: translateX(3px);
+    }
+
+    /* ── Embed stacks ────────────────────────────────────────────────────── */
+    .embed-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* ── Spotify embeds ──────────────────────────────────────────────────── */
+    .spotify-embed-wrap {
+      width: 100%;
+    }
+    .spotify-embed-wrap iframe {
+      border-radius: 12px;
+      border: 0;
+      width: 100%;
+      height: 152px;
+    }
+
+    /* ── Brand group labels (Music Scoring) ──────────────────────────────── */
+    .embed-brand {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .embed-brand:first-child {
+      margin-top: 0;
+    }
+
+    /* ── YouTube embeds (responsive 16:9) ───────────────────────────────── */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-name">Eric Chan</h1>
+      <p class="page-title">Selected Work</p>
+      <p class="page-subtitle">Websites &nbsp;·&nbsp; Audio Engineering &nbsp;·&nbsp; Podcast &nbsp;·&nbsp; Music Scoring &nbsp;·&nbsp; Forget the G</p>
+    </div>
+  </div>
+
+
+  <!-- 01 — WEBSITES -->
+  <section class="portfolio-section">
+    <div class="container">
+      <p class="section-label">01</p>
+      <h2 class="section-heading">Websites</h2>
+      <hr class="section-rule" />
+      <p class="section-intro">
+        Inlet Wire is a podcast and media platform built for BC artists. The site features a
+        clean, organized design that prioritizes discovery — with an extensive archive of
+        episodes, direct links to all streaming platforms, full transcripts, and optimized
+        metadata for search. I've implemented comprehensive SEO strategy including Google
+        Analytics tracking, metadata optimization, structured tagging, and performance
+        monitoring to ensure discoverability across search and discovery platforms. The design
+        supports easy navigation across a growing catalog while maintaining a focused,
+        professional aesthetic.
+      </p>
+
+      <div class="screenshot-grid">
+
+        <a
+          class="screenshot-card"
+          href="https://inletwire.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Inlet Wire — home"
+        >
+          <img
+            class="screenshot-img"
+            src="/images/portfolio/screenshot-home.png"
+            alt="Inlet Wire — home page"
+            width="1200"
+            height="750"
+            loading="lazy"
+          />
+          <div class="screenshot-caption">
+            <span>inletwire.com — Home</span>
+            <span class="screenshot-caption-arrow">↗</span>
+          </div>
+        </a>
+
+        <a
+          class="screenshot-card"
+          href="https://inletwire.com/episodes/leah-abramson/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Inlet Wire — episode page"
+        >
+          <img
+            class="screenshot-img"
+            src="/images/portfolio/screenshot-episodes.png"
+            alt="Inlet Wire — episodes page"
+            width="1200"
+            height="750"
+            loading="lazy"
+          />
+          <div class="screenshot-caption">
+            <span>inletwire.com — Episode</span>
+            <span class="screenshot-caption-arrow">↗</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 02 — AUDIO ENGINEERING -->
+  <section class="portfolio-section">
+    <div class="container">
+      <p class="section-label">02</p>
+      <h2 class="section-heading">Audio Engineering</h2>
+      <hr class="section-rule" />
+      <p class="section-intro">
+        I record, mix, and master for indie bands and artists across Taiwan, Hong Kong, and
+        Macau, with a focus on experimental and alternative music. Day's Eye Records, my
+        independent label founded in 2009, has released work across the region. In 2024, I
+        established GenLab in Taichung as a dedicated studio and experimental music space. I
+        work openly with artists to understand their creative vision, using arrangement,
+        production techniques, and audio tools to realize what they're hearing. Artists and
+        projects I've worked with have been recognized at the Macao TDM music awards and
+        ranked in the top one hundred at the Freshmusic Awards across multiple years.
+      </p>
+
+      <div class="embed-stack">
+
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/38eBrN1tq0EFYtu5GaVnrS?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/086PLhjM6wRr9yPA0J7acF?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/6XOceP7PhXNsL70lbL2L7y?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 03 — PODCAST — INLET WIRE -->
+  <section class="portfolio-section">
+    <div class="container">
+      <p class="section-label">03</p>
+      <h2 class="section-heading">Podcast — Inlet Wire</h2>
+      <hr class="section-rule" />
+      <p class="section-intro">
+        I host and produce the podcast Inlet Wire, featuring edited artist interviews with
+        musicians and producers across British Columbia. I conduct each interview and shape
+        the final episode through narration that bridges the conversation — guiding listeners
+        through the dialogue without interpreting or overriding the guest's voice. Each
+        episode is a focused, reflective exchange captured in the artist's own words, designed
+        to let listeners connect with the BC music scene on their own terms.
+      </p>
+
+      <div class="spotify-embed-wrap" style="height:380px;">
+        <iframe
+          style="height:380px;"
+          src="https://open.spotify.com/embed/playlist/1De8QSqbYa15p5gXO78PDl?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 04 — MUSIC SCORING -->
+  <section class="portfolio-section">
+    <div class="container">
+      <p class="section-label">04</p>
+      <h2 class="section-heading">Music Scoring</h2>
+      <hr class="section-rule" />
+      <p class="section-intro">
+        I've composed and produced music for advertising and video work across Taiwan and Hong
+        Kong, partnering with agencies and producers on campaigns for major brands including
+        Dyson, Mitsubishi, HSBC, KFC, and ViewSonic. My approach centers on understanding each
+        client's vision and delivering music that serves the story — whether that's orchestral
+        arrangements, electronic textures, or hybrid compositions. I perform vocals and
+        instruments on tracks when it fits the project, handling both composition and
+        post-production to ensure the final product matches the brief exactly.
+      </p>
+
+      <div class="embed-stack">
+
+        <p class="embed-brand">HSBC</p>
+
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/T6EjqGS73WU"
+            title="HSBC — music production"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <p class="embed-brand">KFC</p>
+
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/eXJEDN5Jwww"
+            title="KFC — vocals, mixing, audio post-production"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <p class="embed-brand">ViewSonic</p>
+
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/6Pw3BbOBhrM"
+            title="ViewSonic — composition, mixing, audio production"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/_NDxxTIGLMg"
+            title="ViewSonic — composition, mixing, audio production"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 05 — FORGET THE G -->
+  <section class="portfolio-section">
+    <div class="container">
+      <p class="section-label">05</p>
+      <h2 class="section-heading">Forget the G</h2>
+      <hr class="section-rule" />
+      <p class="section-intro">
+        As the vocalist, guitarist, trumpet player, and core songwriter of Forget the G, I
+        write all original music and lyrics and handle recording, mixing, and string
+        arrangement for every release. The band has been awarded the Album Production Subsidy
+        from the Cultural Affairs Bureau, Macau twice — recognition for the quality and
+        ambition of the work. Forget the G has performed extensively across Asia through
+        multiple tours, bringing the music to audiences well beyond the region where it was made.
+      </p>
+
+      <div class="embed-stack">
+
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/1bMWv0d0Amlt0nC3DaQTKN?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/3nK7k6kG7bABXrwiiiPOtw?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/3FffqOTRxM0c1Ri2jgJWRJ?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

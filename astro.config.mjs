@@ -9,6 +9,8 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
+      // Hidden pages — never include in sitemap
+      filter: (page) => !page.includes('/portfolio'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

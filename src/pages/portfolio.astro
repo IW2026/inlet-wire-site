@@ -254,6 +254,52 @@
       color: var(--muted);
     }
 
+    /* ── Contact footer ─────────────────────────────────────────────────── */
+    .contact-footer {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 5rem 0;
+    }
+    .contact-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 1rem;
+    }
+    .contact-heading {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: var(--paper);
+    }
+    .contact-body {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      max-width: 52ch;
+    }
+    .contact-email {
+      display: inline-block;
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      letter-spacing: -0.01em;
+      color: var(--paper);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      padding-bottom: 3px;
+      transition: border-color 0.15s ease, opacity 0.15s ease;
+    }
+    .contact-email:hover {
+      border-color: var(--paper);
+      opacity: 0.8;
+    }
+
     /* ── YouTube embeds (responsive 16:9) ───────────────────────────────── */
     .video-wrap {
       position: relative;
@@ -557,6 +603,20 @@
       </div>
     </div>
   </section>
+
+
+  <!-- CONTACT -->
+  <div class="contact-footer">
+    <div class="container">
+      <p class="contact-label">Contact</p>
+      <h2 class="contact-heading">Let's Connect.</h2>
+      <p class="contact-body">
+        Open to new projects across recording, mixing, production, podcasting, and scoring.<br />
+        Got an idea worth chasing? Reach out.
+      </p>
+      <a class="contact-email" href="mailto:eric@forgettheg.com">eric@forgettheg.com</a>
+    </div>
+  </div>
 
 </body>
 </html>

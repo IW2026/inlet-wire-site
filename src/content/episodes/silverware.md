@@ -15,6 +15,7 @@ tags:
   - indie-rock
   - alternative
 draft: false
+has_transcript: true
 artist_website: "https://silverwareband.com/"
 artist_instagram: "https://www.instagram.com/silverware_band/"
 artist_bandcamp: "https://silverware-band.bandcamp.com/"
@@ -37,6 +38,11 @@ I also liked what he said about "Lavender." Out of everything they have made, th
 By the end, Silverware sounds like a band that has moved beyond the early trial stage. They are working toward an album. They want a longer project out in the world. They talk about wanting to do this for the long haul, and that part comes through clearly in the way Huckleberry describes the group and what they are building together.
 
 ---
+
+<details id="transcript" class="transcript-block">
+<summary>Transcript</summary>
+
+This transcript has been lightly edited from the original recording for readability. Speaker labels and brief audio notes have been added for accessibility.
 
 ## Transcript
 
@@ -175,3 +181,5 @@ Every listen, every comment, every like, all that stuff is not only super apprec
 Go check out the show notes for all their links and the featured playlist for this episode.
 
 I'm Eric Chan, and this is Inlet Wire, your direct line to BC artists.
+
+</details>

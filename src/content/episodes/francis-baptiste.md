@@ -13,6 +13,8 @@ tags:
   - east-vancouver
 apple_podcast_url: "https://podcasts.apple.com/tw/podcast/inlet-wire/id1876137985?i=1000767157395"
 youtube_episode_url: "https://www.youtube.com/watch?v=Ls7PTL3V6YM"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/francis-baptiste-music-language-and-333233670/"
+amazon_episode_url: "https://music.amazon.ca/podcasts/de720f67-fe21-4e4e-bd82-5a0e149413e7/episodes/f472f35b-bca3-42c8-b125-6803a99b56c7/inlet-wire-francis-baptiste---music-language-and-heritage"
 has_transcript: true
 draft: false
 artist_website: "https://www.francisbaptiste.ca/"

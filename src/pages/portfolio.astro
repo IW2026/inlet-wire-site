@@ -254,6 +254,30 @@
       color: var(--muted);
     }
 
+    /* ── Portfolio intro ─────────────────────────────────────────────────── */
+    .portfolio-intro {
+      padding: 3rem 0 3.5rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+    }
+    .portfolio-intro p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--ink);
+      max-width: 72ch;
+    }
+    .portfolio-intro p + p { margin-top: 1rem; }
+
+    /* ── Skills line ─────────────────────────────────────────────────────── */
+    .skills-line {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
     /* ── Contact CTA section ─────────────────────────────────────────────── */
     .contact-label {
       font-size: 0.7rem;
@@ -374,25 +398,60 @@
     <div class="container">
       <h1 class="page-name">Eric Chan</h1>
       <p class="page-title">Selected Work</p>
-      <p class="page-subtitle">Websites &nbsp;·&nbsp; Audio Engineering &nbsp;·&nbsp; Podcast &nbsp;·&nbsp; Advertising Scoring &amp; Production &nbsp;·&nbsp; Music Project</p>
+      <p class="page-subtitle">Podcast &nbsp;·&nbsp; Website &amp; Platform &nbsp;·&nbsp; Audio Engineering &nbsp;·&nbsp; Advertising Scoring &amp; Production &nbsp;·&nbsp; Artist Project</p>
     </div>
   </div>
 
 
-  <!-- 01 — WEBSITES -->
+  <!-- PORTFOLIO INTRO -->
+  <div class="portfolio-intro">
+    <div class="container">
+      <p>This portfolio brings together selected work across podcast production, web publishing, audio engineering, scoring, and my own artist project.</p>
+      <p>A lot of my work sits between creative direction and production. I am interested in how sound, story, branding, and structure can work together. Some projects are built around artists and interviews. Some are more technical. Some are commercial. Together, they show how I work across different parts of music and media.</p>
+    </div>
+  </div>
+
+
+  <!-- 01 — INLET WIRE PODCAST -->
   <section class="portfolio-section">
     <div class="container">
       <p class="section-label">01</p>
-      <h2 class="section-heading">Websites</h2>
+      <h2 class="section-heading">Inlet Wire Podcast</h2>
       <hr class="section-rule" />
-      <p class="section-intro">
-        For Inlet Wire, I built the website as a full media platform around the podcast. The
-        work includes the homepage, episode archive, individual episode pages, transcripts,
-        written articles, newsletter sign-up, social integration, and a contact page for
-        submissions and sponsorship. I wanted the site to do more than hold audio. It had to
-        help people find the artists, read more about the episodes, follow the project, and
-        come back to the archive over time.
-      </p>
+      <div class="section-intro">
+        <p>Inlet Wire is my BC music podcast and media platform.</p>
+        <p>I created it to give BC artists a focused space to talk about their work, their process, and the stories behind the music. The goal is not to make promo content that disappears after release week. I want each episode to feel like something people can return to later.</p>
+        <p>My role covers the full process. I find and research artists, plan the interview, communicate with guests, record the conversation, edit the audio, write narration, shape the episode structure, choose where music clips should sit, prepare the description, and publish the final episode.</p>
+        <p>The project also shows my work in branding and marketing. I developed the tone, episode format, visual direction, website flow, playlist connection, social posts, and audience path around the podcast. Inlet Wire is not just a podcast feed. It is built as a small music media platform, with episodes, written articles, transcripts, artist links, playlist updates, newsletter sign-up, and contact options for artists, press, and sponsorship.</p>
+        <p class="skills-line">Skills shown: interview planning, artist research, audio editing, narration writing, podcast production, digital publishing, branding, marketing, audience development, and artist communication.</p>
+      </div>
+
+      <div class="spotify-embed-wrap" style="height:380px;">
+        <iframe
+          style="height:380px;"
+          src="https://open.spotify.com/embed/playlist/1De8QSqbYa15p5gXO78PDl?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 02 — INLET WIRE WEBSITE / DIGITAL PLATFORM -->
+  <section class="portfolio-section">
+    <div class="container">
+      <p class="section-label">02</p>
+      <h2 class="section-heading">Inlet Wire Website / Digital Platform</h2>
+      <hr class="section-rule" />
+      <div class="section-intro">
+        <p>The Inlet Wire website is built to support the podcast as a long-term archive.</p>
+        <p>Each episode has its own page with artwork, an embedded player, platform links, artist links, tags, and written content. I also built article pages and transcript access so the work is not only available as audio. People can listen, read, search, share, and come back to the archive over time.</p>
+        <p>I built the site with search and discovery in mind. Instead of treating SEO as a separate trick, I focused on clear structure: episode pages, tags, metadata, artist names, transcripts, article copy, and internal links. This helps the site work better for listeners, artists, and search engines.</p>
+        <p>The site also includes newsletter sign-up, social links, playlist connections, a contact page, and a media kit path. These parts help turn the project into a working media brand, not just a collection of episodes.</p>
+        <p class="skills-line">Skills shown: website structure, content planning, SEO-aware publishing, archive design, copywriting, accessibility, audience flow, and platform building.</p>
+      </div>
 
       <div class="subsection">
         <h3 class="subsection-heading">1. Homepage and Brand Identity</h3>
@@ -499,22 +558,18 @@
   </section>
 
 
-  <!-- 02 — AUDIO ENGINEERING -->
+  <!-- 03 — AUDIO ENGINEERING -->
   <section class="portfolio-section">
     <div class="container">
-      <p class="section-label">02</p>
+      <p class="section-label">03</p>
       <h2 class="section-heading">Audio Engineering</h2>
       <hr class="section-rule" />
-      <p class="section-intro">
-        I record, mix, and master for indie bands and artists across Taiwan, Hong Kong, and
-        Macau, with a focus on experimental and alternative music. Day's Eye Records, my
-        independent label founded in 2009, has released work across the region. In 2024, I
-        established GenLab in Taichung as a dedicated studio and experimental music space. I
-        work openly with artists to understand their creative vision, using arrangement,
-        production techniques, and audio tools to realize what they're hearing. Artists and
-        projects I've worked with have been recognized at the Macao TDM music awards and
-        ranked in the top one hundred at the Freshmusic Awards across multiple years.
-      </p>
+      <div class="section-intro">
+        <p>Audio engineering has been a major part of my work for many years.</p>
+        <p>I have worked with independent artists and bands across recording, editing, mixing, production, and release preparation. This includes studio work, artist development, and long-term music projects through my own background in independent music.</p>
+        <p>This part of my portfolio shows the technical side of my work, but also the human side. A good recording is not only about the gear or the mix. It is about understanding the artist, knowing what the song needs, and helping the performance come through.</p>
+        <p class="skills-line">Skills shown: recording, mixing, production, editing, artist communication, studio workflow, and music release experience.</p>
+      </div>
 
       <div class="embed-stack">
 
@@ -555,49 +610,19 @@
   </section>
 
 
-  <!-- 03 — PODCAST — INLET WIRE -->
-  <section class="portfolio-section">
-    <div class="container">
-      <p class="section-label">03</p>
-      <h2 class="section-heading">Podcast — Inlet Wire</h2>
-      <hr class="section-rule" />
-      <p class="section-intro">
-        I host and produce the podcast Inlet Wire, featuring edited artist interviews with
-        musicians and producers across British Columbia. I conduct each interview and shape
-        the final episode through narration that bridges the conversation — guiding listeners
-        through the dialogue without interpreting or overriding the guest's voice. Each
-        episode is a focused, reflective exchange captured in the artist's own words, designed
-        to let listeners connect with the BC music scene on their own terms.
-      </p>
-
-      <div class="spotify-embed-wrap" style="height:380px;">
-        <iframe
-          style="height:380px;"
-          src="https://open.spotify.com/embed/playlist/1De8QSqbYa15p5gXO78PDl?utm_source=generator"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- 04 — MUSIC SCORING -->
+  <!-- 04 — ADVERTISING SCORING & PRODUCTION -->
   <section class="portfolio-section">
     <div class="container">
       <p class="section-label">04</p>
-      <h2 class="section-heading">Advertising Scoring and Production</h2>
+      <h2 class="section-heading">Advertising Scoring &amp; Production</h2>
       <hr class="section-rule" />
-      <p class="section-intro">
-        I've composed and produced music for advertising and video work across Taiwan and Hong
-        Kong, partnering with agencies and producers on campaigns for major brands including
-        Dyson, Mitsubishi, HSBC, KFC, and ViewSonic. My approach centers on understanding each
-        client's vision and delivering music that serves the story — whether that's orchestral
-        arrangements, electronic textures, or hybrid compositions. I perform vocals and
-        instruments on tracks when it fits the project, handling both composition and
-        post-production to ensure the final product matches the brief exactly.
-      </p>
+      <div class="section-intro">
+        <p>This section shows my experience working on client-based audio and commercial music.</p>
+        <p>The work involved composing, arranging, producing, scoring to picture, mixing, and shaping audio to fit a brief. Depending on the project, I also contributed vocal work, sound design, or extra production elements.</p>
+        <p>This kind of work is different from making music for myself. The music has to support the picture, the timing, the brand, and the final message. It also has to work within deadlines and client feedback. That taught me how to make creative decisions quickly while still keeping the final audio clean and useful.</p>
+        <p>Selected work includes projects connected to brands such as Dyson, Mitsubishi, HSBC, KFC, and ViewSonic.</p>
+        <p class="skills-line">Skills shown: composing, arranging, scoring to picture, commercial production, mixing, vocal work, sound design, client communication, and deadline-based delivery.</p>
+      </div>
 
       <div class="embed-stack">
 
@@ -661,18 +686,19 @@
   </section>
 
 
-  <!-- 05 — FORGET THE G -->
+  <!-- 05 — ARTIST WORK: FORGET THE G -->
   <section class="portfolio-section">
     <div class="container">
       <p class="section-label">05</p>
-      <h2 class="section-heading">Music Project — Forget the G</h2>
+      <h2 class="section-heading">Artist Work: Forget the G</h2>
       <hr class="section-rule" />
-      <p class="section-intro">
-        Forget the G is my band. I write the songs and lyrics, sing, play guitar and trumpet,
-        and handle all recording, mixing, and string arrangement for every release. The band
-        has received the Album Production Subsidy from the Cultural Affairs Bureau, Macau
-        twice, and has toured across Asia over multiple runs.
-      </p>
+      <div class="section-intro">
+        <p>Forget the G is my own music project, active since 2009.</p>
+        <p>It has been one of the main places where I develop my own creative voice. In this work, I take on the role of composer, arranger, performer, vocalist, and artistic director. I am not only recording or producing the music. I am shaping the songs, the sound, the mood, and the overall direction of the project.</p>
+        <p>This includes writing, arranging, making production choices, building the sonic identity, and deciding how the project should feel as a whole.</p>
+        <p>Forget the G connects my background as a producer and audio engineer with my own work as an artist. It is where the technical side and the creative side meet.</p>
+        <p class="skills-line">Skills shown: composition, arrangement, vocal performance, artistic direction, production, sound design, and project identity.</p>
+      </div>
 
       <div class="embed-stack">
 
@@ -705,15 +731,15 @@
   </section>
 
 
-  <!-- CONTACT CTA -->
+  <!-- CONTACT -->
   <section class="portfolio-section">
     <div class="container">
-      <p class="contact-label">Contact</p>
+      <p class="contact-label">06 &nbsp;·&nbsp; Contact</p>
       <h2 class="contact-heading">Let's Connect.</h2>
       <hr class="section-rule" />
       <p class="contact-body">
-        Open to new projects across recording, mixing, production, podcasting, and scoring.<br />
-        Got an idea worth chasing? Reach out.
+        Open to new projects across podcast production, recording, mixing, music production, scoring, and creative media work.<br /><br />
+        If the project connects with music, sound, artists, or storytelling, feel free to reach out.
       </p>
       <a class="contact-email" href="mailto:eric@forgettheg.com">eric@forgettheg.com</a>
     </div>

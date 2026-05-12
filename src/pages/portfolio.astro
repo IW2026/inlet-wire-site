@@ -320,14 +320,32 @@
       color: var(--muted);
       line-height: 1.7;
     }
+    .subsection-img-scroll {
+      width: 100%;
+      height: 420px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border: 1px solid var(--rule);
+      margin-top: 1.25rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .subsection-img-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .subsection-img-scroll::-webkit-scrollbar-track {
+      background: var(--cream);
+    }
+    .subsection-img-scroll::-webkit-scrollbar-thumb {
+      background: var(--rule);
+      border-radius: 3px;
+    }
+    .subsection-img-scroll::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
+    }
     .subsection-img {
       display: block;
       width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      object-position: top center;
-      border: 1px solid var(--rule);
-      margin-top: 1.25rem;
+      height: auto;
     }
 
     /* ── YouTube embeds (responsive 16:9) ───────────────────────────────── */
@@ -379,56 +397,56 @@
       <div class="subsection">
         <h3 class="subsection-heading">1. Homepage and Brand Identity</h3>
         <p>The homepage introduces Inlet Wire with the line "Your direct line to BC artists." That line sets the tone for the whole project. I wrote the copy, designed the layout, and made sure a first-time visitor could understand immediately what Inlet Wire is and why it matters. The homepage features the latest episode up front, two clear navigation paths (latest episode and playlist), and a rotating episode cover that cycles through the archive. Everything on the page is there to help someone decide to listen.</p>
-        <img class="subsection-img" src="/images/portfolio/01_homepage_brand_identity.png" alt="Inlet Wire homepage" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/01_homepage_brand_identity.png" alt="Inlet Wire homepage" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> Brand direction, copywriting, homepage layout, visual identity<br/><em>My role:</em> Concept, copy, design, build<br/><em>Skills:</em> Web design, brand communication, UX writing, front-end development</p>
       </div>
 
       <div class="subsection">
         <h3 class="subsection-heading">2. Episode Archive and Tag System</h3>
         <p>The episodes page is a browsable archive organized by genre, location, artist type, and role. Tags like indie-rock, singer-songwriter, studio, Vancouver, and producer let visitors filter by what they're looking for. I built this with long-term archive thinking in mind. As more episodes are added, the site becomes a real reference for BC music rather than just a feed. The grid layout keeps it scannable and the tag system makes it easy to find artists by context.</p>
-        <img class="subsection-img" src="/images/portfolio/02_episode_archive_and_tags.png" alt="Inlet Wire episodes archive and tag system" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/02_episode_archive_and_tags.png" alt="Inlet Wire episodes archive and tag system" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> Archive structure, taxonomy, long-term site planning<br/><em>My role:</em> Structure, design, content organization<br/><em>Skills:</em> Information architecture, navigation design, SEO-friendly content structure</p>
       </div>
 
       <div class="subsection">
         <h3 class="subsection-heading">3. Individual Episode Page</h3>
         <p>Each episode has its own page with the episode artwork, embedded Spotify player, platform links (Spotify, Apple Podcasts, YouTube, iHeart, Pocket Casts, Overcast, RSS), and a share option. The page is designed around the episode as its own object, not just a post in a feed. I set up the episode template so each new release comes out with a consistent structure and all the right distribution links in place.</p>
-        <img class="subsection-img" src="/images/portfolio/03_individual_episode_page_player_and_links.png" alt="Inlet Wire individual episode page" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/03_individual_episode_page_player_and_links.png" alt="Inlet Wire individual episode page" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> Podcast publishing, audio distribution, episode packaging<br/><em>My role:</em> Template design, publishing setup, platform integration<br/><em>Skills:</em> Podcast publishing, web content management, multi-platform distribution</p>
       </div>
 
       <div class="subsection">
         <h3 class="subsection-heading">4. Transcript, Artist Links, and Episode Navigation</h3>
         <p>Below the player, each episode page includes a full transcript, direct links to the artist's platforms (website, Instagram, Bandcamp, etc.), follow links for Inlet Wire, and previous/next episode navigation. The transcript makes each episode accessible and searchable. The artist links turn the episode into a useful resource for anyone discovering a band for the first time. The navigation keeps people moving through the archive instead of leaving.</p>
-        <img class="subsection-img" src="/images/portfolio/04_transcript_artist_links_and_navigation.png" alt="Inlet Wire transcript, artist links and navigation" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/04_transcript_artist_links_and_navigation.png" alt="Inlet Wire transcript, artist links and navigation" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> Accessibility, SEO, internal navigation, artist discovery<br/><em>My role:</em> Page structure, transcript publishing, content linking<br/><em>Skills:</em> Accessibility, on-page SEO, content architecture, audience retention</p>
       </div>
 
       <div class="subsection">
         <h3 class="subsection-heading">5. Editorial Articles</h3>
         <p>For each episode, I write an editorial article that gives the conversation another life outside the audio. The Silverware piece is a good example — it's not a transcript and it's not a summary. It's a written piece that takes the key ideas from the conversation and puts them into a form that works on its own. This gives the episode a second entry point for people who find it through search or social, and it builds a written record of BC music alongside the audio archive.</p>
-        <img class="subsection-img" src="/images/portfolio/05_editorial_article_page.png" alt="Inlet Wire editorial article page" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/05_editorial_article_page.png" alt="Inlet Wire editorial article page" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> Editorial writing, storytelling, audience development<br/><em>My role:</em> Writer, editor<br/><em>Skills:</em> Editorial writing, interview-to-article adaptation, publishing</p>
       </div>
 
       <div class="subsection">
         <h3 class="subsection-heading">6. Newsletter and Instagram Integration</h3>
         <p>The site connects the podcast to a newsletter and an Instagram feed. The newsletter sign-up is placed at the bottom of the homepage and in the footer. The Instagram section pulls in the @inletwire feed and links directly to the account. This keeps the audience connected between episodes and gives the project a consistent presence across channels. I also set up the visual promo system on Instagram to support each episode release with graphics built around the episode artwork.</p>
-        <img class="subsection-img" src="/images/portfolio/06_newsletter_and_instagram_integration.png" alt="Inlet Wire newsletter and Instagram integration" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/06_newsletter_and_instagram_integration.png" alt="Inlet Wire newsletter and Instagram integration" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> Audience growth, social integration, community connection<br/><em>My role:</em> Strategy, design, setup, content<br/><em>Skills:</em> Email marketing setup, social media integration, visual content production</p>
       </div>
 
       <div class="subsection">
         <h3 class="subsection-heading">7. Random Episode Feature</h3>
         <p>The homepage includes a "Drop in on a random episode" feature that serves up a different episode each time and lets visitors shuffle to another. This keeps older episodes discoverable and gives new visitors an easy way into the archive without having to start from episode one. It's a small UX detail but it makes a real difference for a catalog that's always growing.</p>
-        <img class="subsection-img" src="/images/portfolio/07_random_episode_discovery_feature.png" alt="Inlet Wire random episode feature" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/07_random_episode_discovery_feature.png" alt="Inlet Wire random episode feature" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> User experience thinking, archive discoverability<br/><em>My role:</em> Concept, build<br/><em>Skills:</em> UX design, front-end development, content discovery</p>
       </div>
 
       <div class="subsection" style="margin-bottom: 2.5rem;">
         <h3 class="subsection-heading">8. Contact Page and Industry Readiness</h3>
         <p>The contact page is set up for press, sponsorship inquiries, artist submissions, tips for the Waves &amp; Wire section, and charity work. There's a form with a subject dropdown and a direct email option. This makes the project ready for real-world use beyond a student portfolio — Inlet Wire is built to operate as a professional media outlet.</p>
-        <img class="subsection-img" src="/images/portfolio/08_contact_page_and_media_kit.png" alt="Inlet Wire contact page" loading="lazy" />
+        <div class="subsection-img-scroll"><img class="subsection-img" src="/images/portfolio/08_contact_page_and_media_kit.png" alt="Inlet Wire contact page" loading="lazy" /></div>
         <p class="subsection-meta"><em>What this shows:</em> Professional readiness, industry-facing communication<br/><em>My role:</em> Copy, design, form setup<br/><em>Skills:</em> Professional web publishing, contact management, industry communication</p>
       </div>
 

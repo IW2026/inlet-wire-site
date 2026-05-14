@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import FollowCTA from "../../components/FollowCTA.astro";
-import EpisodeGallery from "../../components/EpisodeGallery.astro";
 
 export async function getStaticPaths() {
   const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
@@ -265,12 +264,7 @@ const breadcrumbJsonLd = {
       </div>
     </section>
 
-    <!-- 5. "From the episode" gallery — appears only when gallery frontmatter is set -->
-    {ep.data.gallery && ep.data.gallery.length > 0 && (
-      <EpisodeGallery images={ep.data.gallery} artist={ep.data.artist} />
-    )}
-
-    <!-- 6. Artist links  7. Transcript link -->
+    <!-- Artist links + Transcript link -->
     <section>
       <div class="container prose">
         {(ep.data.artist_website || ep.data.artist_instagram || ep.data.artist_youtube || ep.data.artist_facebook || ep.data.artist_bandcamp) && (

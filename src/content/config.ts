@@ -25,6 +25,14 @@ const episodes = defineCollection({
     artist_youtube: z.string().url().optional(),
     artist_facebook: z.string().url().optional(),
     artist_bandcamp: z.string().url().optional(),
+    // "From the episode" gallery — editorial carousel slides.
+    // Slides with is_cta_slide: true are suppressed on the website
+    // (they are Instagram-only CTAs like "Listen on inletwire.com").
+    gallery: z.array(z.object({
+      src: z.string(),
+      alt: z.string(),
+      is_cta_slide: z.boolean().default(false),
+    })).optional(),
   }),
 });
 

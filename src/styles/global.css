@@ -402,6 +402,78 @@ section h2 { margin-bottom: 1.5rem; }
   font-variant-numeric: tabular-nums;
 }
 
+/* ---------- "From the episode" gallery ---------- */
+/*
+ * Mobile  (default): single-item horizontal scroll-snap carousel.
+ * Desktop (≥ 640px): CSS Grid — 3 columns.
+ * No JavaScript needed for the layout switch.
+ */
+.episode-gallery-section {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+.episode-gallery-header {
+  max-width: var(--measure);
+  margin-bottom: 1.5rem;
+}
+.episode-gallery-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 0.45rem;
+}
+.episode-gallery-intro {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Mobile: horizontal scroll-snap carousel */
+.gallery-grid {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox */
+  padding-bottom: 4px;            /* prevents 1-px clip of focus ring */
+}
+.gallery-grid::-webkit-scrollbar { display: none; }
+
+.gallery-item {
+  flex: 0 0 88%;
+  max-width: 360px;
+  scroll-snap-align: start;
+}
+
+.gallery-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--cream);       /* fallback while loading */
+}
+
+/* Desktop (≥ 640px): switch to 3-column grid */
+@media (min-width: 640px) {
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-bottom: 0;
+  }
+  .gallery-item {
+    flex: none;
+    max-width: none;
+  }
+}
+
 /* ---------- Photo carousel ---------- */
 .episode-photos-section { padding-top: 0; }
 .carousel { position: relative; }

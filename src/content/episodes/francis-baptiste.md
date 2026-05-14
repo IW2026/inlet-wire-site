@@ -20,6 +20,20 @@ draft: false
 artist_website: "https://www.francisbaptiste.ca/"
 artist_instagram: "https://www.instagram.com/francisbaptistemusic/"
 artist_bandcamp: "https://francis-baptiste.bandcamp.com/"
+gallery:
+  - src: "/images/episodes/ep-15-gallery-1.png"
+    alt: "Francis Baptiste — Inside Inlet Wire episode title card"
+  - src: "/images/episodes/ep-15-gallery-2.png"
+    alt: "Francis Baptiste talks about returning to music during a hard stretch in life, and how it became something real to hold onto again"
+  - src: "/images/episodes/ep-15-gallery-3.png"
+    alt: "Writing moved closer to what mattered most — family, heritage, and where he comes from"
+  - src: "/images/episodes/ep-15-gallery-4.png"
+    alt: "Francis Baptiste on reconnecting with Nsyilxčń and carrying parts of the Okanagan language into his music"
+  - src: "/images/episodes/ep-15-gallery-5.png"
+    alt: "Francis Baptiste on family, future generations, and leaving something behind that can still speak later"
+  - src: "/images/episodes/ep-15-gallery-6.png"
+    alt: "Follow Inlet Wire — listen at inletwire.com (Instagram CTA slide — suppressed on web)"
+    is_cta_slide: true
 ---
 
 This episode with Francis Baptiste goes deeper than a story about getting back into music.

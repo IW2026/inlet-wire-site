@@ -1,0 +1,108 @@
+---
+/**
+ * EpisodeGallery — "From the episode" image gallery
+ *
+ * HOW TO USE
+ * ----------
+ * Add a `gallery` array to any episode's frontmatter:
+ *
+ *   gallery:
+ *     - src: /images/episodes/ep-NN-gallery-1.jpg
+ *       alt: "Descriptive alt text for this slide"
+ *     - src: /images/episodes/ep-NN-gallery-2.jpg
+ *       alt: "Another slide"
+ *       is_cta_slide: true   ← marks Instagram-only CTA slides; hidden on web
+ *
+ * Rules
+ * -----
+ * - Slides with is_cta_slide: true are filtered out at build time.
+ * - If ALL slides are CTA slides (or the array is empty after filtering),
+ *   the entire section is not rendered.
+ * - Place WebP versions alongside the JPGs for best performance.
+ *   Naming: ep-NN-gallery-1.webp beside ep-NN-gallery-1.jpg
+ * - Images are lazy-loaded.
+ * - If an image file is missing at runtime, its tile is hidden via onerror.
+ *   If all tiles 404, the whole section hides itself.
+ *
+ * Layout
+ * ------
+ * Mobile  (< 640 px): horizontal swipe carousel (CSS scroll-snap, no JS needed)
+ * Desktop (≥ 640 px): 3-column responsive grid
+ */
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  is_cta_slide?: boolean;
+}
+
+interface Props {
+  images: GalleryImage[];
+  artist: string;
+}
+
+const { images, artist } = Astro.props;
+
+// Strip CTA slides at build time — they belong on Instagram, not on inletwire.com.
+const ctaSlides = images.filter(img => img.is_cta_slide);
+const webImages  = images.filter(img => !img.is_cta_slide);
+
+// Nothing to show → render nothing.
+if (webImages.length === 0) return;
+
+// Flag if any CTA slide is present (visible as a build-time console note).
+if (ctaSlides.length > 0) {
+  console.log(
+    `[EpisodeGallery] ${ctaSlides.length} CTA slide(s) suppressed for "${artist}":`,
+    ctaSlides.map(s => s.src)
+  );
+}
+---
+
+<section class="episode-gallery-section" id="episodeGallery" aria-label="From the episode gallery">
+  <div class="container">
+
+    <div class="episode-gallery-header">
+      <h2 class="episode-gallery-title">From the episode</h2>
+      <p class="episode-gallery-intro">A few moments from the conversation with {artist}.</p>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      {webImages.map((img) => {
+        // Build the WebP srcset path by swapping the extension.
+        const webpSrc = img.src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+        return (
+          <div class="gallery-item" data-gallery-item>
+            <picture>
+              <source type="image/webp" srcset={webpSrc} />
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                decoding="async"
+                class="gallery-img"
+                onerror="this.closest('[data-gallery-item]').hidden=true; window._iwGalleryCheck && window._iwGalleryCheck();"
+              />
+            </picture>
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+<script>
+/**
+ * _iwGalleryCheck — called by each gallery img's onerror handler.
+ * If every tile has hidden itself (all images 404'd), hide the whole section.
+ */
+window._iwGalleryCheck = function () {
+  const section = document.getElementById("episodeGallery");
+  const grid    = document.getElementById("galleryGrid");
+  if (!section || !grid) return;
+  const items     = Array.from(grid.querySelectorAll("[data-gallery-item]"));
+  const allHidden = items.length > 0 && items.every(el => (el as HTMLElement).hidden);
+  if (allHidden) section.hidden = true;
+};
+</script>

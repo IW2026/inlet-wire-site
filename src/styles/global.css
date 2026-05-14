@@ -449,13 +449,20 @@ section h2 { margin-bottom: 1.5rem; }
   scroll-snap-align: start;
 }
 
+/* picture must be display:block so it fills the flex/grid cell correctly.
+   (The global reset only sets display:block on img/svg/video/iframe.)      */
+.gallery-item picture {
+  display: block;
+  width: 100%;
+}
+
 .gallery-img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center top;
-  background: var(--cream);       /* fallback while loading */
+  background: var(--cream);       /* cream placeholder while loading */
 }
 
 /* Desktop (≥ 640px): switch to 3-column grid */

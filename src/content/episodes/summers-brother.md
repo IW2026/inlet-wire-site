@@ -1,10 +1,10 @@
 ---
-title: "Summer's Brother Slowly Found Their Shape"
+title: "Summer's Brother Took Shape Over Time"
 artist: "Summer's Brother"
 episode_number: 16
 publish_date: 2026-05-18
 spotify_episode_id: "6tSdF7uHufUN91PNlEEvke"
-description: "On this episode of Inlet Wire, Summer's Brother talk about how the project came together over time, how recording helped define the band, and where the songs are heading now."
+description: "On this episode of Inlet Wire, Summer's Brother talk about how the project came together over a few years, and how their EP Class Clown slowly found its shape."
 tags:
   - vancouver
   - indie-rock
@@ -16,16 +16,16 @@ artist_instagram: "https://www.instagram.com/summers.brother/"
 artist_facebook: "https://www.facebook.com/summersbrother/"
 ---
 
-This episode with Summer's Brother feels less like a story about a band arriving fully formed, and more like hearing how a project slowly became itself.
+Summer's Brother did not really start as a finished band. It sounds more like something that kept building into itself.
 
-Connor talks about how the group came together over a few years, with different lineups, different recordings, and different stages before it finally started to feel like a real band. That part of the conversation stands out, because it gives the songs a bit more context. *Glass Clang* does not sound like something made in one burst. It sounds like something that took shape over time.
+In this episode, Connor talks about how the project came together over a few years, through different lineups, different recordings, and songs that slowly helped define what Summer's Brother actually was. That gives their EP *Class Clown* a bit more weight too, and shows how the project gradually found its shape.
 
-A lot of that seems tied to recording. Once the band started working at Park Sound Studio with Andy, the project became clearer. Connor talks about having more confidence as a writer, and Andy also points to the shift between the earlier stage of the project and the point where the band had a stronger sense of what Summer's Brother actually was. That in-between stage is a big part of what makes this episode interesting.
+A lot of that seems tied to recording. Connor talks about how working with Andy Schichter at Park Sound Studio opened things up, not just in terms of sound, but confidence too. There is room to try things, mess around, and follow ideas a bit further. Andy also shared in the interview how he saw that shift between the earlier version of the project and the point where the band had a clearer sense of itself.
 
-There is also a nice thread here around process. Connor describes bringing in a framework, then letting the band build from there, while also moving more toward jamming in the room now that the lineup feels more settled. It sounds like the songs are still open enough to change shape, but the band has a clearer centre now.
+We also got into songwriting, and how sometimes Connor brings in a framework and the band builds from there. Now that the lineup feels more settled, they are also starting to jam more in the room and let songs come together that way. It sounds like Summer's Brother is still open, still changing, still evolving, but with a stronger centre than before.
 
-The part about "Sweeter Dream" is great too. Connor talks about how the structure was there, but a lot of the details only came together while recording. The inspiration for the song came from his wife, Julie, and the way he tells that story gives the episode a quieter human side in the middle of all the band talk.
+The part I enjoyed most was hearing Connor talk about "Sweeter Dream," which is one of my favourites of theirs, and the story behind how the lyrics came about. Not in some big dramatic way, but in how the song came together while they were recording it, and how part of the idea came from trying to be there for someone going through a rough time.
 
-Then there is "Solid Ground," which points a little more toward what comes next. Connor talks about authenticity, clown makeup, performance, and how strange the whole act of being an artist can feel. That part gives the conversation a different edge. It opens up the bigger question underneath the songs: how do you stay yourself while also stepping into a version of yourself on stage?
+When I caught them for the interview, they were wrapping up their single "Solid Ground," which opens up something else too. Connor talks about authenticity, performance, and the weird tension of trying to be yourself while also stepping into something bigger on stage. It makes the band feel less like a fixed idea and more like a project that is still opening up in real time.
 
-If you want to hear how Summer's Brother came together, how the songs found their shape, and where the band might be heading next, this episode is a good one to spend some time with.
+This episode is not about a band arriving fully formed. It is more about hearing how Summer's Brother got here, and what might be opening up next.

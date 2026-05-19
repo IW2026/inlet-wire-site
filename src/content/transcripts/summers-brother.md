@@ -46,7 +46,7 @@ After that, we ended up recording "Enemies" and "Sweeter Dream." So this is over
 
 ---
 
-**Eric Chan:** Their EP *Glass Clang* reflects that gradual process. It's a collection shaped over time, and it began to take a clearer shape once the band started recording at Park Sound Studio.
+**Eric Chan:** Their EP *Class Clown* reflects that gradual process. It's a collection shaped over time, and it began to take a clearer shape once the band started recording at Park Sound Studio.
 
 **Connor:** I feel like I got more confidence in myself as a writer and in recording sessions too. Just being able to record at Park Sound here is really nice. Andy just lets us be really creative and mess around with ideas and record weird stuff, like bags of chip sounds, and just get really experimental. That was a huge change.
 

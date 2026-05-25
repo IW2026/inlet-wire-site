@@ -4,6 +4,7 @@ artist: "Summer's Brother"
 episode_number: 16
 publish_date: 2026-05-18
 spotify_episode_id: "6tSdF7uHufUN91PNlEEvke"
+apple_podcast_url: "https://podcasts.apple.com/tw/podcast/inlet-wire/id1876137985?i=1000768371228"
 description: "On this episode of Inlet Wire, Summer's Brother talk about how the project came together over a few years, and how their EP Class Clown slowly found its shape."
 tags:
   - vancouver

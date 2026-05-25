@@ -4,6 +4,7 @@ artist: "Kaj Falch-Nielsen"
 episode_number: 17
 publish_date: 2026-05-25
 spotify_episode_id: "0W6TZTgnVBgbtiasBRK4aR"
+anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/120501111/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-4-25%2F424834246-44100-2-417336402689f.m4a"
 apple_podcast_url: "https://podcasts.apple.com/tw/podcast/inlet-wire/id1876137985?i=1000769455335"
 youtube_episode_url: "https://www.youtube.com/watch?v=aRZipzJgqHc"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/kaj-falch-nielsen-from-blue-light-studio-334718165/"

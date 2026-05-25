@@ -4,6 +4,7 @@ artist: "Summer's Brother"
 episode_number: 16
 publish_date: 2026-05-18
 spotify_episode_id: "6tSdF7uHufUN91PNlEEvke"
+anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/120152589/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-4-18%2F424370026-44100-2-6e256ccc6013.m4a"
 apple_podcast_url: "https://podcasts.apple.com/tw/podcast/inlet-wire/id1876137985?i=1000768371228"
 youtube_episode_url: "https://www.youtube.com/watch?v=xpd8PkMY-jE"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/summers-brother-finding-their-shape-333977253/"

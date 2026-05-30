@@ -7,15 +7,62 @@ const nav = [
   { href: "/contact/", label: "Contact" },
 ];
 ---
-<header class="site-header">
+<header class="site-header" data-site-header>
   <div class="container header-row">
     <a href="/" class="logo-link" aria-label="Inlet Wire home">
       <img src="/logo-horizontal.png" alt="Inlet Wire" class="logo-img" width="1781" height="651" />
     </a>
-    <nav class="site-nav" aria-label="Primary">
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      data-nav-toggle
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav class="site-nav" id="primary-nav" aria-label="Primary">
       {nav.map((item) => (
         <a href={item.href}>{item.label}</a>
       ))}
     </nav>
   </div>
 </header>
+
+<script>
+  // Sticky-header shadow: add a faint rule/shadow only once the page has
+  // scrolled, so the header sits flush at the top and lifts subtly on scroll.
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  // Mobile menu toggle.
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const nav = document.getElementById("primary-nav");
+  if (toggle && nav) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      nav.classList.toggle("is-open", open);
+      document.body.classList.toggle("nav-open", open);
+    };
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    // Close on link tap and on Escape.
+    nav.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) setOpen(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
+</script>

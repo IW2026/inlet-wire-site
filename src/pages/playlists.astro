@@ -75,7 +75,7 @@ const breadcrumbJsonLd = {
         <h2 class="prose">Featured by episode</h2>
         <div class="episode-grid" style="margin-top: 1.5rem;">
           {episodes.map((ep) => (
-            <div class="episode-card">
+            <div class="episode-card" style="padding: 1.1rem 1.25rem 1.35rem;">
               <div class="meta">Ep. {ep.data.episode_number} · <a class="link" href={`/episodes/${ep.slug}/`}>{ep.data.artist}</a></div>
               <iframe
                 class="spotify-embed compact"

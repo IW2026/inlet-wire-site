@@ -6,6 +6,7 @@ publish_date: 2026-06-01
 spotify_episode_id: "5lP4EW8nGyc3YMsY41iLEL"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/the-shindigs-from-childhood-buddies-to-a-band/id1876137985?i=1000770562492&uo=4"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/120833490/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-1%2F425277940-44100-2-a2f4c690bace7.m4a"
+youtube_episode_url: "https://www.youtube.com/watch?v=dh0MTkyJWGI"
 description: "The Shindigs are a five-piece indie rock band from Nanaimo. Eric Chan talks with Shea Peoples and Alex Peabody about the childhood friendship that started the band, writing as a five-piece, and what changed once they started playing bigger rooms."
 tags:
   - indie-rock

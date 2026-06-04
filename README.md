@@ -30,18 +30,93 @@ npm run preview
 1. Create a new markdown file in `src/content/episodes/`, named after a URL-friendly slug (for example `molly-annelle.md`). The filename becomes the URL: `/episodes/molly-annelle/`.
 2. Paste this frontmatter at the top and fill it in:
 
-```
+```yaml
 ---
-title: "Episode headline (short)"
-artist: "Artist name"
-episode_number: 2
-publish_date: 2026-04-28
+# ── Required ──────────────────────────────────────────────────────────────────
+title: "Episode headline — editorial and human"
+artist: "Artist or band name"
+episode_number: 19
+publish_date: 2026-06-09
+description: "One or two sentences used on episode cards and as the default meta description."
+tags:
+  - tag1
+  - tag2
+
+# ── Audio / platform ──────────────────────────────────────────────────────────
 spotify_episode_id: "paste_spotify_episode_id"
-featured_playlist_id: "optional_playlist_id"
-description: "One-line description used on cards and for SEO."
-tags: ["tag1", "tag2"]
+anchor_audio_url: "https://anchor.fm/..."
+apple_podcast_url: "https://podcasts.apple.com/..."
+youtube_episode_url: "https://www.youtube.com/watch?v=..."
+iheart_episode_url: "https://www.iheart.com/..."
+featured_playlist_id: "optional_spotify_playlist_id"
+
+# ── Flags ─────────────────────────────────────────────────────────────────────
+has_transcript: false
+draft: false
+hide_photos: false
+
+# ── Artist links (all optional) ───────────────────────────────────────────────
+artist_website: "https://..."
+artist_instagram: "https://www.instagram.com/..."
+artist_youtube: "https://www.youtube.com/@..."
+artist_facebook: "https://www.facebook.com/..."
+artist_bandcamp: "https://....bandcamp.com/"
+
+# ── SEO overrides (all optional — affect only <title> and meta, not page text) ─
+# seo_title must NOT include "| Inlet Wire" — BaseLayout appends it automatically.
+# seo_description should be natural and social-friendly, ideally 140–160 characters.
+seo_title: "Artist on Topic, Topic, and Topic"
+seo_description: "One or two sentences. Natural, not keyword-stuffed. Around 140–160 characters."
+
+# og_image is only needed to override the default /images/og/ep-NN.jpg.
+# og_image: "/images/og/ep-NN-alt.jpg"
+
+# ── Local SEO / entity data (all optional) ────────────────────────────────────
+# city and region power the All Episodes location display and local SEO.
+# guests, studio, and producer must be clearly confirmed in the episode content.
+# Do not guess. Leave blank if uncertain.
+city: "Vancouver"
+region: "BC"
+guests:
+  - "First Last"
+studio: "Studio Name"
+producer: "Producer Name"
 ---
 ```
+
+**Field notes**
+
+- `title` stays editorial and human — this is what appears on the page as the visible lede.
+- `seo_title` is the behind-the-scenes `<title>` tag only. Never change the visible page heading here.
+- `city` + `region` appear as a subtle location line on episode cards across the site (e.g. `Nanaimo, Vancouver Island, BC`).
+- `guests` should be exact names as they appear in the episode. First name only is acceptable if that is all that is confirmed.
+- Only fill `studio` and `producer` when explicitly stated in the episode — do not infer from tags.
+
+**Example (The Shindigs)**
+
+```yaml
+title: "The Shindigs: From Childhood Buddies to a Band"
+artist: "The Shindigs"
+seo_title: "The Shindigs on Nanaimo Roots, Friendship, and Growing Into a Band"
+seo_description: "The Shindigs talk about Nanaimo roots, childhood friendship, and how the band grew into something more serious on Inlet Wire."
+city: "Nanaimo"
+region: "Vancouver Island, BC"
+guests:
+  - "Shea Peoples"
+  - "Alex Peabody"
+```
+
+**New episode checklist**
+
+- [ ] Confirm artist name spelling
+- [ ] Confirm guest names from episode content — do not guess
+- [ ] Confirm pronunciation guide separately if needed
+- [ ] Confirm city and region
+- [ ] Write `seo_title` without `| Inlet Wire`
+- [ ] Write `seo_description` around 140–160 characters
+- [ ] Confirm OG image path (leave blank to use default `ep-NN.jpg`)
+- [ ] Set `draft: true` while working, flip to `false` before publishing
+- [ ] Run `npm run build` locally before pushing
 
 3. Write the article body below the frontmatter using normal Markdown. Aim for 400 to 600 words, with `##` and `###` subheads for SEO.
 4. Open GitHub Desktop. Review the change, write a short commit summary ("Add Molly Annelle episode"), click Commit to main, then Push origin.

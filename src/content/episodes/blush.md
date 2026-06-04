@@ -15,6 +15,10 @@ tags:
   - indie-rock
   - indie-pop
   - alternative
+city: "Victoria"
+region: "Vancouver Island, BC"
+studio: "The Hive Studio"
+producer: "Colin Stewart"
 draft: false
 has_transcript: true
 artist_website: "https://www.whereisblush.com/"

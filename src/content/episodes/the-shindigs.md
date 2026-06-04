@@ -13,6 +13,11 @@ tags:
   - nanaimo
   - vancouver-island
   - band
+city: "Nanaimo"
+region: "Vancouver Island, BC"
+guests:
+  - "Shea Peoples"
+  - "Alex Peabody"
 has_transcript: true
 draft: false
 seo_title: "The Shindigs on Nanaimo Roots, Friendship, and Growing Into a Band"

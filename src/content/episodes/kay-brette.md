@@ -15,6 +15,10 @@ tags:
   - singer-songwriter
   - indie-pop
   - pop
+city: "Vancouver"
+region: "BC"
+studio: "Park Sound Studio"
+producer: "Andy Schichter"
 draft: false
 has_transcript: true
 artist_website: "https://www.kaybrette.com/"

@@ -15,6 +15,10 @@ tags:
   - classic-rock
   - indie-rock
   - alternative
+city: "Vancouver"
+region: "BC"
+guests:
+  - "Bradley Lambert"
 draft: false
 artist_website: "https://www.spendomusic.com/"
 artist_instagram: "https://www.instagram.com/spendo_music/"

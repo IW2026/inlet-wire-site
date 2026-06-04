@@ -15,7 +15,8 @@ tags:
   - post-punk
   - indie-rock
   - alternative
-
+city: "Vancouver"
+region: "BC"
 draft: false
 artist_website: "https://thehausplants.com/"
 artist_instagram: "https://www.instagram.com/thehausplants/"

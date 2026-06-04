@@ -15,6 +15,10 @@ tags:
   - indie-rock
   - alternative
   - garage-rock
+city: "Langford"
+region: "Vancouver Island, BC"
+guests:
+  - "Andrew Whitney"
 draft: false
 has_transcript: true
 artist_website: "https://poshcoat.com/"

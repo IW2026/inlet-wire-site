@@ -15,6 +15,10 @@ tags:
   - singer-songwriter
   - indie-folk
 
+city: "Vancouver"
+region: "BC"
+guests:
+  - "Kevan"
 draft: false
 has_transcript: true
 artist_instagram: "https://www.instagram.com/tobaccobrown/"

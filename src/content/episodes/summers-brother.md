@@ -14,6 +14,13 @@ tags:
   - indie-rock
   - alternative
   - band
+city: "Vancouver"
+region: "BC"
+guests:
+  - "Connor"
+  - "Andy Schichter"
+studio: "Park Sound Studio"
+producer: "Andy Schichter"
 has_transcript: true
 draft: false
 artist_instagram: "https://www.instagram.com/summers.brother/"

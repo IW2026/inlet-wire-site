@@ -25,6 +25,12 @@ const episodes = defineCollection({
     artist_youtube: z.string().url().optional(),
     artist_facebook: z.string().url().optional(),
     artist_bandcamp: z.string().url().optional(),
+    // Local SEO / entity fields — data prep only; not yet displayed on site.
+    city: z.string().optional(),
+    region: z.string().optional(),
+    guests: z.array(z.string()).optional(),
+    studio: z.string().optional(),
+    producer: z.string().optional(),
     // Optional SEO overrides — affect only <title> and meta description, not visible content.
     seo_title: z.string().optional(),
     seo_description: z.string().optional(),

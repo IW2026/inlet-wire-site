@@ -16,6 +16,8 @@ tags:
   - self-produced
   - indie-pop
   - pop
+city: "Vancouver"
+region: "BC"
 draft: false
 artist_website: "https://www.jodyglenham.com/"
 artist_instagram: "https://www.instagram.com/summerwitch/"

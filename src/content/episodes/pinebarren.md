@@ -15,7 +15,8 @@ tags:
   - indie-rock
   - folk-rock
   - alternative
-
+city: "Vancouver"
+region: "BC"
 draft: false
 artist_website: "https://pinebarren.com/"
 artist_instagram: "https://www.instagram.com/pinebarren.music/"

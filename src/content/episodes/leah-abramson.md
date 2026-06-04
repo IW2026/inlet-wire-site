@@ -14,6 +14,9 @@ tags:
   - singer-songwriter
   - indie-folk
   - solo-artist
+city: "Vancouver"
+region: "BC"
+producer: "Jason Starnes"
 has_transcript: true
 draft: false
 artist_website: "https://www.leahabramson.com/"

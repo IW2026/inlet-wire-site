@@ -15,6 +15,8 @@ tags:
   - indie-rock
   - indie-folk
   - alternative
+city: "Pemberton"
+region: "BC"
 has_transcript: true
 draft: false
 artist_website: "https://thezummers.com/"

@@ -15,7 +15,8 @@ tags:
   - pop-punk
   - alternative
   - rain-drenched
-
+city: "Vancouver"
+region: "BC"
 draft: false
 artist_website: "https://www.chiefstate.com/"
 artist_instagram: "https://www.instagram.com/chiefstate/"

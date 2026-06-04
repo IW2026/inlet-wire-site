@@ -14,6 +14,10 @@ tags:
   - victoria
   - indie-rock
   - alternative
+city: "Victoria"
+region: "Vancouver Island, BC"
+guests:
+  - "Huckleberry"
 draft: false
 has_transcript: true
 artist_website: "https://silverwareband.com/"

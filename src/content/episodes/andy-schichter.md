@@ -18,6 +18,10 @@ tags:
   - producer
   - studio
   - north-vancouver
+city: "North Vancouver"
+region: "BC"
+studio: "Park Sound Studio"
+producer: "Andy Schichter"
 hide_photos: true
 artist_website: "https://parksoundstudio.com/"
 artist_instagram: "https://www.instagram.com/andyshick/"

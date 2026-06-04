@@ -14,6 +14,10 @@ tags:
   - east-van
   - production
   - studio
+city: "Vancouver"
+region: "BC"
+studio: "Blue Light Studio"
+producer: "Kaj Falch-Nielsen"
 has_transcript: true
 draft: false
 artist_website: "https://bluelightstudio.ca/"

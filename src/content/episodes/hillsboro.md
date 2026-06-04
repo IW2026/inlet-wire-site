@@ -15,6 +15,11 @@ tags:
   - shoegaze
   - indie-rock
   - alternative
+city: "Victoria"
+region: "Vancouver Island, BC"
+guests:
+  - "Nima"
+producer: "Colin Stewart"
 draft: false
 has_transcript: true
 artist_instagram: "https://www.instagram.com/hillsboroinc/"

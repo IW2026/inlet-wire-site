@@ -38,15 +38,16 @@ const breadcrumbJsonLd = {
 };
 ---
 <BaseLayout
-  title="All Episodes — BC Artists in Conversation"
+  title="BC Artist Interviews & Podcast Episodes"
   path="/episodes/"
-  description="Browse every Inlet Wire episode. Weekly conversations with BC artists, from Vancouver bands to touring songwriters to producers shaping the scene."
+  description="Browse Inlet Wire episodes featuring short, thoughtful interviews with BC artists, producers, studios, and music people across British Columbia."
   jsonLd={[collectionJsonLd, breadcrumbJsonLd]}
 >
   <section class="hero">
     <div class="container">
       <h1>Episodes</h1>
       <p class="lede">Every BC artist, one conversation at a time.</p>
+      <p class="episodes-intro">Inlet Wire is a BC music podcast with short, thoughtful interviews across British Columbia. Browse conversations from Vancouver, Vancouver Island, and beyond — each one about the stories, choices, and moments behind the music.</p>
     </div>
   </section>
 
@@ -91,6 +92,9 @@ const breadcrumbJsonLd = {
               <div class="episode-card-body">
                 <div class="meta">Ep. {ep.data.episode_number} · {ep.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>
                 <h3>{ep.data.artist}</h3>
+                {(ep.data.city || ep.data.region) && (
+                  <div class="episode-card-location">{[ep.data.city, ep.data.region].filter(Boolean).join(", ")}</div>
+                )}
                 <p>{ep.data.description}</p>
               </div>
             </a>
@@ -100,6 +104,23 @@ const breadcrumbJsonLd = {
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .episodes-intro {
+    margin-top: 0.75rem;
+    max-width: 52ch;
+    opacity: 0.8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .episode-card-location {
+    font-size: 0.72rem;
+    opacity: 0.55;
+    margin: 0.1rem 0 0.3rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+</style>
 
 <script>
 // Client-side tag filter for the episode grid

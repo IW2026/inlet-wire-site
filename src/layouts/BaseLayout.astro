@@ -64,6 +64,12 @@ const jsonLdArray = jsonLd
     ? jsonLd
     : [jsonLd]
   : [];
+
+// Derive OG image MIME type from the file extension so og:image:type is accurate.
+const ogImageMime =
+  ogImage.endsWith(".png")  ? "image/png"  :
+  ogImage.endsWith(".webp") ? "image/webp" :
+  "image/jpeg";
 ---
 <!doctype html>
 <html lang="en-CA">
@@ -126,7 +132,7 @@ const jsonLdArray = jsonLd
     <meta property="og:image" content={absoluteOg} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:type" content={ogImageMime} />
     <meta property="og:image:alt" content={resolvedOgAlt} />
     <!-- Article-specific Open Graph (episode pages) -->
     {ogType === "article" && articlePublishedTime && (

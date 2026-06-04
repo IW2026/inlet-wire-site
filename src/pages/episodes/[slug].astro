@@ -82,8 +82,6 @@ const episodeJsonLd = {
     `${ep.data.artist} podcast`,
     "Canadian music podcast",
     "BC music podcast",
-    "British Columbia music podcast",
-    "Vancouver music podcast",
     "BC artist interview",
     "Inlet Wire",
   ].join(", "),
@@ -124,7 +122,7 @@ const breadcrumbJsonLd = {
   title={ep.data.seo_title ?? `${ep.data.artist} — ${ep.data.title}`}
   description={ep.data.seo_description ?? ep.data.description}
   path={`/episodes/${ep.slug}/`}
-  ogImage={ogCard}
+  ogImage={ep.data.og_image ?? ogCard}
   ogImageAlt={`${ep.data.artist} — ${ep.data.title} | Inlet Wire`}
   ogType="article"
   jsonLd={[episodeJsonLd, breadcrumbJsonLd]}

@@ -28,6 +28,9 @@ const episodes = defineCollection({
     // Optional SEO overrides — affect only <title> and meta description, not visible content.
     seo_title: z.string().optional(),
     seo_description: z.string().optional(),
+    // Optional OG image override — root-relative path (e.g. /images/og/ep-01-alt.jpg).
+    // Falls back to the auto-derived /images/og/ep-NN.jpg when omitted.
+    og_image: z.string().optional(),
     // "From the episode" gallery — editorial carousel slides.
     // Slides with is_cta_slide: true are suppressed on the website
     // (they are Instagram-only CTAs like "Listen on inletwire.com").

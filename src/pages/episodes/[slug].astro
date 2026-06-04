@@ -121,8 +121,8 @@ const breadcrumbJsonLd = {
 };
 ---
 <BaseLayout
-  title={`${ep.data.artist} — ${ep.data.title}`}
-  description={ep.data.description}
+  title={ep.data.seo_title ?? `${ep.data.artist} — ${ep.data.title}`}
+  description={ep.data.seo_description ?? ep.data.description}
   path={`/episodes/${ep.slug}/`}
   ogImage={ogCard}
   ogImageAlt={`${ep.data.artist} — ${ep.data.title} | Inlet Wire`}

@@ -25,6 +25,9 @@ const episodes = defineCollection({
     artist_youtube: z.string().url().optional(),
     artist_facebook: z.string().url().optional(),
     artist_bandcamp: z.string().url().optional(),
+    // Optional SEO overrides — affect only <title> and meta description, not visible content.
+    seo_title: z.string().optional(),
+    seo_description: z.string().optional(),
     // "From the episode" gallery — editorial carousel slides.
     // Slides with is_cta_slide: true are suppressed on the website
     // (they are Instagram-only CTAs like "Listen on inletwire.com").

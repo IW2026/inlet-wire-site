@@ -25,6 +25,7 @@ const episodes = defineCollection({
     artist_youtube: z.string().url().optional(),
     artist_facebook: z.string().url().optional(),
     artist_bandcamp: z.string().url().optional(),
+    artist_patreon: z.string().url().optional(),
     // Local SEO / entity fields — data prep only; not yet displayed on site.
     city: z.string().optional(),
     region: z.string().optional(),

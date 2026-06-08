@@ -265,7 +265,7 @@ const breadcrumbJsonLd = {
     <!-- Artist links + Transcript link -->
     <section>
       <div class="container prose">
-        {(ep.data.artist_website || ep.data.artist_instagram || ep.data.artist_youtube || ep.data.artist_facebook || ep.data.artist_bandcamp) && (
+        {(ep.data.artist_website || ep.data.artist_instagram || ep.data.artist_youtube || ep.data.artist_facebook || ep.data.artist_bandcamp || ep.data.artist_patreon) && (
           <div class="listen-on artist-links">
             <span class="listen-on-label">Find {ep.data.artist} on</span>
             {ep.data.artist_website && (
@@ -296,6 +296,12 @@ const breadcrumbJsonLd = {
               <a class="listen-on-btn" href={ep.data.artist_bandcamp} target="_blank" rel="noopener">
                 <img class="listen-on-icon" src="https://cdn.simpleicons.org/bandcamp/0A0A0A" alt="" aria-hidden="true" />
                 Bandcamp
+              </a>
+            )}
+            {ep.data.artist_patreon && (
+              <a class="listen-on-btn" href={ep.data.artist_patreon} target="_blank" rel="noopener">
+                <img class="listen-on-icon" src="https://cdn.simpleicons.org/patreon/0A0A0A" alt="" aria-hidden="true" />
+                Patreon
               </a>
             )}
           </div>

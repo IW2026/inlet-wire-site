@@ -4,6 +4,7 @@ artist: "Focus Your Audio"
 episode_number: 21
 publish_date: 2026-06-23
 spotify_episode_id: "7dk3jxpK6HV6JxO4DiEDrL"
+anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/121871195/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-23%2F426665055-44100-2-bc6d7748369b6.m4a"
 description: "Vancouver duo Focus Your Audio (Sarah and Bobby) talk about writing songs apart before bringing them together, the story behind their song “The Long Goodbye,” and what they've learned from producers Mike Young of Mother Mother and Adam Hurstfield."
 tags:
   - vancouver
@@ -13,8 +14,8 @@ tags:
 city: "Vancouver"
 region: "BC"
 guests:
-  - "Sarah McArthur"
-  - "Bobby McAloney"
+  - "Sarah"
+  - "Bobby"
 has_transcript: true
 draft: false
 artist_website: "https://focusyouraudio.ca"
@@ -25,7 +26,7 @@ artist_youtube: "https://www.youtube.com/channel/UCbRkoI0u81jKliHNIyglV0Q"
 youtube_episode_url: "https://www.youtube.com/watch?v=cwxHa7HXRAY"
 ---
 
-Focus Your Audio is a Vancouver duo made up of Sarah McArthur and Bobby McAloney, and on this episode they talk about how a partnership like theirs actually works day to day.
+Focus Your Audio is a Vancouver duo made up of Sarah and Bobby, and on this episode they talk about how a partnership like theirs actually works day to day.
 
 They started as an acoustic duo nine years ago and have only recently grown into a fuller band sound on stage, though they've always recorded with full production behind the scenes. Sarah and Bobby describe their own sound as folk, indie pop, and genre-bending, all at once.
 

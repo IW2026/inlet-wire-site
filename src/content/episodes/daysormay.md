@@ -3,6 +3,7 @@ title: "Sound, Trust, and Stripping It Back"
 artist: "daysormay"
 episode_number: 22
 publish_date: 2026-06-29
+duration: "00:13:30"
 spotify_episode_id: "0WOxDQ8fH4WgDh8E4MlKmw"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/daysormay-on-sound-trust-and-stripping-it-back/id1876137985?i=1000774673327&uo=4"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/122134119/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-29%2F427017876-44100-2-912e181efa304.m4a"

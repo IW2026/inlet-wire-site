@@ -4,6 +4,7 @@ artist: "Jody Glenham"
 episode_number: 9
 spotify_episode_id: "5dejPZ7fDKJXFRHmDMgUxl"
 publish_date: 2026-03-30
+duration: "00:10:58"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/117677094/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-2-30%2F421034936-44100-2-2c7109c449c83.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/jody-glenham-still-here/id1876137985?i=1000758187326&uo=4"
 youtube_episode_url: "https://www.youtube.com/watch?v=S0eH7_BQ2FM"

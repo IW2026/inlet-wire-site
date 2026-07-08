@@ -4,6 +4,7 @@ artist: "Chief State"
 episode_number: 4
 spotify_episode_id: "2IZlfuTKafDvacBOOj2CN1"
 publish_date: 2026-02-23
+duration: "00:11:10"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/115766333/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-1-20%2F418452678-44100-2-5402c0e8476d9.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/chief-state-keep-your-friends-closer/id1876137985?i=1000751032027&uo=4"
 youtube_episode_url: "https://www.youtube.com/watch?v=LDxjgIyXxzw"

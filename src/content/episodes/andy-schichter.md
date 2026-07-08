@@ -3,6 +3,7 @@ title: "Building Park Sound Studio"
 artist: "Andy Schichter"
 episode_number: 2
 publish_date: 2026-02-16
+duration: "00:10:14"
 spotify_episode_id: "0FSjRIl4qOA9D7Byk5pOqo"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/115281792/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-1-12%2F417949541-44100-2-e158b49e2fe4b.m4a"
 apple_podcast_url: "https://podcasts.apple.com/ca/podcast/andy-schichter-from-cold-calls-to-park-sound-studio/id1876137985?i=1000749036195"
@@ -15,9 +16,6 @@ tags:
   - north-vancouver
   - studio
   - recording
-  - producer
-  - studio
-  - north-vancouver
 city: "North Vancouver"
 region: "BC"
 studio: "Park Sound Studio"

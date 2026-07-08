@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
 ---
-<BaseLayout title="Waves & Wire" path="/waves-and-wire/" description="Sound, place, and performance. Captured by Inlet Wire.">
+<BaseLayout title="Waves & Wire — Live Performance Series" path="/waves-and-wire/" description="Waves & Wire is Inlet Wire's live performance series — BC artists captured live, in settings true to them. Sound, place, and performance.">
   <section class="hero">
     <div class="container prose">
       <h1>Waves & Wire</h1>
@@ -14,10 +15,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p>Waves & Wire is Inlet Wire's live performance series. The idea behind it is simple: where music happens is part of the music. The room, the air, the atmosphere all end up in the take. So instead of removing that, this series is built around it.</p>
       <p>Each session captures an artist live, in a setting that feels true to them. Not polished out of recognition. Just sound, place, and performance, close enough to feel real.</p>
       <p>Rooted in BC. Built around the same artist-first approach as the podcast.</p>
-      <p>The first session is in production. Leave a note and we will let you know when it goes live.</p>
-      <p style="margin-top: 2rem;">
-        <a class="btn" href="/contact/?subject=Waves+%26+Wire">Get notified</a>
-      </p>
+    </div>
+  </section>
+
+  <section class="newsletter-section">
+    <div class="container">
+      <NewsletterSignup
+        source="waves-and-wire"
+        kicker="First session in production"
+        headline="Hear it when it goes live."
+        sub="Leave your email and you'll get one message when the first Waves & Wire session is out."
+      />
     </div>
   </section>
 </BaseLayout>

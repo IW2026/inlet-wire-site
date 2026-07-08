@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",   item: "https://inletwire.com/" },
+    { "@type": "ListItem", position: 2, name: "Submit", item: "https://inletwire.com/submit/" },
+  ],
+};
+---
+<BaseLayout
+  title="Submit Your Music — BC Artists"
+  path="/submit/"
+  description="How to submit your music to Inlet Wire. BC artists at any stage — for a podcast episode or The Sound of BC playlist. What to send and what happens next."
+  jsonLd={[breadcrumbJsonLd]}
+>
+  <section class="hero">
+    <div class="container prose">
+      <h1>Submit your music</h1>
+      <p class="lede">For BC artists. Two ways in: the podcast and the playlist.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Who this is for</h2>
+      <p>Inlet Wire features artists from British Columbia — bands, solo artists, producers, and the people behind the studios. There's no minimum follower count and no release-cycle requirement. If you're making music in BC and there's a story behind the work, that's the bar.</p>
+
+      <h2>The two paths</h2>
+      <p><strong>A podcast episode.</strong> A short, edited conversation about who you are, how you got here, and what you're making. Episodes run about ten minutes and are built to last past the release cycle.</p>
+      <p><strong>The Sound of BC playlist.</strong> Not every submission becomes an episode, and it doesn't have to. <a class="link" href="/playlists/">The playlist</a> is an ongoing home for BC music worth hearing — some artists land there first and on the show later.</p>
+
+      <h2>What to send</h2>
+      <p>Keep it simple. No press kit needed. Include:</p>
+      <ul>
+        <li>Who you are and where in BC you're based</li>
+        <li>A link to your music — Spotify, Bandcamp, wherever it lives</li>
+        <li>A couple of sentences on what you're working on right now</li>
+      </ul>
+
+      <h2>What happens next</h2>
+      <p>Every submission gets a listen. If it's a fit for an episode or the playlist, you'll hear back. If you don't hear back right away, it doesn't mean no — episodes are planned weeks ahead, and timing matters as much as fit.</p>
+
+      <p style="margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.6rem;">
+        <a class="btn" href="/contact/?subject=Artist">Use the form</a>
+        <a class="btn ghost" href="mailto:submissions@inletwire.com">submissions@inletwire.com</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

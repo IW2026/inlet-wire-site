@@ -1,12 +1,27 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { durationLabel } from "../lib/taxonomy";
 
 const published = (await getCollection("episodes", ({ data }) => !data.draft))
   .sort((a, b) => b.data.episode_number - a.data.episode_number);
 
 const latest = published[0];
 const recent = published.slice(0, 6);
+
+// "Start here" — three hand-picked episodes for first-time visitors.
+// Edit the slugs and hooks below to rotate the picks.
+const startHerePicks = [
+  { slug: "hillsboro", hook: "How a band changes in six years" },
+  { slug: "francis-baptiste", hook: "Carrying language and heritage into song" },
+  { slug: "andy-schichter", hook: "The studio side: building Park Sound from a Craigslist lease" },
+];
+const startHere = startHerePicks
+  .map((pick) => {
+    const ep = published.find((e) => e.slug === pick.slug);
+    return ep ? { ep, hook: pick.hook } : null;
+  })
+  .filter(Boolean) as { ep: (typeof published)[number]; hook: string }[];
 
 // "Feeling lucky?" random-episode pick. We exclude the latest episode
 // so it doesn't double up with the hero above. Initial pick is random
@@ -277,6 +292,47 @@ const podcastJsonLd = {
     </section>
   )}
 
+  {startHere.length > 0 && (
+    <section>
+      <div class="container">
+        <div class="pick-kicker">New here?</div>
+        <h2 style="margin-top: 0.25rem;">Start with these three.</h2>
+        <p class="prose text-muted" style="margin-top: 0.5rem;">Three conversations that show what the show is about — a band, a songwriter, and the studio side.</p>
+        <div class="episode-grid" style="margin-top: 1.5rem;">
+          {startHere.map(({ ep, hook }) => {
+            const epNum = String(ep.data.episode_number).padStart(2, "0");
+            return (
+              <a class="episode-card" href={`/episodes/${ep.slug}/`}>
+                <div class="episode-card-thumb-wrap">
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcset={`/images/episodes/ep-${epNum}-cover.webp`}
+                    />
+                    <img
+                      class="episode-card-thumb"
+                      src={`/images/episodes/ep-${epNum}-cover.jpg`}
+                      alt={`${ep.data.artist} episode cover`}
+                      width="400"
+                      height="400"
+                      loading="lazy"
+                      onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
+                    />
+                  </picture>
+                </div>
+                <div class="episode-card-body">
+                  <div class="meta">Ep. {ep.data.episode_number}{durationLabel(ep.data.duration) ? ` · ${durationLabel(ep.data.duration)}` : ""}</div>
+                  <h3>{ep.data.artist}</h3>
+                  <p>{hook}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
   {initialPick && (
     <section class="cream">
       <div class="container">
@@ -404,7 +460,7 @@ const podcastJsonLd = {
           <p class="text-muted" style="margin-top: 0.5rem; font-size: 0.95rem;">Catch the latest from Inlet Wire and follow along between episodes.</p>
         </div>
         <a class="follow-btn" href="https://www.instagram.com/inletwire" target="_blank" rel="noopener" style="align-self: flex-start;">
-          <img class="follow-btn-icon" src="https://cdn.simpleicons.org/instagram/0A0A0A" alt="" aria-hidden="true" />
+          <img class="follow-btn-icon" src="/icons/instagram.svg" alt="" aria-hidden="true" />
           Follow
         </a>
       </div>

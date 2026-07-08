@@ -4,6 +4,7 @@ artist: "Kay Brette"
 episode_number: 8
 spotify_episode_id: "0J0lJwj4M3PLyDK58AMvZY"
 publish_date: 2026-03-23
+duration: "00:09:59"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/117338967/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-2-23%2F420579621-44100-2-fd3cbc87b2bd.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/kay-brette-the-songs-arent-sad-anymore/id1876137985?i=1000756727580&uo=4"
 youtube_episode_url: "https://www.youtube.com/watch?v=j2OzwV1G30w"

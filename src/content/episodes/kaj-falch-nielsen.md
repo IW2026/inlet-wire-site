@@ -3,6 +3,7 @@ title: "Kaj from Blue Light Studio on Building an East Van Creative Hub"
 artist: "Kaj Falch-Nielsen"
 episode_number: 17
 publish_date: 2026-05-25
+duration: "00:11:20"
 spotify_episode_id: "0W6TZTgnVBgbtiasBRK4aR"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/120501111/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-4-25%2F424834246-44100-2-417336402689f.m4a"
 apple_podcast_url: "https://podcasts.apple.com/tw/podcast/inlet-wire/id1876137985?i=1000769455335"
@@ -11,7 +12,7 @@ iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/ep
 description: "Kaj from Blue Light Studio joins Inlet Wire to talk about how a recording space can become something bigger than just a studio. Eric Chan speaks with Kaj about Blue Light's growth into an East Vancouver creative hub, how Blue Light Sessions helped build community around the room, and what it takes to keep a space like that going in Vancouver. They also get into Kaj's approach as a producer — understanding the song first, building it piece by piece, and chasing those moments in the studio when everything suddenly clicks."
 tags:
   - vancouver
-  - east-van
+  - east-vancouver
   - production
   - studio
 city: "Vancouver"

@@ -3,6 +3,7 @@ title: "On The Abramson Singers Return"
 artist: "Leah Abramson"
 episode_number: 14
 publish_date: 2026-05-04
+duration: "00:09:59"
 spotify_episode_id: "6SxQYIB4nxWkqrMp6Rbzj7"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/119442132/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-4-4%2F423410528-44100-2-9a04ab3834a0b.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/leah-abramson-on-the-abramson-singers-return/id1876137985?i=1000765997530&uo=4"

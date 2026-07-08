@@ -1,14 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { regionForCity, genresForTags, durationLabel, GENRE_BUCKETS } from "../../lib/taxonomy";
 
 const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
   .sort((a, b) => b.data.episode_number - a.data.episode_number);
 
-// Build the sorted, unique list of tags across all episodes
-const allTags = Array.from(
-  new Set(episodes.flatMap((ep) => ep.data.tags ?? []))
-).sort();
+// Curated facets: Region (from each episode's city) and Sound (from tags,
+// mapped into a handful of buckets in src/lib/taxonomy.ts). Raw tags still
+// power SEO keywords; visitors only see facets with enough episodes to be
+// worth clicking.
+const regions = Array.from(
+  new Set(episodes.map((ep) => regionForCity(ep.data.city)).filter(Boolean))
+) as string[];
+const genres = Object.keys(GENRE_BUCKETS).filter((g) =>
+  episodes.some((ep) => genresForTags(ep.data.tags).includes(g))
+);
 
 const collectionJsonLd = {
   "@context": "https://schema.org",
@@ -53,24 +60,37 @@ const breadcrumbJsonLd = {
 
   <section>
     <div class="container">
-      {allTags.length > 0 && (
-        <div class="tag-filter" role="group" aria-label="Filter episodes by tag">
-          <button class="tag-filter-btn active" data-filter="__all">All</button>
-          {allTags.map((tag) => (
-            <button class="tag-filter-btn" data-filter={tag}>{tag}</button>
-          ))}
-        </div>
-      )}
+      <div class="facet-rows">
+        {regions.length > 1 && (
+          <div class="tag-filter facet-row" role="group" aria-label="Filter episodes by region">
+            <span class="facet-label">Region</span>
+            <button class="tag-filter-btn active" data-facet="region" data-filter="__all">All</button>
+            {regions.map((r) => (
+              <button class="tag-filter-btn" data-facet="region" data-filter={r}>{r}</button>
+            ))}
+          </div>
+        )}
+        {genres.length > 1 && (
+          <div class="tag-filter facet-row" role="group" aria-label="Filter episodes by sound">
+            <span class="facet-label">Sound</span>
+            <button class="tag-filter-btn active" data-facet="genre" data-filter="__all">All</button>
+            {genres.map((g) => (
+              <button class="tag-filter-btn" data-facet="genre" data-filter={g}>{g}</button>
+            ))}
+          </div>
+        )}
+      </div>
+      <p class="facet-empty" id="facetEmpty" hidden>No episodes match that combination yet. <button class="facet-reset" id="facetReset" type="button">Show all episodes</button></p>
 
       <div class="episode-grid" id="episodeGrid">
         {episodes.map((ep) => {
           const epNum = String(ep.data.episode_number).padStart(2, "0");
-          const tagAttr = (ep.data.tags ?? []).join(",");
           return (
             <a
               class="episode-card"
               href={`/episodes/${ep.slug}/`}
-              data-tags={tagAttr}
+              data-region={regionForCity(ep.data.city) ?? ""}
+              data-genres={genresForTags(ep.data.tags).join("|")}
             >
               <div class="episode-card-thumb-wrap">
                 <picture>
@@ -90,7 +110,7 @@ const breadcrumbJsonLd = {
                 </picture>
               </div>
               <div class="episode-card-body">
-                <div class="meta">Ep. {ep.data.episode_number} · {ep.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}</div>
+                <div class="meta">Ep. {ep.data.episode_number} · {ep.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}{durationLabel(ep.data.duration) ? ` · ${durationLabel(ep.data.duration)}` : ""}</div>
                 <h3>{ep.data.artist}</h3>
                 {(ep.data.city || ep.data.region) && (
                   <div class="episode-card-location">{[ep.data.city, ep.data.region].filter(Boolean).join(", ")}</div>
@@ -106,6 +126,33 @@ const breadcrumbJsonLd = {
 </BaseLayout>
 
 <style>
+  .facet-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .facet-row {
+    align-items: center;
+  }
+  .facet-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    min-width: 3.5rem;
+  }
+  .facet-empty {
+    margin-top: 1.5rem;
+    opacity: 0.8;
+  }
+  .facet-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
   .episodes-intro {
     margin-top: 0.75rem;
     max-width: 52ch;
@@ -123,23 +170,48 @@ const breadcrumbJsonLd = {
 </style>
 
 <script>
-// Client-side tag filter for the episode grid
+// Client-side faceted filter — Region and Sound combine (AND).
 const buttons = document.querySelectorAll<HTMLButtonElement>(".tag-filter-btn");
 const cards   = document.querySelectorAll<HTMLElement>("#episodeGrid .episode-card");
+const empty   = document.getElementById("facetEmpty");
+const reset   = document.getElementById("facetReset");
+
+const active: Record<string, string> = { region: "__all", genre: "__all" };
+
+function apply() {
+  let visible = 0;
+  cards.forEach((card) => {
+    const regionOk =
+      active.region === "__all" || card.getAttribute("data-region") === active.region;
+    const genres = (card.getAttribute("data-genres") ?? "").split("|");
+    const genreOk = active.genre === "__all" || genres.includes(active.genre);
+    const show = regionOk && genreOk;
+    card.style.display = show ? "" : "none";
+    if (show) visible++;
+  });
+  if (empty) empty.hidden = visible > 0;
+}
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const filter = btn.getAttribute("data-filter");
-    buttons.forEach((b) => b.classList.toggle("active", b === btn));
-
-    cards.forEach((card) => {
-      if (filter === "__all") {
-        card.style.display = "";
-        return;
+    const facet  = btn.getAttribute("data-facet") ?? "";
+    const filter = btn.getAttribute("data-filter") ?? "__all";
+    active[facet] = filter;
+    buttons.forEach((b) => {
+      if (b.getAttribute("data-facet") === facet) {
+        b.classList.toggle("active", b === btn);
       }
-      const tags = (card.getAttribute("data-tags") ?? "").split(",");
-      card.style.display = tags.includes(filter ?? "") ? "" : "none";
     });
+    apply();
   });
+});
+
+reset?.addEventListener("click", () => {
+  active.region = "__all";
+  active.genre  = "__all";
+  buttons.forEach((b) => {
+    b.classList.toggle("active", b.getAttribute("data-filter") === "__all");
+  });
+  apply();
 });
 </script>

@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Page not found"
+  description="The page you were looking for doesn't exist."
+  path="/404/"
+  noindex={true}
+>
+  <section class="hero not-found-hero">
+    <div class="container prose">
+      <h1>Page not found</h1>
+      <p class="lede">That page doesn't exist, or the link may have changed.</p>
+      <div class="not-found-actions">
+        <a class="btn" href="/episodes/">Browse episodes →</a>
+        <a class="btn ghost" href="/">Back home</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+  }
+  .not-found-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+</style>

@@ -3,6 +3,7 @@ title: "The Early Chapter Behind Distracted"
 artist: "The Zummers"
 episode_number: 13
 publish_date: 2026-04-28
+duration: "00:10:03"
 spotify_episode_id: "4JuiqFtpSCnGugRZnZUR3b"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/119100961/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-27%2F422943333-44100-2-280f878a16a52.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/the-zummers-first-chapter-behind-distracted/id1876137985?i=1000763773166"

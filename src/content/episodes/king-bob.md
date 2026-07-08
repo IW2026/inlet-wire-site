@@ -3,6 +3,7 @@ title: "Making Music That Is About Something"
 artist: "King Bob"
 episode_number: 19
 publish_date: 2026-06-08
+duration: "00:10:29"
 spotify_episode_id: "1RmuSIEksAKTZgGPG92DfQ"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/121187850/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-8%2F425752105-44100-2-823c354eb60c5.m4a"
 apple_podcast_url: "https://podcasts.apple.com/ca/podcast/king-bob-making-music-that-is-about-something/id1876137985?i=1000771742790"

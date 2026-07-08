@@ -3,6 +3,7 @@ title: "Music, Language, and Heritage"
 artist: "Francis Baptiste"
 episode_number: 15
 publish_date: 2026-05-11
+duration: "00:10:08"
 spotify_episode_id: "0Seaf4TimmagHpCdx16hfC"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/119802483/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-4-11%2F423901778-44100-2-684880723c1c.m4a"
 description: "On this episode of Inlet Wire, Francis Baptiste talks about coming back to music, and how that path led him back toward language, family, and heritage. He talks about learning the Okanagan language, carrying parts of it into song, and why that matters to him as a father, songwriter, and member of a lineage he wants to help preserve. Francis also shares how he works with Levi Bent to shape poems into songs, and why one song, Snəqsilx (sneh-silk), has stayed close through it all."

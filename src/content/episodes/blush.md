@@ -3,6 +3,7 @@ title: "Friendship, Growth and the New EP"
 artist: "Blush"
 episode_number: 7
 publish_date: 2026-03-16
+duration: "00:10:08"
 spotify_episode_id: "7wnNIp0aZj48Fa9qtuUQD8"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/116943371/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-2-15%2F420043077-44100-2-2b589cda8bba4.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/blush-friendship-growth-and-the-new-ep/id1876137985?i=1000755586022&uo=4"

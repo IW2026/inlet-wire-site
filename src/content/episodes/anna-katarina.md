@@ -3,6 +3,7 @@ title: "Anna Katarina on the Life Around the Dream"
 artist: "Anna Katarina"
 episode_number: 20
 publish_date: 2026-06-15
+duration: "00:10:21"
 spotify_episode_id: "6gHhjb0xIRm0lwnqBT0jXV"
 description: "Anna Katarina talks about her album While I Was Dreaming — a record built around the moments that happen outside the fantasy of success. We get into the pressure of releasing music now, what collaboration taught her about finishing a song, and why she came back to BC after time in Nashville."
 tags:

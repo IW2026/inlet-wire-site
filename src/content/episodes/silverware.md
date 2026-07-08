@@ -4,6 +4,7 @@ artist: "Silverware"
 episode_number: 3
 spotify_episode_id: "5OYtG4eOY617XnrnWk1ZSe"
 publish_date: 2026-02-16
+duration: "00:10:09"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/115559824/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-1-16%2F418175455-44100-2-10e5f0e439921.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/silverware-down-for-the-long-haul/id1876137985?i=1000749967760&uo=4"
 youtube_episode_url: "https://www.youtube.com/watch?v=tSoXkATC0M0"

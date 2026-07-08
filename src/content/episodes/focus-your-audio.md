@@ -3,7 +3,9 @@ title: "Songs About Connection"
 artist: "Focus Your Audio"
 episode_number: 21
 publish_date: 2026-06-23
+duration: "00:10:28"
 spotify_episode_id: "7dk3jxpK6HV6JxO4DiEDrL"
+apple_podcast_url: "https://podcasts.apple.com/us/podcast/focus-your-audio-songs-about-connection/id1876137985?i=1000773858110&uo=4"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/121871195/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-23%2F426665055-44100-2-bc6d7748369b6.m4a"
 description: "Vancouver duo Focus Your Audio (Sarah and Bobby) talk about writing songs apart before bringing them together, the story behind their song “The Long Goodbye,” and what they've learned from producers Mike Young of Mother Mother and Adam Hurstfield."
 tags:

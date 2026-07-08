@@ -11,6 +11,8 @@ const episodes = defineCollection({
     featured_playlist_id: z.string().optional(),
     anchor_audio_url: z.string().optional(),
     description: z.string(),
+    // Episode length as "HH:MM:SS" (from the RSS feed's itunes:duration).
+    duration: z.string().optional(),
     tags: z.array(z.string()).default([]),
     apple_podcast_url: z.string().optional(),
     has_transcript: z.boolean().default(false),

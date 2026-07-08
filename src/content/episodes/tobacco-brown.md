@@ -4,6 +4,7 @@ artist: "Tobacco Brown"
 episode_number: 11
 spotify_episode_id: "5skMH9XHkKR1fHF6xAqDFJ"
 publish_date: 2026-04-13
+duration: "00:10:34"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/118365270/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-13%2F421948920-44100-2-b3f06053e165f.m4a"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/tobacco-brown-from-acting-school-to-songwriting/id1876137985?i=1000761073195&uo=4"
 youtube_episode_url: "https://www.youtube.com/watch?v=4n1uSXcSu8U"

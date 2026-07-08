@@ -1,0 +1,80 @@
+---
+// Inlet Wire — reusable newsletter signup.
+// Drop <NewsletterSignup source="episode" /> anywhere. The `source` prop is
+// recorded with each signup so we can see which placements convert.
+export interface Props {
+  /** Where this form lives — sent to the endpoint with each signup. */
+  source: string;
+  kicker?: string;
+  headline?: string;
+  sub?: string;
+  fine?: string;
+}
+const {
+  source,
+  kicker = "Newsletter",
+  headline = "Stay in the loop.",
+  sub = "One short email when a new episode lands. A direct line when there's something new to hear.",
+  fine = "Unsubscribe anytime.",
+} = Astro.props;
+const uid = `newsletter-${source}`;
+---
+<div class="newsletter-inner">
+  <div class="newsletter-kicker">{kicker}</div>
+  <h2 class="newsletter-headline">{headline}</h2>
+  <p class="newsletter-sub">{sub}</p>
+  <form
+    id={`${uid}-form`}
+    class="newsletter-form newsletter-form-centered"
+    data-newsletter-form
+    data-source={source}
+    data-endpoint="https://script.google.com/macros/s/AKfycbw68p65bWFxFYZ5Y-vyErqeQI5acqXvqzm8VYeZ-HWQ8Icnp9EEnm53ZzFEmSCtdeLy/exec"
+    novalidate
+  >
+    <input
+      type="email"
+      name="email"
+      placeholder="you@example.com"
+      required
+      aria-label="Email address"
+      autocomplete="email"
+    />
+    <button type="submit">Subscribe</button>
+  </form>
+  <p id={`${uid}-msg`} class="newsletter-fine" data-newsletter-msg aria-live="polite">{fine}</p>
+</div>
+
+<script>
+document.querySelectorAll<HTMLFormElement>("[data-newsletter-form]").forEach((form) => {
+  if (form.dataset.bound) return;
+  form.dataset.bound = "1";
+  const msg = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-msg]");
+  const btn = form.querySelector<HTMLButtonElement>("button[type=submit]");
+  const input = form.querySelector<HTMLInputElement>("input[type=email]");
+  const endpoint = form.dataset.endpoint;
+  if (!endpoint || !btn || !input) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    try {
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ email, source: form.dataset.source ?? "site" }),
+      });
+      if (msg) msg.textContent = "You're in. See you next episode.";
+      input.value = "";
+    } catch {
+      if (msg) { msg.textContent = "Something went wrong. Try again."; msg.style.color = "#c00"; }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Subscribe";
+    }
+  });
+});
+</script>

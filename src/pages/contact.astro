@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const subjectParam = Astro.url.searchParams.get("subject") ?? "";
-const validSubjects = ["Artist", "Press", "Sponsorship", "Waves & Wire"];
-const initialSubject = validSubjects.includes(subjectParam) ? subjectParam : "General";
+// Subject preselect happens client-side (see script below) — this is a
+// static build, so Astro.url.searchParams is always empty at runtime.
+const initialSubject = "General";
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -63,6 +63,20 @@ const breadcrumbJsonLd = {
       <p style="margin-top: 2.5rem;" class="text-muted">
         Prefer email? <a class="link" href="mailto:contact@inletwire.com">contact@inletwire.com</a>
       </p>
+      <p style="margin-top: 1rem;" class="text-muted">
+        Sending music? See <a class="link" href="/submit/">how to submit</a> first.
+      </p>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+// Preselect the subject from ?subject= — must run client-side on a static build.
+const param = new URLSearchParams(location.search).get("subject");
+if (param) {
+  const select = document.getElementById("subject") as HTMLSelectElement | null;
+  if (select && Array.from(select.options).some((o) => o.value === param)) {
+    select.value = param;
+  }
+}
+</script>

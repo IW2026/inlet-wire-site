@@ -2,6 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import FollowCTA from "../../components/FollowCTA.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
+import { regionForCity, genresForTags, durationLabel } from "../../lib/taxonomy";
 
 export async function getStaticPaths() {
   const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
@@ -10,24 +12,47 @@ export async function getStaticPaths() {
   const transcripts = await getCollection("transcripts", ({ data }) => !data.draft);
   const transcriptSlugs = new Set(transcripts.map((t) => t.data.episode_slug));
 
-  return episodes.map((ep, i) => ({
-    params: { slug: ep.slug },
-    props: {
-      ep,
-      prev: episodes[i - 1] ?? null,
-      next: episodes[i + 1] ?? null,
-      hasTranscript: transcriptSlugs.has(ep.slug),
-    },
-  }));
+  return episodes.map((ep, i) => {
+    // Related episodes — scored by shared sound buckets, region, and raw
+    // tags; recency breaks ties. Keeps visitors moving through the archive
+    // instead of dead-ending at prev/next.
+    const myGenres = genresForTags(ep.data.tags);
+    const myRegion = regionForCity(ep.data.city);
+    const myTags = new Set(ep.data.tags ?? []);
+    const related = episodes
+      .filter((other) => other.slug !== ep.slug)
+      .map((other) => {
+        const sharedGenres = genresForTags(other.data.tags).filter((g) => myGenres.includes(g)).length;
+        const sharedTags = (other.data.tags ?? []).filter((t) => myTags.has(t)).length;
+        const sameRegion = myRegion && regionForCity(other.data.city) === myRegion ? 1 : 0;
+        return { other, score: sharedGenres * 2 + sameRegion + sharedTags * 0.5 };
+      })
+      .filter((r) => r.score > 0)
+      .sort((a, b) => b.score - a.score || b.other.data.episode_number - a.other.data.episode_number)
+      .slice(0, 3)
+      .map((r) => r.other);
+
+    return {
+      params: { slug: ep.slug },
+      props: {
+        ep,
+        prev: episodes[i - 1] ?? null,
+        next: episodes[i + 1] ?? null,
+        related,
+        hasTranscript: transcriptSlugs.has(ep.slug),
+      },
+    };
+  });
 }
 
 type Props = {
   ep: CollectionEntry<"episodes">;
   prev: CollectionEntry<"episodes"> | null;
   next: CollectionEntry<"episodes"> | null;
+  related: CollectionEntry<"episodes">[];
   hasTranscript: boolean;
 };
-const { ep, prev, next, hasTranscript } = Astro.props as Props;
+const { ep, prev, next, related, hasTranscript } = Astro.props as Props;
 const { Content } = await ep.render();
 
 const dateLabel = ep.data.publish_date.toLocaleDateString("en-CA", {
@@ -136,7 +161,7 @@ const breadcrumbJsonLd = {
 
     <section class="hero episode-hero">
       <div class="container prose">
-        <div class="meta-line">Ep. {ep.data.episode_number} · {dateLabel}</div>
+        <div class="meta-line">Ep. {ep.data.episode_number} · {dateLabel}{durationLabel(ep.data.duration) ? ` · ${durationLabel(ep.data.duration)} listen` : ""}</div>
         <h1 style="margin-top: 0.5rem;">{ep.data.artist}</h1>
         <p class="lede">{ep.data.title}</p>
         {ep.data.tags && ep.data.tags.length > 0 && (
@@ -183,33 +208,33 @@ const breadcrumbJsonLd = {
             <div class="listen-on">
               <span class="listen-on-label">Listen on</span>
               <a class="listen-on-btn" href={`https://open.spotify.com/episode/${ep.data.spotify_episode_id}`} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/spotify/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/spotify.svg" alt="" aria-hidden="true" />
                 Spotify
               </a>
               {ep.data.apple_podcast_url && (
                 <a class="listen-on-btn" href={ep.data.apple_podcast_url} target="_blank" rel="noopener">
-                  <img class="listen-on-icon" src="https://cdn.simpleicons.org/applepodcasts/0A0A0A" alt="" aria-hidden="true" />
+                  <img class="listen-on-icon" src="/icons/applepodcasts.svg" alt="" aria-hidden="true" />
                   Apple Podcasts
                 </a>
               )}
               <a class="listen-on-btn" href={ep.data.youtube_episode_url ?? "https://www.youtube.com/@InletWire"} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/youtube/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/youtube.svg" alt="" aria-hidden="true" />
                 YouTube
               </a>
               <a class="listen-on-btn" href={ep.data.iheart_episode_url ?? "https://www.iheart.com/podcast/1333-inlet-wire-322764626/"} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/iheartradio/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/iheartradio.svg" alt="" aria-hidden="true" />
                 iHeart
               </a>
               <a class="listen-on-btn" href="https://pca.st/itunes/1876137985" target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/pocketcasts/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/pocketcasts.svg" alt="" aria-hidden="true" />
                 Pocket Casts
               </a>
               <a class="listen-on-btn" href="https://overcast.fm/itunes1876137985" target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/overcast/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/overcast.svg" alt="" aria-hidden="true" />
                 Overcast
               </a>
               <a class="listen-on-btn" href="https://anchor.fm/s/10edfd0cc/podcast/rss" target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/rss/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/rss.svg" alt="" aria-hidden="true" />
                 RSS
               </a>
               <button class="listen-on-btn share-btn" data-share-btn data-share-url={`https://inletwire.com/episodes/${ep.slug}/`} data-share-title={`${ep.data.artist} — ${ep.data.title}`} type="button" aria-label="Share this episode">
@@ -233,20 +258,20 @@ const breadcrumbJsonLd = {
               <span class="listen-on-label">Listen on</span>
               {ep.data.apple_podcast_url && (
                 <a class="listen-on-btn" href={ep.data.apple_podcast_url} target="_blank" rel="noopener">
-                  <img class="listen-on-icon" src="https://cdn.simpleicons.org/applepodcasts/0A0A0A" alt="" aria-hidden="true" />
+                  <img class="listen-on-icon" src="/icons/applepodcasts.svg" alt="" aria-hidden="true" />
                   Apple Podcasts
                 </a>
               )}
               <a class="listen-on-btn" href={ep.data.youtube_episode_url ?? "https://www.youtube.com/@InletWire"} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/youtube/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/youtube.svg" alt="" aria-hidden="true" />
                 YouTube
               </a>
               <a class="listen-on-btn" href={ep.data.iheart_episode_url ?? "https://www.iheart.com/podcast/1333-inlet-wire-322764626/"} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/iheartradio/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/iheartradio.svg" alt="" aria-hidden="true" />
                 iHeart
               </a>
               <a class="listen-on-btn" href="https://anchor.fm/s/10edfd0cc/podcast/rss" target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/rss/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/rss.svg" alt="" aria-hidden="true" />
                 RSS
               </a>
             </div>
@@ -270,37 +295,37 @@ const breadcrumbJsonLd = {
             <span class="listen-on-label">Find {ep.data.artist} on</span>
             {ep.data.artist_website && (
               <a class="listen-on-btn" href={ep.data.artist_website} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/googlechrome/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/googlechrome.svg" alt="" aria-hidden="true" />
                 Website
               </a>
             )}
             {ep.data.artist_instagram && (
               <a class="listen-on-btn" href={ep.data.artist_instagram} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/instagram/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/instagram.svg" alt="" aria-hidden="true" />
                 Instagram
               </a>
             )}
             {ep.data.artist_spotify && (
               <a class="listen-on-btn" href={ep.data.artist_spotify} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/spotify/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/spotify.svg" alt="" aria-hidden="true" />
                 Spotify
               </a>
             )}
             {ep.data.artist_youtube && (
               <a class="listen-on-btn" href={ep.data.artist_youtube} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/youtube/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/youtube.svg" alt="" aria-hidden="true" />
                 YouTube
               </a>
             )}
             {ep.data.artist_facebook && (
               <a class="listen-on-btn" href={ep.data.artist_facebook} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/facebook/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/facebook.svg" alt="" aria-hidden="true" />
                 Facebook
               </a>
             )}
             {ep.data.artist_bandcamp && (
               <a class="listen-on-btn" href={ep.data.artist_bandcamp} target="_blank" rel="noopener">
-                <img class="listen-on-icon" src="https://cdn.simpleicons.org/bandcamp/0A0A0A" alt="" aria-hidden="true" />
+                <img class="listen-on-icon" src="/icons/bandcamp.svg" alt="" aria-hidden="true" />
                 Bandcamp
               </a>
             )}
@@ -362,6 +387,56 @@ const breadcrumbJsonLd = {
         <FollowCTA />
       </div>
     </section>
+
+    <!-- Newsletter — placed right after the article, at the point of highest intent -->
+    <section class="newsletter-section">
+      <div class="container">
+        <NewsletterSignup
+          source={`episode-${ep.slug}`}
+          headline="Don't miss the next conversation."
+          sub="One short email when a new episode lands. Nothing else."
+        />
+      </div>
+    </section>
+
+    {related.length > 0 && (
+      <section>
+        <div class="container">
+          <h2>More like this</h2>
+          <div class="episode-grid related-grid">
+            {related.map((rel) => {
+              const relNum = String(rel.data.episode_number).padStart(2, "0");
+              return (
+                <a class="episode-card" href={`/episodes/${rel.slug}/`}>
+                  <div class="episode-card-thumb-wrap">
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcset={`/images/episodes/ep-${relNum}-cover.webp`}
+                      />
+                      <img
+                        class="episode-card-thumb"
+                        src={`/images/episodes/ep-${relNum}-cover.jpg`}
+                        alt={`${rel.data.artist} episode cover`}
+                        width="400"
+                        height="400"
+                        loading="lazy"
+                        onerror="this.closest('.episode-card-thumb-wrap').style.display='none'"
+                      />
+                    </picture>
+                  </div>
+                  <div class="episode-card-body">
+                    <div class="meta">Ep. {rel.data.episode_number} · {rel.data.publish_date.toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" })}{durationLabel(rel.data.duration) ? ` · ${durationLabel(rel.data.duration)}` : ""}</div>
+                    <h3>{rel.data.artist}</h3>
+                    <p>{rel.data.description}</p>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    )}
 
     {(prev || next) && (
       <section>
@@ -451,7 +526,8 @@ function buildCarousel() {
 
     const img = document.createElement("img");
     img.src = src;
-    img.alt = `Artist photo ${i + 1}`;
+    const artistName = document.querySelector("h1")?.textContent?.trim() ?? "Artist";
+    img.alt = `${artistName} — photo ${i + 1} from the episode`;
     img.className = "carousel-img";
     img.loading = "lazy";
     pic.appendChild(img);

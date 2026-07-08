@@ -3,6 +3,7 @@ title: "The Shindigs: From Childhood Buddies to a Band"
 artist: "The Shindigs"
 episode_number: 18
 publish_date: 2026-06-01
+duration: "00:17:26"
 spotify_episode_id: "5lP4EW8nGyc3YMsY41iLEL"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/the-shindigs-from-childhood-buddies-to-a-band/id1876137985?i=1000770562492&uo=4"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/120833490/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-1%2F425277940-44100-2-a2f4c690bace7.m4a"

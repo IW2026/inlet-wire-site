@@ -8,6 +8,7 @@ spotify_episode_id: "18IK8FoZYOYpOHug76qxnG"
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/quadra-sound-building-a-world-around-the-band/id1876137985?i=1000776678440&uo=4"
 anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/122581699/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-6-13%2F427904144-44100-2-e30026f5e6c3.m4a"
 youtube_episode_url: "https://www.youtube.com/watch?v=6W-COTiChfI"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/quadra-sound-building-a-world-around-338786376/"
 description: "Eric Chan speaks with Nick Fascione of Quadra Sound, a four-piece rock band from Vancouver Island, about social media as a direct line to listeners, years of development with producer Brian Howes, and a song rooted in growing up in Campbell River."
 tags:
   - rock

@@ -43,6 +43,9 @@ upcoming_shows:
     venue: "Chan Centre"
     city: "Vancouver, BC"
     start_date: 2026-09-19
+  - title: "WSF Reception"
+    city: "Vancouver, BC"
+    start_date: 2026-09-14
   - title: "Francis Baptiste live"
     venue: "Fox Cabaret"
     city: "Vancouver, BC"

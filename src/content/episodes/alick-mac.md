@@ -3,6 +3,12 @@ title: "Vulnerability, Songwriting, and Boys’ Club"
 artist: "Alick Mac"
 episode_number: 25
 publish_date: 2026-09-07
+duration: "00:13:07"
+spotify_episode_id: "6ePvZ2EeQexip2WBhWcxzs"
+anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/125356609/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-7%2F431388869-44100-2-299206b9d3998.m4a"
+apple_podcast_url: "https://podcasts.apple.com/us/podcast/alick-mac-on-vulnerability-songwriting-and-boys-club/id1876137985?i=1000788354026&uo=4"
+youtube_episode_url: "https://www.youtube.com/watch?v=rgZWaMRTc5o"
+iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/alick-mac-on-vulnerability-songwriting-and-boys-club-343364717"
 description: "Eric Chan speaks with Alick Mac, a rapper, singer and songwriter from the Comox Valley, about songwriting as a journal, the ideas behind Liz Plank’s *For the Love of Men*, and how those questions on masculinity grew into his one-man show Boys’ Club."
 tags:
   - hip-hop
@@ -17,7 +23,7 @@ region: "Vancouver Island, BC"
 guests:
   - "Alick Mac"
 has_transcript: true
-draft: true
+draft: false
 artist_website: "https://alickmac.com/"
 artist_instagram: "https://www.instagram.com/alickmac/"
 artist_spotify: "https://open.spotify.com/artist/5ZwjaEPUWVzbWwLja4uoav"

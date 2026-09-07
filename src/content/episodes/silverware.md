@@ -24,6 +24,14 @@ has_transcript: true
 artist_website: "https://silverwareband.com/"
 artist_instagram: "https://www.instagram.com/silverware_band/"
 artist_bandcamp: "https://silverware-band.bandcamp.com/"
+upcoming_shows:
+  - title: "Good Party"
+    city: "Victoria, BC"
+    start_date: 2026-09-11
+  - title: "Silverware at Coda"
+    venue: "Coda"
+    city: "Victoria, BC"
+    start_date: 2026-09-19
 ---
 
 # Silverware Started as a Friend Group. Then the Band Got Real.

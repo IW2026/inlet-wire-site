@@ -38,6 +38,19 @@ gallery:
   - src: "/images/episodes/ep-15-gallery-6.png"
     alt: "Follow Inlet Wire — listen at inletwire.com (Instagram CTA slide — suppressed on web)"
     is_cta_slide: true
+upcoming_shows:
+  - title: "Come to the Fire"
+    venue: "Chan Centre"
+    city: "Vancouver, BC"
+    start_date: 2026-09-19
+  - title: "Francis Baptiste live"
+    venue: "Fox Cabaret"
+    city: "Vancouver, BC"
+    start_date: 2026-11-05
+  - title: "Francis Baptiste live"
+    venue: "Turbo Haus"
+    city: "Montreal, QC"
+    start_date: 2026-11-07
 ---
 
 This episode with Francis Baptiste goes deeper than a story about getting back into music.

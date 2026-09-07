@@ -25,6 +25,22 @@ artist_website: "https://www.spendomusic.com/"
 artist_instagram: "https://www.instagram.com/spendo_music/"
 artist_facebook: "https://www.facebook.com/spendomusic/"
 artist_youtube: "https://www.youtube.com/@spendomusic"
+upcoming_shows:
+  - title: "Spendo live at The Carlson Loft, with guests El Camino"
+    venue: "Carlson Community Club"
+    city: "Powell River, BC"
+    start_date: 2026-09-11
+    ticket_url: "https://www.eventbrite.ca/e/spendo-live-at-the-carlson-loft-with-guests-el-camino-tickets-1995204653829"
+  - title: "Spendo — Roberts Creek debut"
+    venue: "Roberts Creek Legion #219"
+    city: "Roberts Creek, BC"
+    start_date: 2026-09-12
+    ticket_url: "https://www.robertscreeklegion.com/spendo-september-12"
+  - title: 'Default — "The Fallout" 25th Anniversary Tour, with special guests Spendo'
+    venue: "The Night Shift on 5th"
+    city: "Kamloops, BC"
+    start_date: 2026-09-18
+    ticket_url: "https://www.eventbrite.ca/e/default-the-fallout-25th-anniversary-tour-tickets-1994632403212"
 ---
 
 <!--

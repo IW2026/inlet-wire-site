@@ -28,6 +28,12 @@ artist_instagram: "https://www.instagram.com/daysormay/"
 artist_bandcamp: "https://daysormay.bandcamp.com/music"
 artist_youtube: "https://www.youtube.com/@daysormay"
 artist_spotify: "https://open.spotify.com/artist/1gneO1Mf6DCsgxUtDzF4lS"
+upcoming_shows:
+  - title: "daysormay live"
+    venue: "Creekside Theatre"
+    city: "Lake Country, BC"
+    start_date: 2026-11-27
+    ticket_url: "https://www.ticketseller.ca/tickets/event/daysormay"
 ---
 
 When I sat down with **daysormay**, I did not want to start with the usual band origin story.

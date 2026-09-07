@@ -26,6 +26,16 @@ artist_facebook: "https://www.facebook.com/officialfyamusic"
 artist_spotify: "https://open.spotify.com/artist/6w3jlOmjXGUk2GgNUYW5By"
 artist_youtube: "https://www.youtube.com/channel/UCbRkoI0u81jKliHNIyglV0Q"
 youtube_episode_url: "https://www.youtube.com/watch?v=cwxHa7HXRAY"
+upcoming_shows:
+  - title: "Live Acts Wednesdays — GHULO / Focus Your Audio"
+    venue: "The Roxy Cabaret"
+    city: "Vancouver, BC"
+    start_date: 2026-09-16
+    ticket_url: "https://www.showpass.com/wedsept16/"
+  - title: "BeMorr Society's 5th Annual Hawaiian Shirt Gala"
+    city: "Langley, BC"
+    start_date: 2026-09-26
+    ticket_url: "https://focusyouraudio.ca/go/events/6601267?feature_id=1103681&occurrence_id=765372719&popup=1"
 ---
 
 Focus Your Audio is a Vancouver duo made up of Sarah and Bobby, and on this episode they talk about how a partnership like theirs actually works day to day.

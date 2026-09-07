@@ -26,6 +26,43 @@ seo_description: "The Shindigs' Shea Peoples and Alex Peabody on the exchange-st
 artist_website: "https://shindigs.band/"
 artist_instagram: "https://www.instagram.com/shindigs.band/"
 artist_youtube: "https://www.youtube.com/@TheShindigsmusic"
+upcoming_shows:
+  - title: "The Shindigs, with The Couch Surfers"
+    venue: "Tricksters Hideout"
+    city: "Squamish, BC"
+    start_date: 2026-09-11
+  - title: "The Shindigs & ZOO!"
+    venue: "The Starlite Room"
+    city: "Edmonton, AB"
+    start_date: 2026-10-02
+  - title: "The Shindigs & ZOO!"
+    venue: "Dickens YYC"
+    city: "Calgary, AB"
+    start_date: 2026-10-03
+  - title: "The Shindigs & ZOO!"
+    venue: "The Drake"
+    city: "Canmore, AB"
+    start_date: 2026-10-04
+  - title: "The Shindigs live"
+    venue: "Owl Acoustic Lounge"
+    city: "Lethbridge, AB"
+    start_date: 2026-10-06
+  - title: "The Shindigs live"
+    venue: "The Handsome Daughter"
+    city: "Winnipeg, MB"
+    start_date: 2026-10-09
+  - title: "The Shindigs & ZOO!"
+    venue: "The Green Room"
+    city: "Saskatoon, SK"
+    start_date: 2026-10-10
+  - title: "The Shindigs live"
+    venue: "Astoria Hotel"
+    city: "Vancouver, BC"
+    start_date: 2026-10-15
+  - title: "The Shindigs & Silverware"
+    venue: "The Coda"
+    city: "Victoria, BC"
+    start_date: 2026-10-16
 ---
 
 The Shindigs’ story goes back further than the band name.

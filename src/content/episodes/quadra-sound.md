@@ -26,6 +26,11 @@ artist_instagram: "https://www.instagram.com/quadrasound/"
 artist_facebook: "https://www.facebook.com/QuadraSound/"
 artist_youtube: "https://www.youtube.com/@QuadraSound"
 artist_spotify: "https://open.spotify.com/artist/6mtuylOanTKh5M6yBoyeYU"
+upcoming_shows:
+  - title: "Quadra Sound live"
+    venue: "Red Arrow Brewing"
+    city: "Duncan, BC"
+    start_date: 2026-09-26
 ---
 
 When I first came across **Quadra Sound**, it was not through a press release or a big announcement. It was a clip of the band covering one of my favourite Alice in Chains songs, and honestly, it sounded good enough that I wanted to dig a little deeper.

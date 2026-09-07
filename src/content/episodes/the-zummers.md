@@ -25,6 +25,26 @@ artist_instagram: "https://www.instagram.com/the.zummers/"
 artist_bandcamp: "https://thezummers.bandcamp.com/"
 artist_facebook: "https://www.facebook.com/zummers/"
 artist_youtube: "https://www.youtube.com/@TheZummers"
+upcoming_shows:
+  - title: "The Zummers at the Heatly, with Saving Grace and Paisley"
+    venue: "The Heatly Pub"
+    city: "Vancouver, BC"
+    start_date: 2026-09-18
+  - title: "Party for the Ocean — Rugged Coast Research Society"
+    city: "Nanaimo, BC"
+    start_date: 2026-09-19
+  - title: "The Zummers at Big Sky"
+    venue: "Big Sky Golf Club and Fescues Restaurant"
+    city: "Pemberton, BC"
+    start_date: 2026-10-09
+  - title: "The Zummers at CapU Squamish"
+    venue: "Capilano University — Squamish Campus"
+    city: "Squamish, BC"
+    start_date: 2026-11-07
+  - title: "Surf Hat, with special guests The Zummers"
+    venue: "Apres Apres"
+    city: "Whistler, BC"
+    start_date: 2026-11-14
 ---
 
 The Zummers are a four-piece out of Pemberton, B.C., and this episode ended up being less about "the new album" in the usual sense, and more about the chapter of the band that the album ended up holding onto.

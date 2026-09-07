@@ -20,3 +20,4 @@ inlet/
 
 # Editor
 .vscode/
+.git-credentials

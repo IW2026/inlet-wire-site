@@ -49,6 +49,20 @@ const episodes = defineCollection({
       alt: z.string(),
       is_cta_slide: z.boolean().default(false),
     })).optional(),
+    // Upcoming live dates for the artist — a small editorial box on the
+    // episode page, not a promo blast. Each entry auto-disappears once its
+    // last date has passed: filtered out of the build once stale, and also
+    // hidden client-side (via data-show-until) so it's correct for visitors
+    // between deploys too. Add/update these by hand when you have real,
+    // confirmed dates — there's no auto-scraping behind this.
+    upcoming_shows: z.array(z.object({
+      title: z.string(),           // e.g. "Boys’ Club — Vancouver Fringe"
+      venue: z.string().optional(),
+      city: z.string().optional(),
+      start_date: z.date(),
+      end_date: z.date().optional(),   // omit for a single-date show
+      ticket_url: z.string().url().optional(),
+    })).optional(),
   }),
 });
 

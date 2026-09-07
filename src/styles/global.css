@@ -702,6 +702,47 @@ section h2 { margin-bottom: 1.5rem; }
   padding: 0.2rem 0.5rem;
 }
 
+/* ---------- Upcoming show ---------- */
+.upcoming-shows {
+  margin-top: 2.5rem;
+  border: 1px solid var(--ink);
+  padding: 1.25rem 1.5rem;
+  background: var(--cream);
+}
+.upcoming-shows-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.upcoming-show + .upcoming-show {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+.upcoming-show-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.02rem;
+  margin: 0 0 0.3rem;
+}
+.upcoming-show-meta {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0 0 0.6rem;
+  line-height: 1.5;
+}
+.upcoming-show-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-bottom: 1px solid currentColor;
+  transition: opacity 150ms ease;
+}
+.upcoming-show-link:hover { opacity: 0.6; }
+
 /* ---------- Instagram feed ---------- */
 .ig-header {
   display: flex;

@@ -67,6 +67,37 @@ const ogCard = `/images/og/ep-${epNum}.jpg`;
 const photoLetters = ["a", "b", "c", "d", "e"];
 const artistPhotos = photoLetters.map((l) => `/images/episodes/ep-${epNum}-${l}.jpg`);
 
+// Upcoming shows — build-time filter drops anything already over by the last
+// deploy; a client-side check (data-show-until, see bottom script) catches
+// anything that goes stale between deploys, so this never needs manual cleanup.
+// Cutoff = end_date + 1 full day, since frontmatter dates parse as UTC
+// midnight — without the buffer a show on its last calendar day would look
+// "over" many hours before it actually happens for anyone west of UTC.
+function showCutoff(s: { start_date: Date; end_date?: Date }) {
+  const cutoff = new Date(s.end_date ?? s.start_date);
+  cutoff.setUTCDate(cutoff.getUTCDate() + 1);
+  return cutoff;
+}
+const upcomingShows = (ep.data.upcoming_shows ?? [])
+  .filter((s) => showCutoff(s).getTime() >= Date.now())
+  .sort((a, b) => a.start_date.getTime() - b.start_date.getTime());
+
+function showDateLabel(s: { start_date: Date; end_date?: Date }) {
+  // Frontmatter dates parse as UTC midnight — format in UTC so the
+  // calendar date shown always matches what's written in the file,
+  // regardless of the visitor's or the build server's local timezone.
+  const fmtFull = (d: Date) => d.toLocaleDateString("en-CA", { month: "long", day: "numeric", timeZone: "UTC" });
+  const { start_date: start, end_date: end } = s;
+  if (!end || end.getTime() === start.getTime()) return fmtFull(start);
+
+  const sameMonth = start.getUTCMonth() === end.getUTCMonth() && start.getUTCFullYear() === end.getUTCFullYear();
+  if (sameMonth) {
+    const month = start.toLocaleDateString("en-CA", { month: "long", timeZone: "UTC" });
+    return `${month} ${start.getUTCDate()}–${end.getUTCDate()}`;
+  }
+  return `${fmtFull(start)} – ${fmtFull(end)}`;
+}
+
 // Structured data for Google / Apple / Spotify / AI indexing.
 // AudioObject is attached whenever we have either a direct audio URL
 // (preferred, gives crawlers the actual file) or a Spotify embed URL.
@@ -287,6 +318,36 @@ const breadcrumbJsonLd = {
       </div>
     </section>
 
+    <!-- Upcoming shows -->
+    {upcomingShows.length > 0 && (
+      <section>
+        <div class="container prose">
+          <div class="upcoming-shows">
+            <span class="upcoming-shows-label">
+              {upcomingShows.length > 1 ? `Upcoming ${ep.data.artist} shows` : `Upcoming ${ep.data.artist} show`}
+            </span>
+            {upcomingShows.map((s) => (
+              <div
+                class="upcoming-show"
+                data-show-until={showCutoff(s).toISOString()}
+              >
+                <p class="upcoming-show-title">{s.title}</p>
+                <p class="upcoming-show-meta">
+                  {showDateLabel(s)}
+                  {(s.venue || s.city) ? ` · ${[s.venue, s.city].filter(Boolean).join(", ")}` : ""}
+                </p>
+                {s.ticket_url && (
+                  <a class="upcoming-show-link" href={s.ticket_url} target="_blank" rel="noopener">
+                    Tickets and details →
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- Artist links + Transcript link -->
     <section>
       <div class="container prose">
@@ -469,6 +530,20 @@ const breadcrumbJsonLd = {
 </BaseLayout>
 
 <script>
+// ── Upcoming shows — hide anything that's gone stale since the last deploy ──
+document.querySelectorAll<HTMLElement>("[data-show-until]").forEach((el) => {
+  const until = new Date(el.dataset.showUntil ?? "");
+  if (!isNaN(until.getTime()) && until.getTime() < Date.now()) {
+    el.remove();
+  }
+});
+// Hide the whole box if every show inside it just got removed
+document.querySelectorAll<HTMLElement>(".upcoming-shows").forEach((box) => {
+  if (!box.querySelector(".upcoming-show")) {
+    box.closest("section")?.remove();
+  }
+});
+
 // ── Share button ─────────────────────────────────────────────────
 document.querySelectorAll<HTMLButtonElement>("[data-share-btn]").forEach((btn) => {
   btn.addEventListener("click", async () => {

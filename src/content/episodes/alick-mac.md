@@ -30,6 +30,13 @@ artist_spotify: "https://open.spotify.com/artist/5ZwjaEPUWVzbWwLja4uoav"
 artist_bandcamp: "https://alickmac.bandcamp.com/"
 seo_title: "Alick Mac on Vulnerability, Songwriting, and Boys’ Club"
 seo_description: "Alick Mac talks about songwriting as a journal, learning to trust the creative process, and how questions around masculinity grew into his one-man show Boys’ Club."
+upcoming_shows:
+  - title: "Boys’ Club — Vancouver Fringe"
+    venue: "Arts Umbrella, Scott Studio"
+    city: "Vancouver, BC"
+    start_date: 2026-09-10
+    end_date: 2026-09-19
+    ticket_url: "https://alickboysclub.com/"
 ---
 
 Alick Mac talks about songwriting like a journal.

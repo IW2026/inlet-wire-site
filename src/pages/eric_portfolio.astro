@@ -201,9 +201,17 @@
     text-decoration: none;
     display: block;
     border: 1px solid var(--border);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .screenshot-card:hover { border-color: var(--black); }
+  .screenshot-card:hover {
+    border-color: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .screenshot-card img { transition: transform 0.4s ease; }
+  .screenshot-card:hover img { transform: scale(1.02); }
 
   .screenshot-img {
     height: 150px;
@@ -300,7 +308,10 @@
 
   .release-card {
     text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease;
   }
+  .release-card:hover { transform: translateY(-3px); }
 
   .release-art {
     aspect-ratio: 1;
@@ -310,7 +321,9 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 8px;
+    transition: border-color 0.2s ease;
   }
+  .release-card:hover .release-art { border-color: var(--black); }
 
   .release-art span {
     font-family: var(--font-body);
@@ -408,43 +421,45 @@
     padding: 9px 14px;
   }
 
-  /* YOUTUBE ROW */
-  .yt-row {
-    border: 1px solid var(--border);
-    padding: 14px 18px;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  /* VIDEO EMBEDS (responsive 16:9) */
+  .video-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
     background: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
-  .yt-play {
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--black);
-    border-radius: 50%;
+  .embed-brand-row {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-bottom: 0.75rem;
+  }
+  .yt-brand {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: -0.01em;
     color: var(--black);
   }
-
-  .yt-info strong {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--black);
-  }
-
-  .yt-info span {
+  .yt-brand-detail {
     font-family: var(--font-body);
     font-size: 11px;
-    color: var(--mid);
+    font-weight: 500;
     letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mid);
   }
 
   /* CONTACT */
@@ -568,18 +583,18 @@
   </div>
 
   <div class="screenshot-grid">
-    <a href="https://inletwire.com" target="_blank" class="screenshot-card">
-      <div class="screenshot-img" style="background:#0A0A0A; padding:0; overflow:hidden;">
-        <img src="/og-default.png" alt="Inlet Wire homepage" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" onerror="this.parentElement.innerHTML='<span>inletwire.com</span>'" />
+    <a href="https://inletwire.com" target="_blank" rel="noopener noreferrer" class="screenshot-card">
+      <div class="screenshot-img" style="padding:0; overflow:hidden;">
+        <img src="/images/portfolio/screenshot-home.png" alt="Inlet Wire — home page" width="1200" height="750" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
       </div>
       <div class="screenshot-meta">
         <strong>Inlet Wire</strong>
         <span>Brand & homepage</span>
       </div>
     </a>
-    <a href="https://inletwire.com/episodes" target="_blank" class="screenshot-card">
-      <div class="screenshot-img">
-        <span>inletwire.com/episodes</span>
+    <a href="https://inletwire.com/episodes/leah-abramson/" target="_blank" rel="noopener noreferrer" class="screenshot-card">
+      <div class="screenshot-img" style="padding:0; overflow:hidden;">
+        <img src="/images/portfolio/screenshot-episodes.png" alt="Inlet Wire — episode page" width="1200" height="750" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
       </div>
       <div class="screenshot-meta">
         <strong>Episode Archive</strong>
@@ -588,21 +603,10 @@
     </a>
   </div>
 
-  <!-- SPOTIFY PODCAST EMBED — replace SHOW_ID below with your Spotify show ID
-       Find it at: open.spotify.com/show/YOUR_ID — copy the ID from the URL -->
-  <div style="background:var(--cream);border:1px solid var(--border);padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;gap:16px;">
-    <div style="font-size:18px;">🎙</div>
-    <div>
-      <strong style="display:block;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--black);">Inlet Wire — Podcast</strong>
-      <span style="font-family:var(--font-body);font-size:11px;color:var(--mid);">Replace this block with your Spotify show iframe once you have the show ID</span>
-    </div>
-    <a href="https://podcasters.spotify.com/pod/show/inletwire" target="_blank" style="margin-left:auto;font-family:var(--font-body);font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);border:1px solid var(--border);padding:3px 10px;background:var(--white);text-decoration:none;">Spotify ↗</a>
-  </div>
-  <!-- Once you have the show ID, replace the block above with:
-  <iframe src="https://open.spotify.com/embed/show/YOUR_SHOW_ID" width="100%" height="152" frameborder="0"
+  <iframe src="https://open.spotify.com/embed/playlist/1De8QSqbYa15p5gXO78PDl?utm_source=generator" width="100%" height="380" frameborder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    style="display:block; margin-bottom:8px;"></iframe>
-  -->
+    loading="lazy"
+    style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
 </section>
 
 <!-- 02 DAY'S EYE RECORDS -->
@@ -615,28 +619,20 @@
 
   <div class="sub-label">Selected Releases</div>
   <div class="release-grid">
-    <a href="https://dayseyerecords.com/releases/downer-topsy-wave-fragments" target="_blank" class="release-card">
-      <div class="release-art" style="padding:0; overflow:hidden;">
-        <img src="https://dayseyerecords.com/covers/downer-topsy-wave-fragments-1200.jpg" alt="Downer / Topsy Wave — Fragments" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>Fragments 2026</span>'" />
-      </div>
+    <a href="https://dayseyerecords.com/releases/downer-topsy-wave-fragments" target="_blank" rel="noopener noreferrer" class="release-card">
+      <div class="release-art"><span>Fragments · 2026</span></div>
       <div class="release-meta"><strong>Downer / Topsy Wave</strong><span>Fragments · 2026</span></div>
     </a>
-    <a href="https://dayseyerecords.com/releases/maenad-and-the-ravers-spellbreak" target="_blank" class="release-card">
-      <div class="release-art" style="padding:0; overflow:hidden;">
-        <img src="https://dayseyerecords.com/covers/maenad-and-the-ravers-spellbreak-1200.jpg" alt="Maenad & the Ravers — SPELLBREAK" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>SPELLBREAK · 2025</span>'" />
-      </div>
+    <a href="https://dayseyerecords.com/releases/maenad-and-the-ravers-spellbreak" target="_blank" rel="noopener noreferrer" class="release-card">
+      <div class="release-art"><span>SPELLBREAK · 2025</span></div>
       <div class="release-meta"><strong>Maenad & the Ravers</strong><span>SPELLBREAK · 2025</span></div>
     </a>
-    <a href="https://dayseyerecords.com/releases/heresy-reincarnation" target="_blank" class="release-card">
-      <div class="release-art" style="padding:0; overflow:hidden;">
-        <img src="https://dayseyerecords.com/covers/heresy-reincarnation-1200.jpg" alt="Heresy — Reincarnation" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>Reincarnation · 2023</span>'" />
-      </div>
+    <a href="https://dayseyerecords.com/releases/heresy-reincarnation" target="_blank" rel="noopener noreferrer" class="release-card">
+      <div class="release-art"><span>Reincarnation · 2023</span></div>
       <div class="release-meta"><strong>Heresy</strong><span>Reincarnation · 2023</span></div>
     </a>
-    <a href="https://dayseyerecords.com/releases/forget-the-g-doomsday-lovesongs" target="_blank" class="release-card">
-      <div class="release-art" style="padding:0; overflow:hidden;">
-        <img src="https://dayseyerecords.com/covers/forget-the-g-doomsday-lovesongs-1200.jpg" alt="Forget the G — Doomsday Lovesongs" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>Doomsday Lovesongs · 2020</span>'" />
-      </div>
+    <a href="https://dayseyerecords.com/releases/forget-the-g-doomsday-lovesongs" target="_blank" rel="noopener noreferrer" class="release-card">
+      <div class="release-art"><span>Doomsday Lovesongs · 2020</span></div>
       <div class="release-meta"><strong>Forget the G</strong><span>Doomsday Lovesongs · 2020</span></div>
     </a>
   </div>
@@ -714,30 +710,39 @@
   <hr class="section-rule" />
   <p class="section-body">I've composed and produced music for advertising and video work across Taiwan and Hong Kong, partnering with agencies and producers on campaigns for major brands including Dyson, Mitsubishi, HSBC, KFC, and ViewSonic. My approach centers on understanding each client's vision and delivering music that serves the story. I work to a creative brief, picture, timing, brand requirements, deadlines and client feedback — handling both composition and post-production through delivery.</p>
 
-  <p style="font-family:var(--font-body);font-size:13px;color:var(--faint);margin-bottom:1rem;letter-spacing:0.04em;">Add YouTube embed URLs below to activate players.</p>
-  <div class="yt-row">
-    <div class="yt-play">▶</div>
-    <div class="yt-info">
-      <strong>{'{YOUTUBE_SCORING_URL_1}'}</strong>
-      <span>YouTube · Music scoring — replace with iframe</span>
-    </div>
-    <span class="embed-badge">YouTube</span>
+  <div class="embed-brand-row">
+    <span class="yt-brand">HSBC</span>
+    <span class="yt-brand-detail">Music mixing · Audio post production</span>
   </div>
-  <div class="yt-row">
-    <div class="yt-play">▶</div>
-    <div class="yt-info">
-      <strong>{'{YOUTUBE_SCORING_URL_2}'}</strong>
-      <span>YouTube · Music scoring — replace with iframe</span>
-    </div>
-    <span class="embed-badge">YouTube</span>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/T6EjqGS73WU" title="HSBC — music mixing, audio post production"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen loading="lazy"></iframe>
   </div>
-  <div class="yt-row">
-    <div class="yt-play">▶</div>
-    <div class="yt-info">
-      <strong>{'{YOUTUBE_SCORING_URL_3}'}</strong>
-      <span>YouTube · Music scoring — replace with iframe</span>
-    </div>
-    <span class="embed-badge">YouTube</span>
+
+  <div class="embed-brand-row">
+    <span class="yt-brand">KFC</span>
+    <span class="yt-brand-detail">Vocal performance · Music mixing</span>
+  </div>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/eXJEDN5Jwww" title="KFC — vocal performance, music mixing"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="embed-brand-row">
+    <span class="yt-brand">ViewSonic</span>
+    <span class="yt-brand-detail">Composing · Music mixing · Audio post production</span>
+  </div>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/6Pw3BbOBhrM" title="ViewSonic — composing, music mixing, audio post production"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/_NDxxTIGLMg" title="ViewSonic — composition, mixing, audio production"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen loading="lazy"></iframe>
   </div>
 </section>
 
@@ -749,12 +754,18 @@
   <hr class="section-rule" />
   <p class="section-body">I record, mix, and master for indie bands and artists across Taiwan, Hong Kong, and Macau, with a focus on experimental and alternative music. In 2024, I established GenLab in Taichung as a dedicated studio space. I work openly with artists to understand their creative vision, using arrangement, production techniques, and audio tools to realize what they're hearing. Artists and projects I've worked with have been recognized at the Macao TDM music awards and ranked in the top one hundred at the Freshmusic Awards across multiple years.</p>
 
-  <iframe src="https://open.spotify.com/embed/album/0OeQXYaQqIWsMY201WncbT" width="100%" height="152" frameborder="0"
+  <iframe src="https://open.spotify.com/embed/track/38eBrN1tq0EFYtu5GaVnrS" width="100%" height="152" frameborder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    style="display:block; margin-bottom:8px;"></iframe>
-  <iframe src="https://open.spotify.com/embed/album/6tL8IOZKZWwRiN3AqBbhRW" width="100%" height="152" frameborder="0"
+    loading="lazy" style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
+  <iframe src="https://open.spotify.com/embed/track/086PLhjM6wRr9yPA0J7acF" width="100%" height="152" frameborder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    style="display:block; margin-bottom:8px;"></iframe>
+    loading="lazy" style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
+  <iframe src="https://open.spotify.com/embed/track/6XOceP7PhXNsL70lbL2L7y" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy" style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
+  <iframe src="https://open.spotify.com/embed/track/0gGJKMrAfe3CDbB6QQMtkO" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy" style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
 </section>
 
 <!-- 06 FORGET THE G -->
@@ -765,12 +776,15 @@
   <hr class="section-rule" />
   <p class="section-body">As the vocalist, guitarist, and core songwriter of Forget the G, I write all original music and lyrics and handle recording and mixing for every release. The band has been awarded the Album Production Subsidy from the Cultural Affairs Bureau, Macau twice — recognition for the quality and ambition of the work. Forget the G has performed extensively across Asia through multiple tours, bringing the music to audiences well beyond the region where it was made.</p>
 
-  <iframe src="https://open.spotify.com/embed/album/6tL8IOZKZWwRiN3AqBbhRW" width="100%" height="152" frameborder="0"
+  <iframe src="https://open.spotify.com/embed/track/1bMWv0d0Amlt0nC3DaQTKN" width="100%" height="152" frameborder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    style="display:block; margin-bottom:8px;"></iframe>
-  <iframe src="https://open.spotify.com/embed/album/0r4pqWcQay6VrmjN7ARX5o" width="100%" height="152" frameborder="0"
+    loading="lazy" style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
+  <iframe src="https://open.spotify.com/embed/track/3nK7k6kG7bABXrwiiiPOtw" width="100%" height="152" frameborder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    style="display:block; margin-bottom:8px;"></iframe>
+    loading="lazy" style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
+  <iframe src="https://open.spotify.com/embed/track/3FffqOTRxM0c1Ri2jgJWRJ" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy" style="display:block; border-radius:8px; margin-bottom:8px;"></iframe>
 </section>
 
 <!-- CONTACT -->

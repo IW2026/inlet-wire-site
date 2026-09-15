@@ -1,0 +1,786 @@
+---
+// eric_portfolio.astro — hidden, no layout, noindex everywhere
+// Do NOT link to this page from any nav, footer, or other page.
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="bingbot" content="noindex, nofollow" />
+<title>Eric Chan — Selected Work</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --white: #FFFFFF;
+    --cream: #F5F1EC;
+    --mid: #6b6b6b;
+    --faint: #b0b0b0;
+    --border: #e0e0e0;
+    --font-display: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 28px 8rem;
+  }
+
+  /* HEADER */
+  .site-header {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--black);
+    margin-bottom: 4rem;
+  }
+
+  .header-eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.25rem;
+  }
+
+  .header-name {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(32px, 6vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+    color: var(--black);
+    margin-bottom: 0.6rem;
+  }
+
+  .header-role {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.75rem;
+  }
+
+  .header-bio {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--mid);
+    max-width: 580px;
+    line-height: 1.8;
+  }
+
+  /* INDEX NAV */
+  .index-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 5rem;
+  }
+
+  .index-nav a {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 5px 14px;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .index-nav a:hover {
+    color: var(--black);
+    border-color: var(--black);
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 6rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--faint);
+    margin-bottom: 0.4rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(22px, 3.5vw, 32px);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 0.3rem;
+  }
+
+  .section-subtitle {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--black);
+    margin-bottom: 1.75rem;
+  }
+
+  .section-body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--mid);
+    line-height: 1.85;
+    max-width: 640px;
+    margin-bottom: 2rem;
+  }
+
+  /* PROCESS TAGS */
+  .process-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 2.5rem;
+  }
+
+  .process-tag {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+  }
+
+  /* SCREENSHOT GRID */
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+
+  .screenshot-card {
+    text-decoration: none;
+    display: block;
+    border: 1px solid var(--border);
+  }
+
+  .screenshot-card:hover { border-color: var(--black); }
+
+  .screenshot-img {
+    height: 150px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .screenshot-img span {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .screenshot-meta {
+    padding: 10px 14px;
+    background: var(--white);
+  }
+
+  .screenshot-meta strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--black);
+  }
+
+  .screenshot-meta span {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.06em;
+  }
+
+  /* EMBED ROW */
+  .embed-row {
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--cream);
+  }
+
+  .embed-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+  }
+
+  .embed-info strong {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .embed-info span {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+  }
+
+  .embed-badge {
+    margin-left: auto;
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    flex-shrink: 0;
+    background: var(--white);
+  }
+
+  /* RELEASE GRID */
+  .release-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .release-card {
+    text-decoration: none;
+  }
+
+  .release-art {
+    aspect-ratio: 1;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .release-art span {
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faint);
+    text-align: center;
+    padding: 8px;
+  }
+
+  .release-meta strong {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.3;
+  }
+
+  .release-meta span {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--faint);
+  }
+
+  /* STATS GRID */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--black);
+    margin-bottom: 2rem;
+  }
+
+  .stat-cell {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-cell:nth-child(3n) { border-right: none; }
+  .stat-cell:nth-child(4), .stat-cell:nth-child(5), .stat-cell:nth-child(6) { border-bottom: none; }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(24px, 4vw, 38px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* ROLE NOTE */
+  .role-note {
+    border-left: 3px solid var(--black);
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--mid);
+    line-height: 1.8;
+    font-style: italic;
+    max-width: 600px;
+  }
+
+  /* HANDLE GRID */
+  .handle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 2rem;
+  }
+
+  .handle-item {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border: 1px solid var(--border);
+    padding: 9px 14px;
+  }
+
+  /* YOUTUBE ROW */
+  .yt-row {
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--cream);
+  }
+
+  .yt-play {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+    color: var(--black);
+  }
+
+  .yt-info strong {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .yt-info span {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    padding-top: 1rem;
+  }
+
+  .contact-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(20px, 3vw, 28px);
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 1rem;
+  }
+
+  .contact-rule {
+    border: none;
+    border-top: 1px solid var(--black);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 560px;
+  }
+
+  .contact-link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-link:hover { border-color: var(--black); }
+
+  /* SMALL SECTION LABEL */
+  .sub-label {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 540px) {
+    .screenshot-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-cell:nth-child(3n) { border-right: 1px solid var(--border); }
+    .stat-cell:nth-child(2n) { border-right: none; }
+    .handle-grid { grid-template-columns: 1fr; }
+    .release-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-eyebrow">Portfolio · Private</div>
+  <h1 class="header-name">Eric M.Y. Chan</h1>
+  <div class="header-role">Creative Producer · Music · Multimedia · Live Production</div>
+  <p class="header-bio">Selected work across creative production, music, multimedia, editorial content and live entertainment. A lot of my work sits between the creative idea and getting it made — bringing together artists, creative teams, technical teams and partners to take projects from planning through delivery.</p>
+</header>
+
+<!-- INDEX NAV -->
+<nav class="index-nav" aria-label="Section index">
+  <a href="#inlet-wire">01 Inlet Wire</a>
+  <a href="#days-eye">02 Day's Eye Records</a>
+  <a href="#galaxy">03 Galaxy Entertainment Group</a>
+  <a href="#branded">04 Commercial & Branded Content</a>
+  <a href="#audio">05 Audio Engineering</a>
+  <a href="#ftg">06 Forget the G</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- 01 INLET WIRE -->
+<section class="section" id="inlet-wire">
+  <div class="section-num">01</div>
+  <h2 class="section-title">Inlet Wire</h2>
+  <div class="section-subtitle">Editorial & Digital Production</div>
+  <hr class="section-rule" />
+  <p class="section-body">Inlet Wire is my BC music podcast and media platform. I host and produce every episode — from artist research and outreach through interview planning, recording, audio editing, narration, artwork, publishing and promotion. I also developed the brand, website and editorial structure around the series. Each episode is shaped through narration that bridges the conversation, guiding listeners through the dialogue without overriding the guest's voice.</p>
+
+  <div class="process-list">
+    <span class="process-tag">Artist research</span>
+    <span class="process-tag">Outreach</span>
+    <span class="process-tag">Interview planning</span>
+    <span class="process-tag">Recording</span>
+    <span class="process-tag">Audio editing</span>
+    <span class="process-tag">Narration</span>
+    <span class="process-tag">Editorial</span>
+    <span class="process-tag">Artwork</span>
+    <span class="process-tag">Publishing</span>
+    <span class="process-tag">Social content</span>
+    <span class="process-tag">Multi-platform distribution</span>
+    <span class="process-tag">Platform management</span>
+  </div>
+
+  <div class="screenshot-grid">
+    <a href="https://inletwire.com" target="_blank" class="screenshot-card">
+      <div class="screenshot-img" style="background:#0A0A0A; padding:0; overflow:hidden;">
+        <img src="/og-default.png" alt="Inlet Wire homepage" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" onerror="this.parentElement.innerHTML='<span>inletwire.com</span>'" />
+      </div>
+      <div class="screenshot-meta">
+        <strong>Inlet Wire</strong>
+        <span>Brand & homepage</span>
+      </div>
+    </a>
+    <a href="https://inletwire.com/episodes" target="_blank" class="screenshot-card">
+      <div class="screenshot-img">
+        <span>inletwire.com/episodes</span>
+      </div>
+      <div class="screenshot-meta">
+        <strong>Episode Archive</strong>
+        <span>Editorial & publishing</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- SPOTIFY PODCAST EMBED — replace SHOW_ID below with your Spotify show ID
+       Find it at: open.spotify.com/show/YOUR_ID — copy the ID from the URL -->
+  <div style="background:var(--cream);border:1px solid var(--border);padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;gap:16px;">
+    <div style="font-size:18px;">🎙</div>
+    <div>
+      <strong style="display:block;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--black);">Inlet Wire — Podcast</strong>
+      <span style="font-family:var(--font-body);font-size:11px;color:var(--mid);">Replace this block with your Spotify show iframe once you have the show ID</span>
+    </div>
+    <a href="https://podcasters.spotify.com/pod/show/inletwire" target="_blank" style="margin-left:auto;font-family:var(--font-body);font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);border:1px solid var(--border);padding:3px 10px;background:var(--white);text-decoration:none;">Spotify ↗</a>
+  </div>
+  <!-- Once you have the show ID, replace the block above with:
+  <iframe src="https://open.spotify.com/embed/show/YOUR_SHOW_ID" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    style="display:block; margin-bottom:8px;"></iframe>
+  -->
+</section>
+
+<!-- 02 DAY'S EYE RECORDS -->
+<section class="section" id="days-eye">
+  <div class="section-num">02</div>
+  <h2 class="section-title">Day's Eye Records</h2>
+  <div class="section-subtitle">Music Production · Releases · Licensing · International Projects</div>
+  <hr class="section-rule" />
+  <p class="section-body">Day's Eye Records is an independent record label I founded in 2009. I work directly with artists across production, releases, licensing, publishing and international projects — from early planning through production and release.</p>
+
+  <div class="sub-label">Selected Releases</div>
+  <div class="release-grid">
+    <a href="https://dayseyerecords.com/releases/downer-topsy-wave-fragments" target="_blank" class="release-card">
+      <div class="release-art" style="padding:0; overflow:hidden;">
+        <img src="https://dayseyerecords.com/covers/downer-topsy-wave-fragments-1200.jpg" alt="Downer / Topsy Wave — Fragments" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>Fragments 2026</span>'" />
+      </div>
+      <div class="release-meta"><strong>Downer / Topsy Wave</strong><span>Fragments · 2026</span></div>
+    </a>
+    <a href="https://dayseyerecords.com/releases/maenad-and-the-ravers-spellbreak" target="_blank" class="release-card">
+      <div class="release-art" style="padding:0; overflow:hidden;">
+        <img src="https://dayseyerecords.com/covers/maenad-and-the-ravers-spellbreak-1200.jpg" alt="Maenad & the Ravers — SPELLBREAK" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>SPELLBREAK · 2025</span>'" />
+      </div>
+      <div class="release-meta"><strong>Maenad & the Ravers</strong><span>SPELLBREAK · 2025</span></div>
+    </a>
+    <a href="https://dayseyerecords.com/releases/heresy-reincarnation" target="_blank" class="release-card">
+      <div class="release-art" style="padding:0; overflow:hidden;">
+        <img src="https://dayseyerecords.com/covers/heresy-reincarnation-1200.jpg" alt="Heresy — Reincarnation" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>Reincarnation · 2023</span>'" />
+      </div>
+      <div class="release-meta"><strong>Heresy</strong><span>Reincarnation · 2023</span></div>
+    </a>
+    <a href="https://dayseyerecords.com/releases/forget-the-g-doomsday-lovesongs" target="_blank" class="release-card">
+      <div class="release-art" style="padding:0; overflow:hidden;">
+        <img src="https://dayseyerecords.com/covers/forget-the-g-doomsday-lovesongs-1200.jpg" alt="Forget the G — Doomsday Lovesongs" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span>Doomsday Lovesongs · 2020</span>'" />
+      </div>
+      <div class="release-meta"><strong>Forget the G</strong><span>Doomsday Lovesongs · 2020</span></div>
+    </a>
+  </div>
+
+  <div class="sub-label" style="margin-top: 0;">What I Handle</div>
+  <div class="handle-grid">
+    <div class="handle-item">Creative & release planning</div>
+    <div class="handle-item">Music production</div>
+    <div class="handle-item">Artist coordination</div>
+    <div class="handle-item">Licensing & publishing</div>
+    <div class="handle-item">Manufacturing & distribution</div>
+    <div class="handle-item">International booking</div>
+    <div class="handle-item">Promoter / venue coordination</div>
+    <div class="handle-item">Festival coordination</div>
+  </div>
+</section>
+
+<!-- 03 GALAXY ENTERTAINMENT GROUP -->
+<section class="section" id="galaxy">
+  <div class="section-num">03</div>
+  <h2 class="section-title">Galaxy Entertainment Group</h2>
+  <div class="section-subtitle">Multimedia · Live Production · Broadcast</div>
+  <hr class="section-rule" />
+  <p class="section-body">At Galaxy Entertainment Group, I led a 60+ person technical and multimedia team supporting three properties and 18 venues. My role covered live production, multimedia, broadcast, production planning, budgets and CAPEX.</p>
+  <p class="section-body" style="margin-top:-1rem; font-size:13px; letter-spacing:0.04em;">Senior Technical Manager, Entertainment — Marketing Division &nbsp;·&nbsp; Macau &nbsp;·&nbsp; 2006–2019</p>
+
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <div class="stat-num">60+</div>
+      <div class="stat-label">Team</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Properties</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Venues</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">10–15</div>
+      <div class="stat-label">Live events / day</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">40–50</div>
+      <div class="stat-label">Multimedia projects / yr</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">13</div>
+      <div class="stat-label">Years at Galaxy</div>
+    </div>
+  </div>
+
+  <div class="role-note">
+    I led the teams and oversaw the production process, making sure the creative, technical, staffing, scheduling and budget sides all worked together and projects were delivered smoothly.
+  </div>
+
+  <div class="handle-grid">
+    <div class="handle-item">Audio</div>
+    <div class="handle-item">Lighting</div>
+    <div class="handle-item">Stage</div>
+    <div class="handle-item">Multimedia production</div>
+    <div class="handle-item">Video & broadcast</div>
+    <div class="handle-item">Promotional content</div>
+    <div class="handle-item">Production planning</div>
+    <div class="handle-item">Budgets & CAPEX</div>
+  </div>
+</section>
+
+<!-- 04 COMMERCIAL & BRANDED CONTENT -->
+<section class="section" id="branded">
+  <div class="section-num">04</div>
+  <h2 class="section-title">Commercial & Branded Content</h2>
+  <div class="section-subtitle">Music · Scoring · Production to Picture</div>
+  <hr class="section-rule" />
+  <p class="section-body">I've composed and produced music for advertising and video work across Taiwan and Hong Kong, partnering with agencies and producers on campaigns for major brands including Dyson, Mitsubishi, HSBC, KFC, and ViewSonic. My approach centers on understanding each client's vision and delivering music that serves the story. I work to a creative brief, picture, timing, brand requirements, deadlines and client feedback — handling both composition and post-production through delivery.</p>
+
+  <p style="font-family:var(--font-body);font-size:13px;color:var(--faint);margin-bottom:1rem;letter-spacing:0.04em;">Add YouTube embed URLs below to activate players.</p>
+  <div class="yt-row">
+    <div class="yt-play">▶</div>
+    <div class="yt-info">
+      <strong>{'{YOUTUBE_SCORING_URL_1}'}</strong>
+      <span>YouTube · Music scoring — replace with iframe</span>
+    </div>
+    <span class="embed-badge">YouTube</span>
+  </div>
+  <div class="yt-row">
+    <div class="yt-play">▶</div>
+    <div class="yt-info">
+      <strong>{'{YOUTUBE_SCORING_URL_2}'}</strong>
+      <span>YouTube · Music scoring — replace with iframe</span>
+    </div>
+    <span class="embed-badge">YouTube</span>
+  </div>
+  <div class="yt-row">
+    <div class="yt-play">▶</div>
+    <div class="yt-info">
+      <strong>{'{YOUTUBE_SCORING_URL_3}'}</strong>
+      <span>YouTube · Music scoring — replace with iframe</span>
+    </div>
+    <span class="embed-badge">YouTube</span>
+  </div>
+</section>
+
+<!-- 05 AUDIO ENGINEERING -->
+<section class="section" id="audio">
+  <div class="section-num">05</div>
+  <h2 class="section-title">Selected Music Production & Audio Engineering</h2>
+  <div class="section-subtitle">Recording · Mixing · Mastering</div>
+  <hr class="section-rule" />
+  <p class="section-body">I record, mix, and master for indie bands and artists across Taiwan, Hong Kong, and Macau, with a focus on experimental and alternative music. In 2024, I established GenLab in Taichung as a dedicated studio space. I work openly with artists to understand their creative vision, using arrangement, production techniques, and audio tools to realize what they're hearing. Artists and projects I've worked with have been recognized at the Macao TDM music awards and ranked in the top one hundred at the Freshmusic Awards across multiple years.</p>
+
+  <iframe src="https://open.spotify.com/embed/album/0OeQXYaQqIWsMY201WncbT" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    style="display:block; margin-bottom:8px;"></iframe>
+  <iframe src="https://open.spotify.com/embed/album/6tL8IOZKZWwRiN3AqBbhRW" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    style="display:block; margin-bottom:8px;"></iframe>
+</section>
+
+<!-- 06 FORGET THE G -->
+<section class="section" id="ftg">
+  <div class="section-num">06</div>
+  <h2 class="section-title">Artist Work — Forget the G</h2>
+  <div class="section-subtitle">Composition · Production · Creative Direction</div>
+  <hr class="section-rule" />
+  <p class="section-body">As the vocalist, guitarist, and core songwriter of Forget the G, I write all original music and lyrics and handle recording and mixing for every release. The band has been awarded the Album Production Subsidy from the Cultural Affairs Bureau, Macau twice — recognition for the quality and ambition of the work. Forget the G has performed extensively across Asia through multiple tours, bringing the music to audiences well beyond the region where it was made.</p>
+
+  <iframe src="https://open.spotify.com/embed/album/6tL8IOZKZWwRiN3AqBbhRW" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    style="display:block; margin-bottom:8px;"></iframe>
+  <iframe src="https://open.spotify.com/embed/album/0r4pqWcQay6VrmjN7ARX5o" width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    style="display:block; margin-bottom:8px;"></iframe>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-eyebrow">Contact</div>
+  <h2 class="contact-title">Get in touch</h2>
+  <hr class="contact-rule" />
+  <p class="contact-body">Open to creative production, music, multimedia, live production and media projects.</p>
+  <a href="mailto:ericmychan21@gmail.com" class="contact-link">ericmychan21@gmail.com</a>
+</section>
+
+</body>
+</html>

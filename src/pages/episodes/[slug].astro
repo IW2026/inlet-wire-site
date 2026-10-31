@@ -4,6 +4,8 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import FollowCTA from "../../components/FollowCTA.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import { regionForCity, genresForTags, durationLabel, isoDuration } from "../../lib/taxonomy";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 
 export async function getStaticPaths() {
   const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
@@ -80,7 +82,13 @@ const coverImage = `/images/episodes/ep-${epNum}-cover.jpg`;
 // Per-episode OG card (1200x630, branded). Falls back to cover if card is missing.
 const ogCard = `/images/og/ep-${epNum}.jpg`;
 const photoLetters = ["a", "b", "c", "d", "e"];
-const artistPhotos = photoLetters.map((l) => `/images/episodes/ep-${epNum}-${l}.jpg`);
+// Only photos that actually exist in public/. A preloader pointing at a
+// missing file gets Netlify's HTML 404 page, which runs GA, so anything that
+// renders that response logs a page view at the image URL
+// (e.g. /images/episodes/ep-05-c.jpg).
+const artistPhotos = photoLetters
+  .map((l) => `/images/episodes/ep-${epNum}-${l}.jpg`)
+  .filter((src) => existsSync(join(process.cwd(), "public", src)));
 
 // Upcoming shows — build-time filter drops anything already over by the last
 // deploy; a client-side check (data-show-until, see bottom script) catches

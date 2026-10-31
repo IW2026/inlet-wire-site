@@ -184,7 +184,11 @@ const ogImageMime =
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-MYS9YKGZ3B');
+      // A missing image URL is answered with the 404 page. Don't count that
+      // as a page view at /images/....jpg.
+      if (!/\.(jpe?g|png|webp|gif|svg|avif|ico)$/i.test(location.pathname)) {
+        gtag('config', 'G-MYS9YKGZ3B');
+      }
     </script>
   </head>
   <body>

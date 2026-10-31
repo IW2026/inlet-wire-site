@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import ListenTracking from "../components/ListenTracking.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -39,7 +40,8 @@ const {
   title,
   description = "Inlet Wire is a Canadian music podcast hosted by Eric Chan — your direct line to BC artists. Weekly conversations with the independent artists shaping the sound of British Columbia.",
   path = "/",
-  ogImage = "/og-default.png",
+  // 1200x630 crop of the square og-default.png (that one stays as podcast art).
+  ogImage = "/og-default.jpg",
   ogImageAlt,
   ogType = "website",
   jsonLd,
@@ -162,7 +164,7 @@ const ogImageMime =
 
     <!-- og:audio — podcast episode pages only -->
     {ogAudio && <meta property="og:audio" content={ogAudio} />}
-    {ogAudio && <meta property="og:audio:type" content="audio/mpeg" />}
+    {ogAudio && <meta property="og:audio:type" content={/\.mp3(\?|$)/i.test(decodeURIComponent(ogAudio)) ? "audio/mpeg" : "audio/mp4"} />}
 
     <!-- Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -191,5 +193,6 @@ const ogImageMime =
       <slot />
     </main>
     <Footer />
+    <ListenTracking />
   </body>
 </html>

@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import FollowCTA from "../../components/FollowCTA.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
-import { regionForCity, genresForTags, durationLabel } from "../../lib/taxonomy";
+import { regionForCity, genresForTags, durationLabel, isoDuration } from "../../lib/taxonomy";
 
 export async function getStaticPaths() {
   const episodes = (await getCollection("episodes", ({ data }) => !data.draft))
@@ -19,8 +19,14 @@ export async function getStaticPaths() {
     const myGenres = genresForTags(ep.data.tags);
     const myRegion = regionForCity(ep.data.city);
     const myTags = new Set(ep.data.tags ?? []);
-    const related = episodes
-      .filter((other) => other.slug !== ep.slug)
+    // Hand-picked related slugs (frontmatter `related`) go first; automatic
+    // matches fill whatever is left of the three slots.
+    const picked = (ep.data.related ?? [])
+      .map((s) => episodes.find((e) => e.slug === s))
+      .filter((e): e is CollectionEntry<"episodes"> => !!e && e.slug !== ep.slug);
+    const pickedSlugs = new Set(picked.map((e) => e.slug));
+    const auto = episodes
+      .filter((other) => other.slug !== ep.slug && !pickedSlugs.has(other.slug))
       .map((other) => {
         const sharedGenres = genresForTags(other.data.tags).filter((g) => myGenres.includes(g)).length;
         const sharedTags = (other.data.tags ?? []).filter((t) => myTags.has(t)).length;
@@ -29,8 +35,8 @@ export async function getStaticPaths() {
       })
       .filter((r) => r.score > 0)
       .sort((a, b) => b.score - a.score || b.other.data.episode_number - a.other.data.episode_number)
-      .slice(0, 3)
       .map((r) => r.other);
+    const related = [...picked, ...auto].slice(0, 3);
 
     return {
       params: { slug: ep.slug },
@@ -53,6 +59,15 @@ type Props = {
   hasTranscript: boolean;
 };
 const { ep, prev, next, related, hasTranscript } = Astro.props as Props;
+
+// "Browse more" links into the archive filters, so someone who lands on one
+// artist from search can keep going through the same scene or sound.
+const browseRegion = regionForCity(ep.data.city);
+const browseGenres = genresForTags(ep.data.tags);
+const browseLinks = [
+  ...(browseRegion ? [{ label: `${browseRegion} artists`, href: `/episodes/?region=${encodeURIComponent(browseRegion)}` }] : []),
+  ...browseGenres.map((g) => ({ label: g, href: `/episodes/?sound=${encodeURIComponent(g)}` })),
+];
 const { Content } = await ep.render();
 
 const dateLabel = ep.data.publish_date.toLocaleDateString("en-CA", {
@@ -101,46 +116,106 @@ function showDateLabel(s: { start_date: Date; end_date?: Date }) {
 // Structured data for Google / Apple / Spotify / AI indexing.
 // AudioObject is attached whenever we have either a direct audio URL
 // (preferred, gives crawlers the actual file) or a Spotify embed URL.
+const episodeUrl = `https://inletwire.com/episodes/${ep.slug}/`;
+// "Artist — Title", unless the title already opens with the artist's name
+// (avoids "Anna Katarina — Anna Katarina on..." in search results).
+const fullName = ep.data.title.toLowerCase().startsWith(ep.data.artist.toLowerCase())
+  ? ep.data.title
+  : `${ep.data.artist} — ${ep.data.title}`;
+const durationIso = isoDuration(ep.data.duration);
+const modified = (ep.data.updated_date ?? ep.data.publish_date).toISOString();
 const audioObject =
   ep.data.anchor_audio_url || ep.data.spotify_episode_id
     ? {
         "@type": "AudioObject",
         ...(ep.data.anchor_audio_url
-          ? { contentUrl: ep.data.anchor_audio_url, encodingFormat: "audio/mpeg" }
+          ? { contentUrl: ep.data.anchor_audio_url, encodingFormat: "audio/mp4" }
           : {}),
         ...(ep.data.spotify_episode_id
-          ? { embedUrl: `https://open.spotify.com/episode/${ep.data.spotify_episode_id}` }
+          ? { embedUrl: `https://open.spotify.com/embed/episode/${ep.data.spotify_episode_id}` }
           : {}),
+        ...(durationIso ? { duration: durationIso } : {}),
       }
     : undefined;
+
+// The featured artist as its own entity. sameAs ties this page to the
+// artist's official profiles, which is how Google connects "Inlet Wire
+// interview" to searches for the artist's name.
+const artistType = ep.data.artist_type ?? "MusicGroup";
+const artistSameAs = [
+  ep.data.artist_website,
+  ep.data.artist_instagram,
+  ep.data.artist_spotify,
+  ep.data.artist_youtube,
+  ep.data.artist_facebook,
+  ep.data.artist_bandcamp,
+  ep.data.artist_patreon,
+].filter(Boolean);
+const artistPlace = ep.data.city
+  ? {
+      "@type": "Place",
+      name: [ep.data.city, ep.data.region].filter(Boolean).join(", "),
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: ep.data.city,
+        addressRegion: "BC",
+        addressCountry: "CA",
+      },
+    }
+  : undefined;
+const artistEntity = {
+  "@type": artistType,
+  "@id": `${episodeUrl}#artist`,
+  name: ep.data.artist,
+  ...(artistSameAs.length ? { sameAs: artistSameAs } : {}),
+  ...(artistPlace
+    ? artistType === "Person"
+      ? { homeLocation: artistPlace }
+      : { location: artistPlace }
+    : {}),
+};
 
 const episodeJsonLd = {
   "@context": "https://schema.org",
   "@type": "PodcastEpisode",
-  "@id": `https://inletwire.com/episodes/${ep.slug}/#episode`,
-  name: `${ep.data.artist} — ${ep.data.title}`,
+  "@id": `${episodeUrl}#episode`,
+  name: fullName,
   headline: ep.data.title,
-  description: ep.data.description,
+  description: ep.data.seo_description ?? ep.data.description,
   datePublished: ep.data.publish_date.toISOString(),
-  dateModified: ep.data.publish_date.toISOString(),
-  url: `https://inletwire.com/episodes/${ep.slug}/`,
+  dateModified: modified,
+  url: episodeUrl,
+  mainEntityOfPage: episodeUrl,
   image: `https://inletwire.com${coverImage}`,
   episodeNumber: ep.data.episode_number,
   inLanguage: "en-CA",
-  // Auto-derived keywords: episode tags + artist-specific + brand search terms.
-  // This block runs at build time — adding tags to the episode frontmatter
-  // is all that's needed to update SEO metadata for that episode.
-  keywords: [
-    ...( ep.data.tags ?? []),
-    `${ep.data.artist}`,
-    `${ep.data.artist} BC`,
-    `${ep.data.artist} music`,
-    `${ep.data.artist} podcast`,
-    "Canadian music podcast",
-    "BC music podcast",
-    "BC artist interview",
-    "Inlet Wire",
-  ].join(", "),
+  ...(durationIso ? { duration: durationIso, timeRequired: durationIso } : {}),
+  // Tags, the artist, and any topics noted in frontmatter. Search engines
+  // mostly ignore this field, so it stays short and specific, no stuffing.
+  keywords: [...new Set([
+    ep.data.artist,
+    ...(ep.data.topics ?? []),
+    ...(ep.data.tags ?? []),
+    ...(ep.data.city ? [`${ep.data.city} music`] : []),
+    "BC music",
+  ])].join(", "),
+  about: artistEntity,
+  ...(ep.data.guests?.length
+    ? { actor: ep.data.guests.map((name) => ({ "@type": "Person", name })) }
+    : {}),
+  ...(ep.data.topics?.length
+    ? { mentions: ep.data.topics.map((name) => ({ "@type": "Thing", name })) }
+    : {}),
+  ...(hasTranscript
+    ? {
+        subjectOf: {
+          "@type": "WebPage",
+          "@id": `${episodeUrl}transcript/#webpage`,
+          name: `${ep.data.artist} — Transcript`,
+          url: `${episodeUrl}transcript/`,
+        },
+      }
+    : {}),
   partOfSeries: {
     "@type": "PodcastSeries",
     "@id": "https://inletwire.com/#podcast",
@@ -149,18 +224,19 @@ const episodeJsonLd = {
     webFeed: "https://anchor.fm/s/10edfd0cc/podcast/rss",
   },
   ...(audioObject ? { associatedMedia: audioObject } : {}),
-  creator: { "@type": "Person", name: "Eric Chan" },
-  producer: {
+  author: {
+    "@type": "Person",
+    "@id": "https://inletwire.com/#eric-chan",
+    name: "Eric Chan",
+    url: "https://inletwire.com/about/",
+  },
+  creator: { "@id": "https://inletwire.com/#eric-chan" },
+  publisher: {
     "@type": "Organization",
     "@id": "https://inletwire.com/#organization",
     name: "Inlet Wire",
   },
-  // speakableSpecification tells Google/voice assistants which content to read aloud.
-  // Targets the episode title (h1), lede paragraph, and article body paragraphs.
-  speakable: {
-    "@type": "SpeakableSpecification",
-    cssSelector: ["h1", ".lede", ".prose p"],
-  },
+  producer: { "@id": "https://inletwire.com/#organization" },
 };
 
 const breadcrumbJsonLd = {
@@ -175,20 +251,20 @@ const breadcrumbJsonLd = {
 };
 ---
 <BaseLayout
-  title={ep.data.seo_title ?? `${ep.data.artist} — ${ep.data.title}`}
+  title={ep.data.seo_title ?? fullName}
   description={ep.data.seo_description ?? ep.data.description}
   path={`/episodes/${ep.slug}/`}
   ogImage={ep.data.og_image ?? ogCard}
-  ogImageAlt={`${ep.data.artist} — ${ep.data.title} | Inlet Wire`}
+  ogImageAlt={`${fullName} | Inlet Wire`}
   ogType="article"
   jsonLd={[episodeJsonLd, breadcrumbJsonLd]}
   ogAudio={ep.data.anchor_audio_url}
   articlePublishedTime={ep.data.publish_date.toISOString()}
-  articleModifiedTime={ep.data.publish_date.toISOString()}
+  articleModifiedTime={modified}
   articleSection="Music"
   articleTags={ep.data.tags && ep.data.tags.length > 0 ? ep.data.tags : ["BC Music", "Podcast", ep.data.artist]}
 >
-  <article>
+  <article data-episode-slug={ep.slug}>
 
     <section class="hero episode-hero">
       <div class="container prose">
@@ -464,6 +540,14 @@ const breadcrumbJsonLd = {
       <section>
         <div class="container">
           <h2>More like this</h2>
+          {browseLinks.length > 0 && (
+            <p class="browse-more">
+              Browse:{" "}
+              {browseLinks.map((l, i) => (
+                <>{i > 0 && " · "}<a class="link" href={l.href}>{l.label}</a></>
+              ))}
+            </p>
+          )}
           <div class="episode-grid related-grid">
             {related.map((rel) => {
               const relNum = String(rel.data.episode_number).padStart(2, "0");

@@ -21,3 +21,6 @@ inlet/
 # Editor
 .vscode/
 .git-credentials
+
+# AI prep drafts — review sheets, never published directly
+drafts/

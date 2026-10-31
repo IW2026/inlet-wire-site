@@ -1,6 +1,6 @@
 # Inlet Wire — Website
 
-Static site for Inlet Wire, built with Astro. Hosted on Cloudflare Pages, rebuilt and redeployed automatically on every push to `main`.
+Static site for Inlet Wire, built with Astro. Hosted on Netlify, rebuilt and redeployed automatically on every push to `main` (see `netlify.toml`). SEO notes and the episode publishing workflow live in `docs/SEO.md`.
 
 ## Local setup (one time)
 
@@ -120,7 +120,7 @@ guests:
 
 3. Write the article body below the frontmatter using normal Markdown. Aim for 400 to 600 words, with `##` and `###` subheads for SEO.
 4. Open GitHub Desktop. Review the change, write a short commit summary ("Add Molly Annelle episode"), click Commit to main, then Push origin.
-5. Site rebuilds on Cloudflare and goes live in about 60 seconds.
+5. Site rebuilds on Netlify and goes live in about a minute.
 
 ## Where to find Spotify IDs
 

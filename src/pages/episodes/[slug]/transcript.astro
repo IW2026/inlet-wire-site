@@ -28,13 +28,46 @@ const speakers = transcript.data.speakers;
 const speakersLabel = speakers.join(" & ");
 
 const pageTitle = `${artist} — Transcript`;
+// Kept to about 160 characters so Google shows it whole: what this page is,
+// then the episode's own description, cut at a word boundary.
+function clip(text: string, max = 160) {
+  const clean = text.replace(/\*/g, "").replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  return clean.slice(0, max - 1).replace(/[\s,;:.\u2014-]+\S*$/, "") + "…";
+}
 const pageDesc = ep
-  ? `Read the full transcript of Inlet Wire Ep. ${ep.data.episode_number} — ${artist}: "${ep.data.title}." ${ep.data.description}`
-  : `Read the full transcript of the Inlet Wire conversation with ${artist} — a Canadian music podcast featuring BC artists.`;
+  ? clip(`Transcript of Inlet Wire Ep. ${ep.data.episode_number} with ${artist}. ${ep.data.seo_description ?? ep.data.description}`)
+  : clip(`Full transcript of the Inlet Wire conversation with ${artist}, a BC music podcast hosted by Eric Chan.`);
 
 // Reuse the episode's OG card so sharing a transcript link shows the episode art
 const epNum = ep ? String(ep.data.episode_number).padStart(2, "0") : null;
 const ogCard = epNum ? `/images/og/ep-${epNum}.jpg` : undefined;
+
+const episodeUrl = `https://inletwire.com/episodes/${transcript.data.episode_slug}/`;
+const transcriptUrl = `${episodeUrl}transcript/`;
+
+// Ties the transcript to its episode so search engines treat it as the
+// episode's companion text, not a separate competing page.
+const transcriptJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${transcriptUrl}#webpage`,
+  url: transcriptUrl,
+  name: `${artist} — Transcript`,
+  description: pageDesc,
+  inLanguage: "en-CA",
+  isPartOf: { "@id": "https://inletwire.com/#website" },
+  about: { "@id": `${episodeUrl}#episode` },
+  mainEntity: {
+    "@type": "CreativeWork",
+    name: `${artist} — Inlet Wire transcript`,
+    isBasedOn: { "@id": `${episodeUrl}#episode` },
+    author: { "@id": "https://inletwire.com/#eric-chan" },
+    ...(transcript.data.transcribed_date
+      ? { dateCreated: transcript.data.transcribed_date.toISOString() }
+      : {}),
+  },
+};
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -55,9 +88,9 @@ const breadcrumbJsonLd = {
   path={`/episodes/${transcript.data.episode_slug}/transcript/`}
   ogType="article"
   ogImage={ogCard}
-  jsonLd={[breadcrumbJsonLd]}
+  jsonLd={[transcriptJsonLd, breadcrumbJsonLd]}
 >
-  <article class="transcript-page">
+  <article class="transcript-page" data-episode-slug={transcript.data.episode_slug}>
 
     <section class="hero">
       <div class="container prose">

@@ -41,6 +41,20 @@ const episodes = defineCollection({
     // Optional OG image override — root-relative path (e.g. /images/og/ep-01-alt.jpg).
     // Falls back to the auto-derived /images/og/ep-NN.jpg when omitted.
     og_image: z.string().optional(),
+    // Set when an episode page gets a meaningful edit (new article body,
+    // transcript added, corrected facts). Feeds dateModified + sitemap lastmod.
+    // Leave blank for typo fixes so Google is not told the page changed.
+    updated_date: z.date().optional(),
+    // Schema.org type for the featured artist. MusicGroup covers bands and
+    // solo musicians; use Person for a producer/engineer, Organization for a
+    // studio, venue or label. Defaults to MusicGroup.
+    artist_type: z.enum(["MusicGroup", "Person", "Organization"]).optional(),
+    // Key topics actually discussed in the episode (2-6 short phrases).
+    // Structured data only, not shown on the page.
+    topics: z.array(z.string()).optional(),
+    // Hand-picked related episodes (slugs). Shown first in "More like this",
+    // then the automatic matches fill any remaining spots.
+    related: z.array(z.string()).optional(),
     // "From the episode" gallery — editorial carousel slides.
     // Slides with is_cta_slide: true are suppressed on the website
     // (they are Instagram-only CTAs like "Listen on inletwire.com").

@@ -34,7 +34,7 @@ upcoming_shows:
     start_date: 2026-09-19
 ---
 
-# Silverware Started as a Friend Group. Then the Band Got Real.
+## Silverware Started as a Friend Group. Then the Band Got Real.
 
 A lot of bands say friendship matters, but with Silverware, it feels central to the whole thing.
 

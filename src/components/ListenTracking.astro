@@ -1,0 +1,93 @@
+---
+// Listener-conversion tracking, sent to the existing GA4 property.
+// No new service, no cookies beyond what GA4 already sets.
+//
+// Events (custom names, so they never double-count GA4's built-in "click"):
+//   listen_click        a listening-platform link (Spotify, Apple, YouTube...)
+//   artist_link_click   one of the "Find <artist> on" links
+//   share_click         the Share button
+//   audio_play          the on-page audio player started
+//   transcript_open     transcript opened (inline or link to the page)
+// Shared params: platform, episode_slug, link_location, link_url
+---
+<script>
+  type Params = Record<string, string | number | undefined>;
+  const send = (name: string, params: Params) => {
+    const w = window as any;
+    if (typeof w.gtag === "function") w.gtag("event", name, { ...params, transport_type: "beacon" });
+  };
+
+  const PLATFORMS: [RegExp, string][] = [
+    [/(^|\.)open\.spotify\.com$/, "spotify"],
+    [/(^|\.)podcasts\.apple\.com$/, "apple_podcasts"],
+    [/(^|\.)(youtube\.com|youtu\.be)$/, "youtube"],
+    [/(^|\.)iheart\.com$/, "iheart"],
+    [/(^|\.)pca\.st$/, "pocket_casts"],
+    [/(^|\.)overcast\.fm$/, "overcast"],
+    [/(^|\.)(anchor\.fm|podcasters\.spotify\.com|cloudfront\.net)$/, "direct_audio"],
+  ];
+
+  const pageSlug = () => {
+    const el = document.querySelector<HTMLElement>("[data-episode-slug]");
+    if (el) return el.dataset.episodeSlug;
+    const m = location.pathname.match(/^\/episodes\/([^/]+)\//);
+    return m ? m[1] : undefined;
+  };
+
+  const locationOf = (el: Element) =>
+    el.closest(".artist-links") ? "artist_links" :
+    el.closest(".episode-player") ? "player" :
+    el.closest(".related-grid") ? "related" :
+    el.closest(".follow-cta") ? "follow_show" :
+    el.closest("footer") ? "footer" :
+    el.closest("header") ? "header" :
+    location.pathname === "/" ? "home" : "page";
+
+  document.addEventListener("click", (e) => {
+    const target = e.target as Element | null;
+    if (!target) return;
+
+    const share = target.closest("[data-share-btn]");
+    if (share) {
+      send("share_click", { episode_slug: pageSlug(), method: "share" in navigator ? "native" : "copy_link" });
+      return;
+    }
+
+    const a = target.closest<HTMLAnchorElement>("a[href]");
+    if (!a) return;
+    let url: URL;
+    try { url = new URL(a.href, location.href); } catch { return; }
+
+    if (url.origin === location.origin) {
+      if (/\/transcript\/?$/.test(url.pathname) || url.hash === "#transcript") {
+        send("transcript_open", { episode_slug: pageSlug(), link_location: locationOf(a), method: "link" });
+      }
+      return;
+    }
+
+    const host = url.hostname.replace(/^www\./, "");
+    const inArtistLinks = !!a.closest(".artist-links");
+    const platform = PLATFORMS.find(([re]) => re.test(host))?.[1];
+    // Spotify/YouTube/Bandcamp links in the artist block are artist profiles, not this episode.
+    if (platform && !inArtistLinks && !/\/podcast\/rss$/.test(url.pathname)) {
+      send("listen_click", { platform, episode_slug: pageSlug(), link_location: locationOf(a), link_url: url.href.slice(0, 100) });
+    } else if (inArtistLinks) {
+      send("artist_link_click", { platform: host, episode_slug: pageSlug(), link_url: url.href.slice(0, 100) });
+    }
+  }, { capture: true });
+
+  document.querySelectorAll<HTMLAudioElement>("audio").forEach((audio) => {
+    let sent = false;
+    audio.addEventListener("play", () => {
+      if (sent) return;
+      sent = true;
+      send("audio_play", { platform: "on_page_player", episode_slug: pageSlug() });
+    });
+  });
+
+  document.querySelectorAll<HTMLDetailsElement>("details#transcript").forEach((d) => {
+    d.addEventListener("toggle", () => {
+      if (d.open) send("transcript_open", { episode_slug: pageSlug(), link_location: "inline", method: "expand" });
+    }, { once: true });
+  });
+</script>

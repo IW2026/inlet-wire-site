@@ -192,19 +192,48 @@ function apply() {
   if (empty) empty.hidden = visible > 0;
 }
 
+// Filters are linkable: /episodes/?region=Vancouver+Island&sound=Indie+rock
+// Episode pages link here, and the URL can be shared. Canonical stays /episodes/.
+const PARAM: Record<string, string> = { region: "region", genre: "sound" };
+
+function select(facet: string, filter: string) {
+  active[facet] = filter;
+  buttons.forEach((b) => {
+    if (b.getAttribute("data-facet") === facet) {
+      b.classList.toggle("active", b.getAttribute("data-filter") === filter);
+    }
+  });
+}
+
+function syncUrl() {
+  const q = new URLSearchParams();
+  for (const [facet, key] of Object.entries(PARAM)) {
+    if (active[facet] !== "__all") q.set(key, active[facet]);
+  }
+  const qs = q.toString();
+  history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
+}
+
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const facet  = btn.getAttribute("data-facet") ?? "";
-    const filter = btn.getAttribute("data-filter") ?? "__all";
-    active[facet] = filter;
-    buttons.forEach((b) => {
-      if (b.getAttribute("data-facet") === facet) {
-        b.classList.toggle("active", b === btn);
-      }
-    });
+    select(btn.getAttribute("data-facet") ?? "", btn.getAttribute("data-filter") ?? "__all");
     apply();
+    syncUrl();
   });
 });
+
+{
+  const q = new URLSearchParams(location.search);
+  let changed = false;
+  for (const [facet, key] of Object.entries(PARAM)) {
+    const want = q.get(key);
+    const exists = want && Array.from(buttons).some(
+      (b) => b.getAttribute("data-facet") === facet && b.getAttribute("data-filter") === want
+    );
+    if (want && exists) { select(facet, want); changed = true; }
+  }
+  if (changed) apply();
+}
 
 reset?.addEventListener("click", () => {
   active.region = "__all";
@@ -213,5 +242,6 @@ reset?.addEventListener("click", () => {
     b.classList.toggle("active", b.getAttribute("data-filter") === "__all");
   });
   apply();
+  syncUrl();
 });
 </script>

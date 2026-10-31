@@ -10,6 +10,7 @@
  */
 
 import { readdir, readFile } from "fs/promises";
+import { existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -49,7 +50,10 @@ const urls = [
   `https://${HOST}/contact/`,
   `https://${HOST}/media-kit/`,
   ...episodeSlugs.map((s) => `https://${HOST}/episodes/${s}/`),
-  ...episodeSlugs.map((s) => `https://${HOST}/episodes/${s}/transcript/`),
+  // Only transcripts that actually exist — submitting 404s wastes crawl budget.
+  ...episodeSlugs
+    .filter((s) => existsSync(join(__dirname, "../src/content/transcripts", `${s}.md`)))
+    .map((s) => `https://${HOST}/episodes/${s}/transcript/`),
 ];
 
 console.log(`[IndexNow] Submitting ${urls.length} URLs to ${INDEXNOW_API}`);

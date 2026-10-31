@@ -13,6 +13,8 @@ export function regionForCity(city?: string): string | null {
   const island = [
     "victoria", "langford", "nanaimo", "duncan", "courtenay", "comox",
     "campbell river", "tofino", "port alberni", "sidney", "sooke",
+    "comox valley", "cumberland", "parksville", "qualicum beach", "ucluelet",
+    "port hardy", "salt spring island", "saanich", "colwood", "esquimalt",
   ];
   const seaToSky = ["pemberton", "squamish", "whistler", "lions bay"];
   if (metroVan.includes(c)) return "Metro Vancouver";
@@ -45,4 +47,18 @@ export function durationLabel(duration?: string): string | null {
   for (const p of parts) seconds = seconds * 60 + p;
   const mins = Math.floor(seconds / 60);
   return mins > 0 ? `${mins} min` : null;
+}
+
+/** "00:13:07" → "PT13M7S" (ISO 8601, for structured data). */
+export function isoDuration(duration?: string): string | null {
+  if (!duration) return null;
+  const parts = duration.split(":").map(Number);
+  if (parts.length === 0 || parts.some(Number.isNaN)) return null;
+  let seconds = 0;
+  for (const p of parts) seconds = seconds * 60 + p;
+  if (seconds <= 0) return null;
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  return `PT${h ? `${h}H` : ""}${m ? `${m}M` : ""}${s ? `${s}S` : ""}`;
 }

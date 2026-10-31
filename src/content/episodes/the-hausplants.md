@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/the-hausplants-into-eq
 youtube_episode_url: "https://www.youtube.com/watch?v=YfaMrcpaNrg"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/the-hausplants-into-equilibrium-322764628/"
 description: "In this episode of Inlet Wire , Eric Chan sits down with The Hausplants . They talk about how the band started, how their different backgrounds shape the Hausplants sound, and the moment they knew thi…"
+seo_title: "The Hausplants, Vancouver Band, Interview"
+seo_description: "The Hausplants are a post-punk band from Vancouver, BC. They talk about how the band started and how their different backgrounds shape their sound."
 tags:
   - band
   - vancouver

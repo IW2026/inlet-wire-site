@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/silverware-down-for-th
 youtube_episode_url: "https://www.youtube.com/watch?v=tSoXkATC0M0"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/silverware-down-for-the-long-323098716/"
 description: "In this episode of Inlet Wire, Eric Chan talks with Huckleberry from Silverware (Victoria, BC). They get into the early moment that pushed the band forward, how their songs take shape from rough ideas…"
+seo_title: "Silverware, Victoria Band, Interview"
+seo_description: "Silverware are a band from Victoria, BC. Huckleberry talks about UVic Battle of the Bands, a changing lineup, and how their songs grow from rough ideas."
 tags:
   - band
   - victoria

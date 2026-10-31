@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/ca/podcast/andy-schichter-from-co
 youtube_episode_url: "https://www.youtube.com/watch?v=fYcDk63Fe3w"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/andy-schichter-from-cold-calls-322764627/"
 description: "How Andy Schichter and Dan Ponich turned a Craigslist industrial space into one of North Vancouver's most distinctive studios, and why the API 1608 is the room's centre of gravity."
+seo_title: "Andy Schichter Interview"
+seo_description: "Andy Schichter talks about building Park Sound Studio in North Vancouver, BC with Dan Ponich, and why the API 1608 console is the centre of the room."
 tags:
   - producer
   - audio-engineer

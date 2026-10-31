@@ -64,9 +64,12 @@ artist_bandcamp: "https://....bandcamp.com/"
 
 # ── SEO overrides (all optional — affect only <title> and meta, not page text) ─
 # seo_title must NOT include "| Inlet Wire" — BaseLayout appends it automatically.
-# seo_description should be natural and social-friendly, ideally 140–160 characters.
-seo_title: "Artist on Topic, Topic, and Topic"
-seo_description: "One or two sentences. Natural, not keyword-stuffed. Around 140–160 characters."
+# seo_title pattern: "Artist Name Interview" for solo artists, "Artist Name, City Band, Interview"
+# for bands, or "Artist Name (Band) Interview" if the city does not fit. Full title under 60 characters.
+# seo_description: lead with the artist name, say they are a BC artist (plus city and members if the
+# page names them), then end with the episode hook. 120 to 155 characters.
+seo_title: "Artist Name, City Band, Interview"
+seo_description: "Artist Name are a band from City, BC. One sentence on what the conversation covers, using the episode hook."
 
 # og_image is only needed to override the default /images/og/ep-NN.jpg.
 # og_image: "/images/og/ep-NN-alt.jpg"
@@ -97,8 +100,8 @@ producer: "Producer Name"
 ```yaml
 title: "The Shindigs: From Childhood Buddies to a Band"
 artist: "The Shindigs"
-seo_title: "The Shindigs on Nanaimo Roots, Friendship, and Growing Into a Band"
-seo_description: "The Shindigs talk about Nanaimo roots, childhood friendship, and how the band grew into something more serious on Inlet Wire."
+seo_title: "The Shindigs, Nanaimo Band, Interview"
+seo_description: "The Shindigs are Shea Peoples, Alex Peabody, Jacob, Matt and Tev, an indie rock band from Nanaimo, BC. Shea and Alex talk friendship and bigger rooms."
 city: "Nanaimo"
 region: "Vancouver Island, BC"
 guests:
@@ -113,7 +116,7 @@ guests:
 - [ ] Confirm pronunciation guide separately if needed
 - [ ] Confirm city and region
 - [ ] Write `seo_title` without `| Inlet Wire`
-- [ ] Write `seo_description` around 140–160 characters
+- [ ] Write `seo_description` at 120 to 155 characters
 - [ ] Confirm OG image path (leave blank to use default `ep-NN.jpg`)
 - [ ] Set `draft: true` while working, flip to `false` before publishing
 - [ ] Run `npm run build` locally before pushing

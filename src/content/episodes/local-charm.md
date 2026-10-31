@@ -9,6 +9,8 @@ anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/124031688/https%3A
 apple_podcast_url: "https://podcasts.apple.com/us/podcast/local-charm-the-move-the-reunion-the-record/id1876137985?i=1000782023008&uo=4"
 youtube_episode_url: "https://www.youtube.com/watch?v=C8jiwcdrwOI"
 description: "Eric Chan speaks with Jesse Hubner of Local Charm, a five-piece indie folk band from Victoria, about an old Okanagan songwriting partnership that resurfaced years later, a move to the coast that reopened his creativity, and the songs on their self-titled debut."
+seo_title: "Local Charm, Victoria Band, Interview"
+seo_description: "Local Charm are a five-piece indie folk band from Victoria, BC. Jesse Hubner talks about an old Okanagan writing partnership and their self-titled debut."
 tags:
   - indie-folk
   - victoria

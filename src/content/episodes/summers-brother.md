@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/tw/podcast/inlet-wire/id187613798
 youtube_episode_url: "https://www.youtube.com/watch?v=xpd8PkMY-jE"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/summers-brother-finding-their-shape-333977253/"
 description: "On this episode of Inlet Wire, Summer's Brother talk about how the project came together over a few years, and how their EP Class Clown slowly found its shape."
+seo_title: "Summer's Brother, Vancouver Band, Interview"
+seo_description: "Summer's Brother are a Vancouver, BC band. Connor and Max, with producer Andy Schichter, talk about how the band formed and how Class Clown took shape."
 tags:
   - vancouver
   - indie-rock

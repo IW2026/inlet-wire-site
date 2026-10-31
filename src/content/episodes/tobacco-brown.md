@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/tobacco-brown-from-act
 youtube_episode_url: "https://www.youtube.com/watch?v=4n1uSXcSu8U"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/tobacco-brown-from-acting-school-329939886/"
 description: "In this episode, Inlet Wire is joined by Kevan from Tobacco Brown. We talk about his early connection to music, how songwriting came through storytelling, and how acting school helped him realize music was really the thing."
+seo_title: "Tobacco Brown, Vancouver Band, Interview"
+seo_description: "Tobacco Brown is a band from Vancouver, BC. Kevan talks about songwriting through storytelling and how acting school showed him music was the real thing."
 tags:
   - band
   - vancouver

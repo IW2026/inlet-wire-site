@@ -10,6 +10,8 @@ anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/122134119/https%3A
 youtube_episode_url: "https://www.youtube.com/watch?v=4CHJvSOiSY4"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/daysormay-on-sound-trust-and-stripping-337751897/"
 description: "Eric Chan speaks with Vancouver band daysormay about becoming more intentional, building songs in Ableton, stripping arrangements back to their core, and finding trust after years of making music together."
+seo_title: "daysormay, Vancouver Band, Interview"
+seo_description: "daysormay are Aidan Andrews, Carson Bassett and Nolan Bassett, a Vancouver, BC band. They talk Ableton, stripping songs back, and finding trust as a band."
 tags:
   - band
   - vancouver

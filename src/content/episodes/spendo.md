@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/spendo-creative-rebirt
 youtube_episode_url: "https://www.youtube.com/watch?v=t5VzaOd6pNk"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/spendo-creative-rebirth-323704212/"
 description: "In this episode of Inlet Wire , Eric Chan sits down with Vancouver band Spendo . Guitarist Bradley Lambert talks about where the band is at right now, how their songs take shape, and how they work thr…"
+seo_title: "Spendo, Vancouver Band, Interview"
+seo_description: "Spendo are a Vancouver, BC rock band. Guitarist Bradley Lambert talks about where the band is at now, how their songs take shape, and a creative rebirth."
 tags:
   - band
   - vancouver

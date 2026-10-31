@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/the-zummers-first-chap
 youtube_episode_url: "https://www.youtube.com/watch?v=FjoUz_ixInU"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/the-zummers-first-chapter-behind-331688061/"
 description: "The Zummers are a four-piece out of Pemberton, B.C. In this episode, they look back on the early momentum that turned into their debut album, Distracted — the songs, the road, and what it sounds like when a band finds its shape fast."
+seo_title: "The Zummers, Pemberton Band, Interview"
+seo_description: "The Zummers are Tom, Alex, Mikey and Jesse, a four-piece from Pemberton, BC. They look back on the early run that led to their debut album, Distracted."
 tags:
   - band
   - pemberton

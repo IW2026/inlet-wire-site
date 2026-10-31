@@ -10,6 +10,8 @@ anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/122581699/https%3A
 youtube_episode_url: "https://www.youtube.com/watch?v=6W-COTiChfI"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/quadra-sound-building-a-world-around-338786376/"
 description: "Eric Chan speaks with Nick Fascione of Quadra Sound, a four-piece rock band from Vancouver Island, about social media as a direct line to listeners, years of development with producer Brian Howes, and a song rooted in growing up in Campbell River."
+seo_title: "Quadra Sound, Campbell River Band, Interview"
+seo_description: "Quadra Sound are a four-piece rock band from Campbell River, BC. Nick Fascione talks social media, producer Brian Howes, and a song about his hometown."
 tags:
   - rock
   - band

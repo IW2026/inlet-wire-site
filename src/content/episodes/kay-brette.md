@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/kay-brette-the-songs-a
 youtube_episode_url: "https://www.youtube.com/watch?v=j2OzwV1G30w"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/kay-brette-the-songs-arent-327761894/"
 description: "In this episode of Inlet Wire, Eric Chan sits down with Vancouver artist Kay Brette. She talks about performance anxiety, stepping away from music and the slow path back."
+seo_title: "Kay Brette Interview"
+seo_description: "Kay Brette is a Vancouver, BC singer-songwriter. She talks about performance anxiety, stepping away from music, and the slow path back to writing songs."
 tags:
   - solo-artist
   - vancouver

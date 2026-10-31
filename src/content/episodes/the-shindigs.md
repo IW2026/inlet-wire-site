@@ -21,8 +21,8 @@ guests:
   - "Alex Peabody"
 has_transcript: true
 draft: false
-seo_title: "The Shindigs on Nanaimo Roots, Friendship, and Growing Into a Band"
-seo_description: "The Shindigs' Shea Peoples and Alex Peabody on the exchange-student origin story, writing as a five-piece, and what changed when they started playing bigger rooms."
+seo_title: "The Shindigs, Nanaimo Band, Interview"
+seo_description: "The Shindigs are Shea Peoples, Alex Peabody, Jacob, Matt and Tev, an indie rock band from Nanaimo, BC. Shea and Alex talk friendship and bigger rooms."
 artist_website: "https://shindigs.band/"
 artist_instagram: "https://www.instagram.com/shindigs.band/"
 artist_youtube: "https://www.youtube.com/@TheShindigsmusic"

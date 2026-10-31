@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/leah-abramson-on-the-a
 youtube_episode_url: "https://www.youtube.com/watch?v=m0QHcm_Gm8w"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/leah-abramson-on-the-abramson-332479722/"
 description: "Leah Abramson returns with new music under The Abramson Singers name. In this conversation, she talks about what changed in the years between releases, how these songs slowly came together, and why songwriting still matters to her now. We get into life between records, writing on piano instead of guitar, the a cappella thread that still runs through the project, and the meaning behind “Can You See It Now” from the new EP Anything You Could’ve Been."
+seo_title: "Leah Abramson Interview"
+seo_description: "Leah Abramson of The Abramson Singers, from Vancouver, BC, talks about life between records, writing on piano, and the new EP Anything You Could’ve Been."
 tags:
   - vancouver
   - singer-songwriter

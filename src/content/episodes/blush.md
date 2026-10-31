@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/blush-friendship-growt
 youtube_episode_url: "https://www.youtube.com/watch?v=pK2u_DYrvPU"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/blush-friendship-growth-and-the-327024500/"
 description: "Blush started as four friends making music together in Victoria, BC, and over time that natural beginning grew into a band with its own shape and sound."
+seo_title: "Blush, Victoria Band, Interview"
+seo_description: "Blush are a four-piece rock band from Victoria, BC. Rosie, Renata and Eric talk about friendship, the texture in their songs, and their new EP."
 tags:
   - band
   - victoria

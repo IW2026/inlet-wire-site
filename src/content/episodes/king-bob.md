@@ -9,6 +9,8 @@ anchor_audio_url: "https://anchor.fm/s/10edfd0cc/podcast/play/121187850/https%3A
 apple_podcast_url: "https://podcasts.apple.com/ca/podcast/king-bob-making-music-that-is-about-something/id1876137985?i=1000771742790"
 youtube_episode_url: "https://www.youtube.com/watch?v=oFFWjwM7Mfw"
 description: "King Bob began taking shape around 2018, but the songs behind the project go back much further. Jackson McDonald talks about learning to record at home, bringing years of unfinished ideas together for the 17-song debut album Rookie, and how one of the band's oldest songs became \"Figure It Out.\" He also talks about King Bob's Patreon and why every song needs to be about something."
+seo_title: "King Bob, Victoria Band, Interview"
+seo_description: "King Bob is a Victoria, BC rock band. Jackson McDonald talks recording at home, the 17-song debut Rookie, and why every song has to be about something."
 tags:
   - band
   - rock

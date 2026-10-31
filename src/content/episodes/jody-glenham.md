@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/jody-glenham-still-her
 youtube_episode_url: "https://www.youtube.com/watch?v=S0eH7_BQ2FM"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/jody-glenham-still-here-328456129/"
 description: "This episode of Inlet Wire features Vancouver artist Jody Glenham. We get into Still Here , self-producing the record, songwriting habits, and the visual collaborations behind the videos with director…"
+seo_title: "Jody Glenham Interview"
+seo_description: "Jody Glenham is a Vancouver, BC singer-songwriter. She talks about her EP Still Here, producing it herself, aging in music, and making time for the work."
 tags:
   - solo-artist
   - vancouver

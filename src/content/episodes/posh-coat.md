@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/posh-coat-songs-live-e
 youtube_episode_url: "https://www.youtube.com/watch?v=Kltt6vobHCw"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/posh-coat-songs-live-energy-329182222/"
 description: "Andrew Whitney from Posh Coat joins Inlet Wire to talk about how the band came together, writing songs for the stage, and why feeling always comes first in their recordings."
+seo_title: "Posh Coat, Langford Band, Interview"
+seo_description: "Posh Coat are a Langford, BC band. Andrew Whitney talks about starting the band with Trisha and Luke, writing for the stage, and putting feeling first."
 tags:
   - band
   - victoria

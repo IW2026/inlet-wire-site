@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/tw/podcast/inlet-wire/id187613798
 youtube_episode_url: "https://www.youtube.com/watch?v=aRZipzJgqHc"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/kaj-falch-nielsen-from-blue-light-studio-334718165/"
 description: "Kaj from Blue Light Studio joins Inlet Wire to talk about how a recording space can become something bigger than just a studio. Eric Chan speaks with Kaj about Blue Light's growth into an East Vancouver creative hub, how Blue Light Sessions helped build community around the room, and what it takes to keep a space like that going in Vancouver. They also get into Kaj's approach as a producer — understanding the song first, building it piece by piece, and chasing those moments in the studio when everything suddenly clicks."
+seo_title: "Kaj Falch-Nielsen, Blue Light Studio Interview"
+seo_description: "Kaj Falch-Nielsen of Blue Light Studio talks about growing an East Vancouver, BC creative hub, the Blue Light Sessions, and building songs piece by piece."
 tags:
   - vancouver
   - east-vancouver

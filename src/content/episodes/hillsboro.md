@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/hillsboro-a-party-in-y
 youtube_episode_url: "https://www.youtube.com/watch?v=kBi2A5IL1dQ"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/hillsboro-inside-a-party-in-330978638/"
 description: "Nima from Hillsboro joins Eric Chan on Inlet Wire to talk about how the band has changed in six years — from finishing every song on a single laptop to writing a record live on stage."
+seo_title: "Hillsboro, Victoria Band, Interview"
+seo_description: "Hillsboro are a band from Victoria, BC. Nima talks about six years of change, from finishing every song on one laptop to writing a record live on stage."
 tags:
   - band
   - victoria

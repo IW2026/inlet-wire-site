@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/pinebarren-change-song
 youtube_episode_url: "https://www.youtube.com/watch?v=9f2vbbbiglI"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/pinebarren-change-songwriting-and-arbutus-326103684/"
 description: "On this episode of Inlet Wire, Pinebarren talk about the band in their own words, how their writing process has changed, and what shaped their latest release, Arbutus."
+seo_title: "Pinebarren, Vancouver Band, Interview"
+seo_description: "Pinebarren are a Vancouver, BC band. They talk about the band in their own words, how their writing process changed, and what shaped their release Arbutus."
 tags:
   - band
   - vancouver

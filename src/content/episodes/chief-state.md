@@ -10,6 +10,8 @@ apple_podcast_url: "https://podcasts.apple.com/us/podcast/chief-state-keep-your-
 youtube_episode_url: "https://www.youtube.com/watch?v=LDxjgIyXxzw"
 iheart_episode_url: "https://www.iheart.com/podcast/1333-inlet-wire-322764626/episode/chief-state-keep-your-friends-324445591/"
 description: "In this episode of Inlet Wire, Eric Chan sits down with BC band Chief State for a real conversation about how this record came together when it almost didn’t."
+seo_title: "Chief State, Vancouver Band, Interview"
+seo_description: "Chief State are a pop-punk band from Vancouver, BC. They sit down with Inlet Wire to talk about how their record came together when it almost didn’t."
 tags:
   - band
   - vancouver

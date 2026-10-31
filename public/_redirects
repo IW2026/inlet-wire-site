@@ -5,3 +5,8 @@ https://www.inletwire.com/*  https://inletwire.com/:splat  301!
 # Short RSS aliases — forward to the live Anchor feed
 /rss.xml   https://anchor.fm/s/10edfd0cc/podcast/rss  301
 /rss       https://anchor.fm/s/10edfd0cc/podcast/rss  301
+
+# Someone linked to inletwire.com/Instagram (not from this site, as far as
+# we can tell) and Google picked it up as a 404. Send it to the real profile.
+/Instagram  https://www.instagram.com/inletwire  301
+/instagram  https://www.instagram.com/inletwire  301

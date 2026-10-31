@@ -24,3 +24,8 @@ inlet/
 
 # AI prep drafts — review sheets, never published directly
 drafts/
+
+# Local tooling, not part of the site
+.claude/
+.gitattributes
+__pycache__/

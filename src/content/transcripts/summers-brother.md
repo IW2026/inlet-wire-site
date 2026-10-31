@@ -1,6 +1,7 @@
 ---
 episode_slug: summers-brother
 artist: "Summer's Brother"
+seo_description: "Full transcript of Inlet Wire's conversation with Summer's Brother: Connor, Max and producer Andy Schichter on how the band and Class Clown took shape."
 title: "Summer's Brother — Transcript"
 speakers:
   - Eric Chan

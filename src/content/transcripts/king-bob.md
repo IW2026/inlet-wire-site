@@ -1,6 +1,7 @@
 ---
 episode_slug: king-bob
 artist: King Bob
+seo_description: "Full transcript of Inlet Wire's conversation with King Bob's Jackson McDonald, on recording at home, the debut album Rookie, and the song Figure It Out."
 title: "King Bob — Transcript"
 speakers:
   - Eric Chan

@@ -1,6 +1,7 @@
 ---
 episode_slug: kaj-falch-nielsen
 artist: "Kaj Falch-Nielsen"
+seo_description: "Full transcript of Inlet Wire's conversation with Kaj Falch-Nielsen of Blue Light Studio, on building an East Vancouver creative hub and producing songs."
 title: "Kaj Falch-Nielsen — Transcript"
 speakers:
   - Eric Chan

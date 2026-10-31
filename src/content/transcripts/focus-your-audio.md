@@ -1,6 +1,7 @@
 ---
 episode_slug: focus-your-audio
 artist: Focus Your Audio
+seo_description: "Full transcript of Inlet Wire's conversation with Focus Your Audio, Vancouver duo Sarah and Bobby, on writing apart and the story behind The Long Goodbye."
 title: "Focus Your Audio — Transcript"
 speakers:
   - Eric Chan

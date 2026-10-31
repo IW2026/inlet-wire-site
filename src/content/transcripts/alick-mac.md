@@ -1,6 +1,7 @@
 ---
 episode_slug: alick-mac
 artist: Alick Mac
+seo_description: "Full transcript of Inlet Wire's conversation with Alick Mac, the Comox Valley rapper, on songwriting as a journal, masculinity, and his show Boys’ Club."
 title: "Alick Mac — Transcript"
 speakers:
   - Eric Chan

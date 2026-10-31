@@ -1,6 +1,7 @@
 ---
 episode_slug: the-shindigs
 artist: "The Shindigs"
+seo_description: "Full transcript of Inlet Wire's conversation with The Shindigs' Shea Peoples and Alex Peabody, on Nanaimo, childhood friendship, and playing bigger rooms."
 title: "The Shindigs — Transcript"
 speakers:
   - Eric Chan

@@ -92,6 +92,10 @@ const transcripts = defineCollection({
     speakers: z.array(z.string()).default(["Eric Chan"]),
     // Optional ISO date for when the transcript itself was finalized.
     transcribed_date: z.date().optional(),
+    // Optional meta description, 120 to 155 characters, starting with
+    // "Full transcript of Inlet Wire's conversation with <artist>". When
+    // omitted, one is built from the episode's description.
+    seo_description: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

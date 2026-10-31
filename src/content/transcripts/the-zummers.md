@@ -1,6 +1,7 @@
 ---
 episode_slug: the-zummers
 artist: The Zummers
+seo_description: "Full transcript of Inlet Wire's conversation with The Zummers, the Pemberton four-piece, on the early run that led to their debut album, Distracted."
 title: "The Zummers — Transcript"
 speakers:
   - Eric Chan

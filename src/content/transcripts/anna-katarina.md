@@ -1,6 +1,7 @@
 ---
 episode_slug: anna-katarina
 artist: Anna Katarina
+seo_description: "Full transcript of Inlet Wire's conversation with Anna Katarina, the Vancouver singer-songwriter, on While I Was Dreaming and coming home after Nashville."
 title: "Anna Katarina — Transcript"
 speakers:
   - Eric Chan

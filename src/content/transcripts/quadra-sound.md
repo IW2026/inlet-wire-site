@@ -1,6 +1,7 @@
 ---
 episode_slug: quadra-sound
 artist: Quadra Sound
+seo_description: "Full transcript of Inlet Wire's conversation with Quadra Sound's Nick Fascione, on social media, producer Brian Howes, and growing up in Campbell River."
 title: "Quadra Sound — Transcript"
 speakers:
   - Eric Chan

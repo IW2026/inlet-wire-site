@@ -1,6 +1,7 @@
 ---
 episode_slug: daysormay
 artist: daysormay
+seo_description: "Full transcript of Inlet Wire's conversation with daysormay, the Vancouver band, on writing in Ableton, stripping songs back, and finding trust as a band."
 title: "daysormay — Transcript"
 speakers:
   - Eric Chan

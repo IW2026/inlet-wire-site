@@ -1,6 +1,7 @@
 ---
 episode_slug: leah-abramson
 artist: Leah Abramson
+seo_description: "Full transcript of Inlet Wire's conversation with Leah Abramson of The Abramson Singers, on life between records, writing on piano, and the new EP."
 title: "Leah Abramson — Transcript"
 speakers:
   - Eric Chan

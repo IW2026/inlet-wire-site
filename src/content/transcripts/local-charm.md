@@ -1,6 +1,7 @@
 ---
 episode_slug: local-charm
 artist: Local Charm
+seo_description: "Full transcript of Inlet Wire's conversation with Local Charm's Jesse Hubner, on an old Okanagan writing partnership, a move to the coast, and their debut."
 title: "Local Charm — Transcript"
 speakers:
   - Eric Chan

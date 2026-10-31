@@ -1,6 +1,7 @@
 ---
 episode_slug: francis-baptiste
 artist: Francis Baptiste
+seo_description: "Full transcript of Inlet Wire's conversation with Francis Baptiste on learning the Okanagan language, carrying it into song, and family and heritage."
 title: "Francis Baptiste — Transcript"
 speakers:
   - Eric Chan

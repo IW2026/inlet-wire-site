@@ -180,7 +180,9 @@ const ogImageMime =
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MYS9YKGZ3B"></script>
-    <script>
+    <script is:inline>
+      // is:inline keeps gtag a global. Without it Astro bundles this as a
+      // module, renames gtag, and ListenTracking's events never send.
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());

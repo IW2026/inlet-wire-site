@@ -65,6 +65,6 @@ Vancouver's theatre world surprised them too. In New York you sing your song, so
 
 ## Hedwig
 
-Jordan first went out for Hedwig in their early 20s, at a theatre in the States. They got a callback but not the part, and remember wondering how they'd never heard of the show. Now they're playing the lead in Zee Zee Theatre's *Hedwig and the Angry Inch*. They get into what it means to take on a role that matters this much to the queer and trans community, and what it's like once the wig goes on.
+Jordan first went out for Hedwig in their early 20s, at a theatre in the States. They got a callback but not the part, and remember wondering how they'd never heard of the show. Now they're playing the lead in [Zee Zee Theatre](https://zeezeetheatre.ca/)'s [*Hedwig and the Angry Inch*](https://zeezeetheatre.ca/production/hedwig-and-the-angry-inch/). They get into what it means to take on a role that matters this much to the queer and trans community, and what it's like once the wig goes on.
 
 The last couple of minutes are worth hearing in Jordan's own voice.

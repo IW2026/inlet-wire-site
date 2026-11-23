@@ -25,6 +25,12 @@ artist_website: "https://thehausplants.com/"
 artist_instagram: "https://www.instagram.com/thehausplants/"
 artist_bandcamp: "https://thehausplants.bandcamp.com/"
 artist_facebook: "https://www.facebook.com/thehausplants"
+upcoming_shows:
+  - title: "Hope Slide, worrywart, The Hausplants, tomato trader"
+    venue: "Green Auto"
+    city: "Vancouver, BC"
+    start_date: 2026-12-05
+    ticket_url: "https://gigpit.ca/shows/event:dH51pnz643w"
 ---
 
 <!--

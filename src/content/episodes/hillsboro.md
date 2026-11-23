@@ -27,6 +27,12 @@ draft: false
 has_transcript: true
 artist_instagram: "https://www.instagram.com/hillsboroinc/"
 artist_bandcamp: "https://hillsboro.bandcamp.com/"
+upcoming_shows:
+  - title: "gnawing. EP release, with Hillsboro, Jian & Kitten Co. and Land Assembly"
+    venue: "Leo's Clothing Supply"
+    city: "Vancouver, BC"
+    start_date: 2026-11-27
+    ticket_url: "https://www.eventbrite.com/e/gnawing-live-ep-release-ft-hillsboro-jian-kitten-co-land-assembly-tickets-2004146824101"
 ---
 
 This Inlet Wire episode with Nima from Hillsboro gets into a band that seems to be seeing itself more clearly.

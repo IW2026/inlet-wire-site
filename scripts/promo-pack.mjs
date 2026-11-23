@@ -68,9 +68,17 @@ const firstName = (ep.guests?.[0] || ep.artist || "").split(" ")[0];
 const blurb = noDash(ep.seo_description || ep.description || "");
 // Lead with the artist only when the blurb doesn't already name them.
 const mentions = (ep.artist && blurb.toLowerCase().includes(ep.artist.toLowerCase()));
+// Skip "out of <city>" / "from <city>" when the blurb already names the city.
+const cityInBlurb = ep.city && blurb.toLowerCase().includes(ep.city.toLowerCase());
 const lead = mentions ? blurb : `${ep.artist}${from}. ${blurb}`;
 const igHandle = ep.artist_instagram?.match(/instagram\.com\/([^/?#]+)/)?.[1];
-const cityTag = ep.city ? `#${ep.city.toLowerCase().replace(/[^a-z]/g, "")}music` : "";
+// Hashtags follow the episode's tags, so a theatre guest doesn't get #bcmusic.
+const isTheatre = (ep.tags || []).some((t) => /theatre|theater/.test(t));
+const citySlug = ep.city ? ep.city.toLowerCase().replace(/[^a-z]/g, "") : "";
+const hashtags = ["#inletwire"]
+  .concat(isTheatre ? ["#musicaltheatre", citySlug && `#${citySlug}theatre`] : ["#bcmusic", citySlug && `#${citySlug}music`])
+  .filter(Boolean)
+  .join(" ");
 
 const flags = [];
 const OUT = join(ROOT, "drafts", slug, "promo");
@@ -107,14 +115,14 @@ The tracked links show up in GA4 under Traffic acquisition, so you can see which
 
 ## Inlet Wire post (Instagram, square.jpg)
 
-New episode${mentions && ep.city ? `, out of ${ep.city}` : ""}.
+New episode${mentions && ep.city && !cityInBlurb ? `, out of ${ep.city}` : ""}.
 
 ${lead}
 
 Full conversation at inletwire.com (link in bio), or wherever you listen.
 ${igHandle ? `\n@${igHandle}` : ""}
 
-#bcmusic ${cityTag} #inletwire
+${hashtags}
 
 ## For ${firstName} to repost (send this along, they'll change it)
 
@@ -126,7 +134,7 @@ ${lead} On Inlet Wire: ${url}
 
 ## Newsletter blurb
 
-**${ep.artist}**${from}. ${mentions ? blurb : blurb} [Listen](${track("newsletter", "email")})
+${mentions ? blurb : `**${ep.artist}**${from}. ${blurb}`} [Listen](${track("newsletter", "email")})
 
 ## Note to ${firstName}
 

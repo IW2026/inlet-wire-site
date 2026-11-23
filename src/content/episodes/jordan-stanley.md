@@ -16,6 +16,7 @@ city: "Vancouver"
 region: "BC"
 guests:
   - "Jordan Stanley"
+apple_podcast_url: "https://podcasts.apple.com/us/podcast/jordan-stanley-becoming-your-own-artist/id1876137985?i=1000803672624&uo=4"
 artist_type: Person
 has_transcript: true
 draft: false
@@ -39,32 +40,20 @@ upcoming_shows:
     ticket_url: "https://zeezeetheatre.ca/production/hedwig-and-the-angry-inch/"
 ---
 
-Jordan Stanley has been performing since they were four or five. Their dad worked at a college and took students on retreats out in the Idaho wilderness, and he'd get Jordan and their older brother up in front of the campfire to sing, dance and tell jokes.
+The first audition Jordan Stanley went to in Vancouver didn't start with a song. Someone said, "hey, have a seat." Then, "so tell us about yourself."
 
-## Show choir
+That threw them. Jordan had spent fifteen years in New York, a lot of it making rock-and-roll theatre with composer Joe Iconis's crowd, and New York auditions went: sing, hear "okay, thanks," walk out. Musical theatre had taught them a simple deal: "once I get the job, then I'll be whatever you want me to be."
 
-The real hook came a few years later, when the high school show choir visited Jordan's elementary school. Singing, dancing, spinning people around. Jordan wanted in. They started doing choir and musicals, and eventually got into that same show choir. By junior high or high school they figured they might actually be good at this.
+## An empty apartment
 
-## New York and Joe Iconis
+Jordan only came here because of 2020. Theatres closed, a summer with Jordan's parents in Idaho kept stretching, and then their wife's family offered an empty apartment in downtown Vancouver for six months. They never left. Jordan got citizenship last year.
 
-Jordan left a tiny town in Idaho for New York and ended up staying fifteen years. A professor at their school was close friends with composer Joe Iconis, and Jordan fell in with his crowd pretty young. Jordan calls them "the misfits and the losers of it all," and it was a kind of theatre that was also rock and roll. They did shows together for over ten years.
+"I felt like I was leaving myself behind," Jordan says about New York. Without the city and the old crowd, something they'd felt since growing up somewhere conservative came into focus. They're gender-fluid, and now they had the words for it.
 
-What stuck with me is how Jordan talks about their training. As a musical theatre performer you learn to go get the job and then be whatever they want you to be. Now, a bit older, Jordan is more interested in the stories only they can tell.
+## Hedwig, the second time
 
-## How they ended up in Vancouver
+Jordan first auditioned for Hedwig in their early 20s, in the States. Callback, no part. Now they're playing her for [Zee Zee Theatre](https://zeezeetheatre.ca/) in [*Hedwig and the Angry Inch*](https://zeezeetheatre.ca/production/hedwig-and-the-angry-inch/).
 
-In 2020, theatre shut down. Jordan and their wife spent the summer in Idaho with Jordan's parents, planning to head back to New York in the fall. The fall came and went and nothing reopened. Around then they were working through Julia Cameron's *The Artist's Way*.
-
-Then Jordan's wife's family offered them an empty apartment in downtown Vancouver for six months. They took it and never really left. Jordan got permanent residency, and then citizenship last year.
-
-## Starting over
-
-Jordan was scared to leave New York. A lot of who they were was wrapped up in the city, the work and the people. Moving meant figuring that out again from scratch, and somewhere in there Jordan realized they're gender-fluid, something they'd felt growing up in a conservative place but couldn't name.
-
-Vancouver's theatre world surprised them too. In New York you sing your song, someone says "okay, thanks," and you're out. At Jordan's first auditions here, people asked them to sit down and talk.
-
-## Hedwig
-
-Jordan first went out for Hedwig in their early 20s, at a theatre in the States. They got a callback but not the part, and remember wondering how they'd never heard of the show. Now they're playing the lead in [Zee Zee Theatre](https://zeezeetheatre.ca/)'s [*Hedwig and the Angry Inch*](https://zeezeetheatre.ca/production/hedwig-and-the-angry-inch/). They get into what it means to take on a role that matters this much to the queer and trans community, and what it's like once the wig goes on.
+"I put the wig on, and I become her."
 
 The last couple of minutes are worth hearing in Jordan's own voice.

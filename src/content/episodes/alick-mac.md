@@ -31,12 +31,11 @@ artist_bandcamp: "https://alickmac.bandcamp.com/"
 seo_title: "Alick Mac Interview"
 seo_description: "Alick Mac is a rapper and songwriter from the Comox Valley, BC. He talks about songwriting as a journal and how questions on masculinity became Boys’ Club."
 upcoming_shows:
-  - title: "Boys’ Club — Vancouver Fringe"
-    venue: "Arts Umbrella, Scott Studio"
-    city: "Vancouver, BC"
-    start_date: 2026-09-10
-    end_date: 2026-09-19
-    ticket_url: "https://alickboysclub.com/"
+  - title: "AE West Artist Extravaganza Showcase"
+    venue: "King Eddy"
+    city: "Calgary, AB"
+    start_date: 2026-12-02
+    ticket_url: "https://www.studiobell.ca/whats-on/event/ae-west-artist-extravaganza-showcase-2026/"
 ---
 
 Alick Mac talks about songwriting like a journal.
